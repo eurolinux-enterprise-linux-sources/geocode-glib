@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
-<book xmlns="http://www.devhelp.net/book" title="geocode-glib Reference Manual" link="index.html" author="" name="geocode-glib" version="2" language="c">
+<book xmlns="http://www.devhelp.net/book" title="geocode-glib Reference Manual" link="index.html" author="" name="geocode-glib" version="2" language="c" online="http://library.gnome.org/devel/geocode-glib/index.html">
   <chapters>
     <sub name="Geocode-glib" link="ch01.html">
       <sub name="geocode-error" link="geocode-glib-geocode-error.html"/>
@@ -15,8 +14,8 @@
     <sub name="Annotation Glossary" link="annotation-glossary.html"/>
   </chapters>
   <functions>
-    <keyword type="macro" name="GEOCODE_ERROR" link="geocode-glib-geocode-error.html#GEOCODE-ERROR:CAPS"/>
     <keyword type="function" name="geocode_error_quark ()" link="geocode-glib-geocode-error.html#geocode-error-quark"/>
+    <keyword type="macro" name="GEOCODE_ERROR" link="geocode-glib-geocode-error.html#GEOCODE-ERROR:CAPS"/>
     <keyword type="enum" name="enum GeocodeError" link="geocode-glib-geocode-error.html#GeocodeError"/>
     <keyword type="function" name="geocode_forward_new_for_string ()" link="GeocodeForward.html#geocode-forward-new-for-string"/>
     <keyword type="function" name="geocode_forward_new_for_params ()" link="GeocodeForward.html#geocode-forward-new-for-params"/>
@@ -100,9 +99,11 @@
     <keyword type="function" name="geocode_place_get_continent ()" link="GeocodePlace.html#geocode-place-get-continent"/>
     <keyword type="function" name="geocode_place_get_icon ()" link="GeocodePlace.html#geocode-place-get-icon"/>
     <keyword type="function" name="geocode_place_get_osm_id ()" link="GeocodePlace.html#geocode-place-get-osm-id"/>
+    <keyword type="function" name="geocode_place_get_osm_type ()" link="GeocodePlace.html#geocode-place-get-osm-type"/>
     <keyword type="struct" name="struct GeocodePlace" link="GeocodePlace.html#GeocodePlace-struct"/>
     <keyword type="struct" name="struct GeocodePlaceClass" link="GeocodePlace.html#GeocodePlaceClass"/>
     <keyword type="enum" name="enum GeocodePlaceType" link="GeocodePlace.html#GeocodePlaceType"/>
+    <keyword type="enum" name="enum GeocodePlaceOsmType" link="GeocodePlace.html#GeocodePlaceOsmType"/>
     <keyword type="property" name="The “administrative-area” property" link="GeocodePlace.html#GeocodePlace--administrative-area"/>
     <keyword type="property" name="The “area” property" link="GeocodePlace.html#GeocodePlace--area"/>
     <keyword type="property" name="The “bounding-box” property" link="GeocodePlace.html#GeocodePlace--bounding-box"/>
@@ -115,6 +116,7 @@
     <keyword type="property" name="The “location” property" link="GeocodePlace.html#GeocodePlace--location"/>
     <keyword type="property" name="The “name” property" link="GeocodePlace.html#GeocodePlace--name"/>
     <keyword type="property" name="The “osm-id” property" link="GeocodePlace.html#GeocodePlace--osm-id"/>
+    <keyword type="property" name="The “osm-type” property" link="GeocodePlace.html#GeocodePlace--osm-type"/>
     <keyword type="property" name="The “place-type” property" link="GeocodePlace.html#GeocodePlace--place-type"/>
     <keyword type="property" name="The “postal-code” property" link="GeocodePlace.html#GeocodePlace--postal-code"/>
     <keyword type="property" name="The “state” property" link="GeocodePlace.html#GeocodePlace--state"/>
@@ -138,5 +140,51 @@
     <keyword type="property" name="The “left” property" link="GeocodeBoundingBox.html#GeocodeBoundingBox--left"/>
     <keyword type="property" name="The “right” property" link="GeocodeBoundingBox.html#GeocodeBoundingBox--right"/>
     <keyword type="property" name="The “top” property" link="GeocodeBoundingBox.html#GeocodeBoundingBox--top"/>
+    <keyword type="constant" name="GEOCODE_ERROR_PARSE" link="geocode-glib-geocode-error.html#GEOCODE-ERROR-PARSE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_ERROR_NOT_SUPPORTED" link="geocode-glib-geocode-error.html#GEOCODE-ERROR-NOT-SUPPORTED:CAPS"/>
+    <keyword type="constant" name="GEOCODE_ERROR_NO_MATCHES" link="geocode-glib-geocode-error.html#GEOCODE-ERROR-NO-MATCHES:CAPS"/>
+    <keyword type="constant" name="GEOCODE_ERROR_INVALID_ARGUMENTS" link="geocode-glib-geocode-error.html#GEOCODE-ERROR-INVALID-ARGUMENTS:CAPS"/>
+    <keyword type="constant" name="GEOCODE_ERROR_INTERNAL_SERVER" link="geocode-glib-geocode-error.html#GEOCODE-ERROR-INTERNAL-SERVER:CAPS"/>
+    <keyword type="constant" name="GEOCODE_LOCATION_URI_SCHEME_GEO" link="GeocodeLocation.html#GEOCODE-LOCATION-URI-SCHEME-GEO:CAPS"/>
+    <keyword type="constant" name="GEOCODE_LOCATION_CRS_WGS84" link="GeocodeLocation.html#GEOCODE-LOCATION-CRS-WGS84:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_UNKNOWN" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_BUILDING" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-BUILDING:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_STREET" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-STREET:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_TOWN" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-TOWN:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_STATE" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-STATE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_COUNTY" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-COUNTY:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_LOCAL_ADMINISTRATIVE_AREA" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-LOCAL-ADMINISTRATIVE-AREA:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_POSTAL_CODE" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-POSTAL-CODE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_COUNTRY" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-COUNTRY:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_ISLAND" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-ISLAND:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_AIRPORT" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-AIRPORT:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_RAILWAY_STATION" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-RAILWAY-STATION:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_BUS_STOP" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-BUS-STOP:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_MOTORWAY" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-MOTORWAY:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_DRAINAGE" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-DRAINAGE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_LAND_FEATURE" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-LAND-FEATURE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_MISCELLANEOUS" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-MISCELLANEOUS:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_SUPERNAME" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-SUPERNAME:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_POINT_OF_INTEREST" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-POINT-OF-INTEREST:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_SUBURB" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-SUBURB:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_COLLOQUIAL" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-COLLOQUIAL:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_ZONE" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-ZONE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_HISTORICAL_STATE" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-HISTORICAL-STATE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_HISTORICAL_COUNTY" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-HISTORICAL-COUNTY:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_CONTINENT" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-CONTINENT:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_TIME_ZONE" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-TIME-ZONE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_ESTATE" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-ESTATE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_HISTORICAL_TOWN" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-HISTORICAL-TOWN:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_OCEAN" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-OCEAN:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_SEA" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-SEA:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_SCHOOL" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-SCHOOL:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_PLACE_OF_WORSHIP" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-PLACE-OF-WORSHIP:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_RESTAURANT" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-RESTAURANT:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_BAR" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-BAR:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_TYPE_LIGHT_RAIL_STATION" link="GeocodePlace.html#GEOCODE-PLACE-TYPE-LIGHT-RAIL-STATION:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_OSM_TYPE_UNKNOWN" link="GeocodePlace.html#GEOCODE-PLACE-OSM-TYPE-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_OSM_TYPE_NODE" link="GeocodePlace.html#GEOCODE-PLACE-OSM-TYPE-NODE:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_OSM_TYPE_RELATION" link="GeocodePlace.html#GEOCODE-PLACE-OSM-TYPE-RELATION:CAPS"/>
+    <keyword type="constant" name="GEOCODE_PLACE_OSM_TYPE_WAY" link="GeocodePlace.html#GEOCODE-PLACE-OSM-TYPE-WAY:CAPS"/>
   </functions>
 </book>

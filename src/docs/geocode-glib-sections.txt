@@ -25,10 +25,12 @@ geocode_bounding_box_get_type
 GEOCODE_TYPE_ERROR
 GEOCODE_TYPE_LOCATION_CRS
 GEOCODE_TYPE_LOCATION_URI_SCHEME
+GEOCODE_TYPE_PLACE_OSM_TYPE
 GEOCODE_TYPE_PLACE_TYPE
 geocode_error_get_type
 geocode_location_crs_get_type
 geocode_location_uri_scheme_get_type
+geocode_place_osm_type_get_type
 geocode_place_type_get_type
 </SECTION>
 
@@ -110,6 +112,7 @@ geocode_location_get_type
 GeocodePlace
 GeocodePlaceClass
 GeocodePlaceType
+GeocodePlaceOsmType
 geocode_place_new
 geocode_place_new_with_location
 geocode_place_set_name
@@ -145,6 +148,7 @@ geocode_place_set_continent
 geocode_place_get_continent
 geocode_place_get_icon
 geocode_place_get_osm_id
+geocode_place_get_osm_type
 <SUBSECTION Standard>
 GEOCODE_IS_PLACE
 GEOCODE_IS_PLACE_CLASS

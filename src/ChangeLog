@@ -1,3 +1,661 @@
+commit 8bbf72c9b2393d55b8aaceffc79ac0695ca81248
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Apr 11 20:05:51 2016 +0200
+
+    Release 3.20.1
+
+ NEWS         | 10 ++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+commit 3ce317a218c255b8a8025f8f2a6010ce500dc0ee
+Author: Anthony G. Basile <blueness@gentoo.org>
+Date:   Tue Mar 22 09:48:00 2016 +0000
+
+    Use __UCLIBC__ when checking for GLIBC features
+    
+    Commit f0f85d8d introduces __GLIBC__ to check for glibc only features.
+    However this is not sufficient for uClibc because it shares code with
+    glibc.  To select for features in glibc but not uClibc, we need
+    defined(__GLIBC__) && !defined(__UCLIBC__).
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=764021
+
+ geocode-glib/geocode-glib.c | 4 ++--
+ geocode-glib/test-gcglib.c  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 2ac76206c249511f2b40f8fd2c2e027ddc5d69af
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Mar 21 18:57:04 2016 +0100
+
+    Release 3.20.0
+
+ NEWS         | 12 ++++++++++++
+ configure.ac |  4 ++--
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+commit 89b0175e602751cd73fcc95a128a5c7141fdc0da
+Author: Aleksander Morgado <aleksander.morgado@collabora.co.uk>
+Date:   Mon Feb 22 11:57:46 2016 +0100
+
+    reverse,forward: plug memleaks when _geocode_glib_cache_path_for_query() is used
+    
+    E.g. for the reverse geocoding operation:
+    
+        ==3365== 128 bytes in 1 blocks are definitely lost in loss record 2,226 of 2,357
+        ==3365==    at 0x4C2AB5D: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+        ==3365==    by 0x566A3E7: g_realloc (in /usr/lib/libglib-2.0.so.0.4600.2)
+        ==3365==    by 0x5685846: ??? (in /usr/lib/libglib-2.0.so.0.4600.2)
+        ==3365==    by 0x5685B66: g_string_insert_len (in /usr/lib/libglib-2.0.so.0.4600.2)
+        ==3365==    by 0x5650E77: ??? (in /usr/lib/libglib-2.0.so.0.4600.2)
+        ==3365==    by 0x5652214: g_build_filename (in /usr/lib/libglib-2.0.so.0.4600.2)
+        ==3365==    by 0x4E40AA0: _geocode_glib_cache_path_for_query (geocode-glib.c:92)
+        ==3365==    by 0x4E4052F: geocode_reverse_resolve_async (geocode-reverse.c:454)
+        ==3365==    by 0x400D55: main (in /home/aleksander/Development/clients/collabora/geocode-test)
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=762435
+
+ geocode-glib/geocode-forward.c | 1 +
+ geocode-glib/geocode-reverse.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 9ff304e35ff4ac5262ca59292d284f8a2d6b3ca2
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Feb 21 15:36:17 2016 +0100
+
+    Add maki icons to EXTRA_DIST
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=762266
+
+ icons/Makefile.am | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+commit c0acf7fb248ce57261a126a9e1517c53abc9dda5
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Feb 14 22:34:37 2016 +0100
+
+    Release 3.19.90
+
+ NEWS         | 15 +++++++++++++++
+ configure.ac |  4 ++--
+ 2 files changed, 17 insertions(+), 2 deletions(-)
+
+commit a90ea49d3d4ef579526f82fce076cabf904b984b
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Feb 14 22:41:30 2016 +0100
+
+    test-gcglib: Conform to reality
+
+ geocode-glib/test-gcglib.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit d99d13ad7195e700376055ef986c1012037fccac
+Author: Philip Withnall <philip.withnall@collabora.co.uk>
+Date:   Thu Feb 11 10:12:06 2016 +0000
+
+    location: Fix precondition return for geocode_location_get_timestamp()
+    
+    -1 is not a valid guint64. Use 0 instead.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=761853
+
+ geocode-glib/geocode-location.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 387cf99287ff6a2c9526eacbcc88f24144bc7115
+Author: Philip Withnall <philip.withnall@collabora.co.uk>
+Date:   Thu Feb 11 10:11:42 2016 +0000
+
+    location: Expand documentation for GeocodeLocation:timestamp slightly
+    
+    It’s great to know that this is a timestamp, but what does the timestamp
+    represent? Dinner time?
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=761853
+
+ geocode-glib/geocode-location.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit 63aa0715f396457e5b127eb2a011ecb390bcf819
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Fri Jan 8 09:06:13 2016 +0100
+
+    Add a default user-agent based on GApplication id
+    
+    Nominatim’s usage policy requires a User-Agent. They want to be
+    able to block batch offenders that misuse the terms of service.
+    
+    We can set a user-agent based on GApplication (if we are one) to
+    make sure at least trusted GNOME applications can be identified.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=756313
+
+ configure.ac                        |  2 +-
+ geocode-glib/Makefile.am            |  1 +
+ geocode-glib/geocode-forward.c      |  2 +-
+ geocode-glib/geocode-glib-private.h |  1 +
+ geocode-glib/geocode-glib.c         | 23 +++++++++++++++++++++++
+ geocode-glib/geocode-reverse.c      |  2 +-
+ 6 files changed, 28 insertions(+), 3 deletions(-)
+
+commit 8686681429b437042e73d70a960208a1965c6dba
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Apr 15 12:42:01 2014 +0200
+
+    Add light rail station place type
+    
+    This type will also include tram stops.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=728241
+
+ geocode-glib/geocode-forward.c                     |   2 +
+ geocode-glib/geocode-place.c                       |   4 +
+ geocode-glib/geocode-place.h                       |   4 +-
+ icons/Makefile.am                                  |   3 +-
+ .../scalable_places_poi-light-rail-station.svg     | 148 +++++++++++++++++++++
+ 5 files changed, 159 insertions(+), 2 deletions(-)
+
+commit 0fa8247eae9bb122ae6edd9d437b2820e8525102
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Apr 15 12:41:11 2014 +0200
+
+    forward: expand railway station place type
+    
+    Also include simpler train stops using the OSM 'halt' tag.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=728241
+
+ geocode-glib/geocode-forward.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+commit 45837dcce0055fb1fc37b4133b24527a8e61bc00
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Nov 23 19:05:04 2015 +0000
+
+    test: Update test data against latest Nominatim data
+    
+    This fixes `make check`.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=758107
+
+ geocode-glib/test-gcglib.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit a3e183e40053b4bd0fd0b25a070f60597270397a
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Sep 20 14:50:31 2015 +0200
+
+    Release 3.18.0
+
+ NEWS         | 4 ++++
+ configure.ac | 4 ++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+commit dd806bdebe5e6290f9028b82c19411f435539747
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Sep 14 18:19:25 2015 +0200
+
+    Release 3.17.92
+
+ NEWS         | 12 ++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+commit 942cb075b12994949a6096060285b98602529b1a
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Sep 14 18:27:56 2015 +0200
+
+    test-gcglib: Fixup Sata Maria Del Rio
+
+ geocode-glib/test-gcglib.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 11d6c40e48630bb73077e861daabdaa7adab077c
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Fri Sep 4 21:14:43 2015 +0100
+
+    location: Make timestamp prop writable on construction
+    
+    While this isn't exactly (nor is it likely to be) needed by geocode-glib
+    itself but is needed in geoclue, where we need to set the timestamps on the
+    derived GClueLocation object from GPS.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=754797
+
+ geocode-glib/geocode-location.c | 37 ++++++++++++++++++++++++++++++++-----
+ 1 file changed, 32 insertions(+), 5 deletions(-)
+
+commit 27345fc689484fd171b6390d2e489c8d3fc5da52
+Author: Tom Schoonjans <Tom.Schoonjans@bam.de>
+Date:   Mon Sep 7 13:19:36 2015 +0200
+
+    build: Fix compilation under MacOS X
+    
+    The MacOS X linker doesn't seem to like us exporting undefined symbols.
+    Seeing as _geocode_parse_resolve_json doesn't exist any more, don't
+    export it and fix MacOS X linking.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=754670
+
+ geocode-glib/geocode-glib.symbols | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 5c6c898e47a79a8240bb51d98dea187baaf4a0e8
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Aug 16 14:51:18 2015 +0200
+
+    Release 3.17.90
+
+ NEWS         | 16 ++++++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+
+commit db9b06d5bc3118fd9195a6d69ce20a335d807e93
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Aug 16 15:03:13 2015 +0200
+
+    test-gcglib: Update tests
+
+ geocode-glib/test-gcglib.c | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+commit 5434d78aff76c944ca30b8003364b5369d616112
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Aug 16 14:45:27 2015 +0200
+
+    location: Limit Geo URI to 6 decimal points
+    
+    In order to get prettier Geo URIs we can limit the precision
+    of the coords to 6 decimal points. The URIs will not look crazy
+    and we still get 0.1m precision.
+
+ geocode-glib/geocode-location.c | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+commit dcf7f042983473a3655b3a98f3aa2b9fe28c16c2
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Jun 19 14:18:14 2015 +0200
+
+    private: Remove unused Yahoo! API key
+
+ geocode-glib/geocode-glib-private.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 63684d5ce550b7998718c3ba07d2f666be9d1a08
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Jun 19 13:35:48 2015 +0200
+
+    doap: Add Jonas as a maintainer
+
+ geocode-glib.doap | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit 24ef7dc4815448277d1f4def1a262cef3e42b755
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Jun 19 14:11:43 2015 +0200
+
+    desc
+
+ geocode-glib.doap | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit f5ee15ce11b918c8e613b79917697f1b88253b1f
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Jun 19 13:32:21 2015 +0200
+
+    build: Update project descriptions
+    
+    The one in the pkg-config file was outdated, so update it, and change
+    the one in the DOAP file to match.
+    
+    Also add a long description to satisfy GNOME git's requirements.
+
+ geocode-glib-1.0.pc.in | 2 +-
+ geocode-glib.doap      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 1a0fa1dc0cc29a63ca1700f3381732b2927b9bc6
+Author: Philip Withnall <philip.withnall@collabora.co.uk>
+Date:   Tue Jun 16 10:11:32 2015 +0100
+
+    reverse: Remove an unused variable
+
+ geocode-glib/geocode-reverse.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit e11087fcc85a0ce9bfe49cfd460ef97caceb00c1
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed May 27 14:59:17 2015 +0200
+
+    reverse: Fix nominatim attrs parsing for broken boundingbox
+    
+    This OpenStreeMap result has a bounding box that uses doubles to store
+    its borders, instead of strings, like all the others:
+    
+        {
+            "place_id": "353472",
+            "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright",
+            "osm_type": "node",
+            "osm_id": "151337566",
+            "boundingbox": [
+                38.4917175,
+                38.5317175,
+                -91.1940394,
+                -91.1540394
+            ],
+            "lat": "38.5117175",
+            "lon": "-91.1740394",
+            "display_name": "Lyon, Franklin County, Missouri, United States of America",
+            "place_rank": "19",
+            "category": "place",
+            "type": "hamlet",
+    
+    We fix this by checking the type of the node, and turning it into a
+    string, as all the other items in the hash table.
+    
+    See https://bugzilla.redhat.com/show_bug.cgi?id=1224563
+    and https://trac.openstreetmap.org/ticket/5132
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=749963
+
+ geocode-glib/geocode-reverse.c | 43 ++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 35 insertions(+), 8 deletions(-)
+
+commit 22f47c37b9974adf4bfc7b987538241f0833fa72
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun May 17 14:57:08 2015 +0200
+
+    test-gcglib: Fix pub searches
+    
+    There are multiple "Old Palace Road" objects in the database now.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=737857
+
+ geocode-glib/test-gcglib.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 118ac866f6bdf1a925cc396b78f75a0e538d34bb
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun May 17 14:56:34 2015 +0200
+
+    test-gcglib: Fix "Santa Maria Del Rio" searches
+    
+    The results are more precise now.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=737857
+
+ geocode-glib/test-gcglib.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 39b3cfc7822f03f9aba4d604dcf48b40605f56cd
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun May 17 14:55:10 2015 +0200
+
+    test-gcglib: Fix test for "Grand Canyon" from Europe
+    
+    First hit for "Grand Canyon" is "Grand Canyon, Ukraine":
+    http://www.openstreetmap.org/relation/1493795
+    instead of the North American one.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=737857
+
+ geocode-glib/test-gcglib.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+commit 36b8fac797f921031ce419d61a6b8b739bd9ff5f
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Apr 29 21:38:10 2015 +0200
+
+    Release 3.17.1
+
+ NEWS         | 11 +++++++++++
+ configure.ac |  4 ++--
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+commit 8877b11ad4cdb172323ca5c229a74d4284c1b7e7
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Apr 6 20:04:16 2015 +0200
+
+    reverse: Check for NULL from json_reader_list_members()
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=747397
+
+ geocode-glib/geocode-reverse.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit a7d4ffc80a33efcd3262b462ce8e66cc71f1e2c9
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Apr 6 20:01:54 2015 +0200
+
+    reverse: Check for NULL result in reverse_resolve()
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=747397
+
+ geocode-glib/geocode-reverse.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+commit 31729af20f96c834932d8b65dfcab37dd7cd1c56
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Apr 12 21:03:48 2015 +0200
+
+    test-gcglib: Add test for unsuccessful reverse
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=747397
+
+ geocode-glib/test-gcglib.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+commit bd00b896658abd8e314a63da0414d8578053ed13
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Mar 30 15:28:44 2015 +0200
+
+    forward: Move variable init in an inner block
+
+ geocode-glib/geocode-forward.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit c7e81417ab0faee26ff353a63ab76dc153321524
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Mar 22 19:58:42 2015 +0100
+
+    Release 3.16.0
+
+ NEWS         | 7 +++++++
+ configure.ac | 4 ++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+commit 870842ebd5dcf5235090d0081eccfd21e76385dd
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Fri Jan 16 03:47:56 2015 -0500
+
+    Release 3.15.4
+
+ NEWS         | 17 +++++++++++++++++
+ configure.ac |  5 ++---
+ 2 files changed, 19 insertions(+), 3 deletions(-)
+
+commit f0f85d8d01c64c61dfef3d00af5b9e629e336213
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Thu Jan 15 04:23:54 2015 -0500
+
+    Use __GLIBC__ when checking for GLIBC only feature
+    
+    The __GNUC__ macro is used to checking for gcc compatible compilers.
+    We should instead use __GLIBC__ to check for GLIBC only features.
+    
+    This also adds the guard to the test, since it uses LC_ADDRESS.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=742957
+
+ geocode-glib/geocode-glib.c | 4 ++--
+ geocode-glib/test-gcglib.c  | 2 ++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 005075f6a28c18f5196ba60ff07b888776af6dfc
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Thu Jan 8 03:15:26 2015 -0500
+
+    Only expose _NL_ADDRESS_POSTAL_FMT on __GNUC__
+
+ geocode-glib/geocode-glib.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 7a6e9ffbb3f54fa8dc8944056ebf3b5c9b1db1d0
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Thu Jan 8 01:49:56 2015 -0500
+
+    test-gcglib: Add test of address format
+    
+    Test the ordering of house number and street name.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725591
+
+ geocode-glib/test-gcglib.c | 37 +++++++++++++++++++++++++++++++++++--
+ 1 file changed, 35 insertions(+), 2 deletions(-)
+
+commit eb7f87af516f864c89ed83d8236862f3f38f87e4
+Author: Marcus Lundblad <ml@update.uu.se>
+Date:   Sun Mar 9 19:20:54 2014 +0100
+
+    Derive street address format from locale
+    
+    Determine street address format using nl_langinfo.
+    This is only possible on the GNU C library atm.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725591
+
+ geocode-glib/geocode-forward.c      |  6 +++++-
+ geocode-glib/geocode-glib-private.h |  1 +
+ geocode-glib/geocode-glib.c         | 42 +++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-reverse.c      |  9 ++++++--
+ po/POTFILES.in                      |  2 +-
+ 5 files changed, 56 insertions(+), 4 deletions(-)
+
+commit 6600124ad73a93fb40ac2bc5ed007757b97e95ca
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Dec 17 04:49:10 2014 -0500
+
+    Release 3.15.3.1
+
+ NEWS         | 12 ++++++++++++
+ configure.ac |  3 ++-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+commit 9de4e1e995af47899eb3f9876232a6138ad94446
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Dec 17 04:59:41 2014 -0500
+
+    place: Document GEOCODE_PLACE_OSM_TYPE_UNKNOWN
+
+ geocode-glib/geocode-place.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 7043600c142eeac178c604f6c40866b1a91230ff
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Dec 17 02:36:03 2014 -0500
+
+    forward, reverse: Use https and fix the cache
+    
+    At the moment the cache for queries does not work. This is because
+    we are using a query with 'http://' to look for cached contents.
+    But when we are saving we are using 'https://' since that is what
+    the nominatim server redirects us to.
+    
+    Regardless of that, moving to 'https://' seems like a good thing.
+
+ geocode-glib/geocode-forward.c | 4 ++--
+ geocode-glib/geocode-reverse.c | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit b14d90990c4d9bf1a601215e83099f312ef138e3
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Dec 16 20:00:26 2014 +0100
+
+    Release 3.15.3
+
+ NEWS         | 12 ++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+commit 075d0554568b88c7ce8aa3626979184ab4d36c95
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Dec 1 02:58:51 2014 -0500
+
+    place: Add osm-type property
+    
+    The osm type specifies if the place is a node a place or a relation.
+    The osm id is only unique within the object type so this is needed
+    in order for the osm-id to have a meaning.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=740957
+
+ geocode-glib/geocode-forward.c    | 14 ++++++++++++-
+ geocode-glib/geocode-glib.symbols |  2 ++
+ geocode-glib/geocode-place.c      | 43 ++++++++++++++++++++++++++++++++++++++-
+ geocode-glib/geocode-place.h      | 17 ++++++++++++++++
+ geocode-glib/test-gcglib.c        | 33 ++++++++++++++++++++++++++++++
+ 5 files changed, 107 insertions(+), 2 deletions(-)
+
+commit 8b561fddb3d24f1421c24d4ae4ac39e2dbe43bf6
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Nov 24 06:29:55 2014 -0500
+
+    Release 3.15.2
+
+ NEWS         | 14 ++++++++++++--
+ configure.ac |  4 ++--
+ 2 files changed, 14 insertions(+), 4 deletions(-)
+
+commit 3cfcad3bae4bd05390bc279c32e60e382f7d6fc0
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Nov 24 08:21:54 2014 -0500
+
+    test: Fix some places that changed their location
+
+ geocode-glib/test-gcglib.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+commit fb95a4268112583bb0ae740873353450aa6c412c
+Author: Jonas Danielsson <jonas.danielsson@threetimestwo.org>
+Date:   Fri Oct 17 05:41:23 2014 -0400
+
+    location: Unescape geo uri description
+    
+    Use g_uri_unescape on the description for geo uri formats
+    such as:
+    	geo:0,0?q=lat,lon(description)
+    
+    This will allow us to have space in the description by
+    using %20.
+    
+    Example:
+    	geo:0,0?q=lat,lon(My%20Location)
+    
+    The above will give a description of "My Location".
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=737979
+
+ geocode-glib/geocode-location.c |  4 +++-
+ geocode-glib/test-geouri.c      | 15 +++++++++++++++
+ 2 files changed, 18 insertions(+), 1 deletion(-)
+
+commit b571940fb33be363c7f2a27f0c99b95415b5637e
+Author: Jonas Danielsson <jonas.danielsson@threetimestwo.org>
+Date:   Fri Oct 17 05:18:08 2014 -0400
+
+    location: Fix error handling in uri parsing
+    
+    At the moment calling set_from_uri with error as NULL will
+    cause a segmentation fault.
+    
+    This is because the code assumes error will always be set.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=737979
+
+ geocode-glib/geocode-location.c | 71 +++++++++++++++++++++++------------------
+ 1 file changed, 40 insertions(+), 31 deletions(-)
+
 commit ae38d319a9c1a85ae3c33bb68ad91d04ee50047c
 Author: Jonas Danielsson <jonas@threetimestwo.org>
 Date:   Tue Sep 23 17:05:19 2014 +0200

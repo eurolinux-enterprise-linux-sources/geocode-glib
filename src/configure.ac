@@ -1,8 +1,8 @@
 AC_PREREQ([2.63])
 
 m4_define(gclib_version_major, 3)
-m4_define(gclib_version_minor, 14)
-m4_define(gclib_version_micro, 0)
+m4_define(gclib_version_minor, 20)
+m4_define(gclib_version_micro, 1)
 
 AC_INIT([geocode-glib],
         [gclib_version_major.gclib_version_minor.gclib_version_micro],
@@ -62,7 +62,7 @@ dnl Requires for the library
 PKG_CHECK_MODULES(GEOCODE,
 		  gio-2.0 >= 2.34
 		  json-glib-1.0 >= 0.99.2
-		  libsoup-2.4)
+		  libsoup-2.4 >= 2.42)
 
 GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`
 AC_SUBST(GLIB_GENMARSHAL)

@@ -1,7 +1,145 @@
-3.14.0
+3.20.1
+-------
+
+Changes since 3.20.0:
+
+- Fix build for uClibc
+
+All contributors to this release:
+Anthony G. Basile <blueness@gentoo.org>
+
+3.20.0
+-------
+
+Changes since 3.19.90:
+
+- Add icons to EXTRA_DIST
+- Fix memleaks in query cache
+
+All contributors to this release:
+Aleksander Morgado <aleksander.morgado@collabora.co.uk>
+Jonas Danielsson <jonas@threetimestwo.org>
+
+3.19.90
+-------
+
+Changes since 3.18.0:
+
+- Add simple train stops and tram stops to place types
+- Added a default User-Agent, based on GApplication ID if available.
+  Nominatim’s usage policy requires a User-Agent, so we add one!
+- Fix timetamp documentation
+
+All contributors to this release:
+Jonas Danielsson <jonas@threetimestwo.org>
+Philip Withnall <philip.withnall@collabora.co.uk>
+Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.18.0
+
+No changes since 3.17.92
+
+3.17.92
 ------
 
-Changes since 3.13.3:
+Changes since 3.17.90:
+
+- Fix compilation under MacOS X
+- Make location timestamp writable on construction
+
+All contributors to this release:
+Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Tom Schoonjans <Tom.Schoonjans@bam.de>
+
+3.17.90
+------
+
+Changes since 3.17.1:
+
+- Update unit tests
+- Add workaround for Nominatim boundingbox bug (bgo#749963)
+- Update project description
+- Add Jonas Danielsson as maintainer
+- Prettify Geo URI generation
+
+All contributors to this release:
+Bastien Nocera <hadess@hadess.net>
+Jonas Danielsson <jonas@thretimestwo.org>
+Philip Withnall <philip.withnall@collabora.co.uk>
+
+3.17.1
+------
+
+Changes since 3.16.0:
+
+- Make error handling of reverse geocode more robust
+
+All contributors to this release:
+Bastien Nocera <hadess@hadess.net>
+Jonas Danielsson <jonas@thretimestwo.org>
+
+3.16.0
+------
+
+Changes since 3.15.4:
+
+No changes
+
+3.15.4
+------
+
+Changes since 3.15.3.1:
+
+- Derive the order of street name and street number
+  from locale. (GLIBC only)
+
+All contributors to this release:
+Jonas Danielsson <jonas@threetimestwo.org>
+Marcus Lundblad <ml@update.uu.se>
+
+
+All contributors to this release:
+
+Jonas Danielsson <jonas@threetimestwo.org>
+
+3.15.3.1
+------
+
+Changes since 3.15.3:
+
+- Switch to https:// and fix the geocode cache
+- Fix gtkdoc-check errors
+
+All contributors to this release:
+
+Jonas Danielsson <jonas@threetimestwo.org>
+
+3.15.3
+------
+
+Changes since 3.15.2:
+
+- Add osm_type property to geocode place
+
+All contributors to this release:
+
+Jonas Danielsson <jonas@threetimestwo.org>
+
+
+3.15.2
+------
+
+Changes since 3.14.0:
+
+- Fix error handling in parsing of URIs
+- Allow escape characters in URIs
+
+All contributors to this release:
+
+Jonas Danielsson <jonas@threetimestwo.org>
+
+3.14.0
+------
 
 - Add category and programming language to doap file
 

@@ -101,6 +101,7 @@ struct _GeocodePlaceClass {
  * @GEOCODE_PLACE_TYPE_PLACE_OF_WORSHIP: All places of worship independently of the religion or denomination.
  * @GEOCODE_PLACE_TYPE_RESTAURANT: Generally formal place with sit-down facilities selling full meals served by waiters.
  * @GEOCODE_PLACE_TYPE_BAR: A bar or pub.
+ * @GEOCODE_PLACE_TYPE_LIGHT_RAIL_STATION: A light rail station or tram stop.
  *
  * Type of the place.
  */
@@ -138,8 +139,26 @@ typedef enum {
         GEOCODE_PLACE_TYPE_SCHOOL,
         GEOCODE_PLACE_TYPE_PLACE_OF_WORSHIP,
         GEOCODE_PLACE_TYPE_RESTAURANT,
-        GEOCODE_PLACE_TYPE_BAR
+        GEOCODE_PLACE_TYPE_BAR,
+        GEOCODE_PLACE_TYPE_LIGHT_RAIL_STATION
 } GeocodePlaceType;
+
+
+/**
+ * GeocodePlaceOsmType:
+ * @GEOCODE_PLACE_OSM_TYPE_UNKNOWN: Unknown type
+ * @GEOCODE_PLACE_OSM_TYPE_NODE: Defines a point in space.
+ * @GEOCODE_PLACE_OSM_TYPE_RELATION: Used to explain how other elements work together.
+ * @GEOCODE_PLACE_OSM_TYPE_WAY: Defines a linear feature and area boundaries.
+ *
+ * Osm type of the place.
+ */
+typedef enum {
+  GEOCODE_PLACE_OSM_TYPE_UNKNOWN,
+  GEOCODE_PLACE_OSM_TYPE_NODE,
+  GEOCODE_PLACE_OSM_TYPE_RELATION,
+  GEOCODE_PLACE_OSM_TYPE_WAY
+} GeocodePlaceOsmType;
 
 #define GEOCODE_TYPE_PLACE (geocode_place_get_type ())
 
@@ -215,6 +234,7 @@ const char *geocode_place_get_continent            (GeocodePlace *place);
 GIcon *geocode_place_get_icon                      (GeocodePlace *place);
 
 const char *geocode_place_get_osm_id               (GeocodePlace *place);
+GeocodePlaceOsmType geocode_place_get_osm_type     (GeocodePlace *place);
 
 G_END_DECLS
 

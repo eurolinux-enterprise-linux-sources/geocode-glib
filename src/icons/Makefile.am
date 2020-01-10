@@ -10,7 +10,8 @@ public_icons = \
 	scalable_places_poi-place-of-worship.svg \
 	scalable_places_poi-restaurant.svg \
 	scalable_places_poi-bar.svg \
-	scalable_places_poi-airport.svg
+	scalable_places_poi-airport.svg \
+	scalable_places_poi-light-rail-station.svg
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t
 
@@ -45,13 +46,6 @@ update-icon-cache:
 		echo "***   $(gtk_update_icon_cache) $(DESTDIR)$(datadir)/icons/gnome"; \
 	fi
 
-EXTRA_DIST = \
-	maki/scalable_places_poi-airport.svg \
-	maki/scalable_places_poi-building.svg \
-	maki/scalable_places_poi-bus-stop.svg \
-	maki/scalable_places_poi-car.svg \
-	maki/scalable_places_poi-marker.svg \
-	maki/scalable_places_poi-railway-station.svg \
-	maki/scalable_places_poi-town.svg
+EXTRA_DIST = $(addprefix maki/,$(public_icons))
 
 -include $(top_srcdir)/git.mk

@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>geocode-glib Reference Manual: GeocodeReverse</title>
+<title>GeocodeReverse: geocode-glib Reference Manual</title>
 <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
 <link rel="home" href="index.html" title="geocode-glib Reference Manual">
 <link rel="up" href="ch01.html" title="Geocode-glib">
 <link rel="prev" href="GeocodePlace.html" title="GeocodePlace">
 <link rel="next" href="geocode-glib-geocode-enum-types.html" title="geocode-enum-types">
-<meta name="generator" content="GTK-Doc V1.21.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.24.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -96,7 +96,7 @@
 </div>
 <div class="refsect1">
 <a name="GeocodeReverse.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+<pre class="screen">    GObject
     <span class="lineart">╰──</span> GeocodeReverse
 </pre>
 </div>
@@ -119,7 +119,7 @@ geocode_reverse_new_for_location (<em class="parameter"><code><a class="link" hr
 <p>Creates a new <a class="link" href="GeocodeReverse.html" title="GeocodeReverse"><span class="type">GeocodeReverse</span></a> to perform reverse geocoding with.
 Use <a class="link" href="GeocodeReverse.html#geocode-reverse-resolve-async" title="geocode_reverse_resolve_async ()"><code class="function">geocode_reverse_resolve_async()</code></a> to perform the resolution.</p>
 <div class="refsect3">
-<a name="id-1.2.6.8.2.5"></a><h4>Parameters</h4>
+<a name="geocode-reverse-new-for-location.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -134,9 +134,8 @@ Use <a class="link" href="GeocodeReverse.html#geocode-reverse-resolve-async" tit
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.6.8.2.6"></a><h4>Returns</h4>
-<p> a new <a class="link" href="GeocodeReverse.html" title="GeocodeReverse"><span class="type">GeocodeReverse</span></a>. Use <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"><code class="function">g_object_unref()</code></a> when done.</p>
-<p></p>
+<a name="geocode-reverse-new-for-location.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="GeocodeReverse.html" title="GeocodeReverse"><span class="type">GeocodeReverse</span></a>. Use <code class="function">g_object_unref()</code> when done.</p>
 </div>
 </div>
 <hr>
@@ -144,9 +143,9 @@ Use <a class="link" href="GeocodeReverse.html#geocode-reverse-resolve-async" tit
 <a name="geocode-reverse-resolve-async"></a><h3>geocode_reverse_resolve_async ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 geocode_reverse_resolve_async (<em class="parameter"><code><a class="link" href="GeocodeReverse.html" title="GeocodeReverse"><span class="type">GeocodeReverse</span></a> *object</code></em>,
-                               <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
-                               <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> callback</code></em>,
-                               <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                               <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                               <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                               <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
 <p>Asynchronously gets the result of a reverse geocoding
 query using a web service. Use <a class="link" href="GeocodeReverse.html#geocode-reverse-resolve" title="geocode_reverse_resolve ()"><code class="function">geocode_reverse_resolve()</code></a> to do the same
 thing synchronously.</p>
@@ -154,7 +153,7 @@ thing synchronously.</p>
  will be called. You can then call
 <a class="link" href="GeocodeReverse.html#geocode-reverse-resolve-finish" title="geocode_reverse_resolve_finish ()"><code class="function">geocode_reverse_resolve_finish()</code></a> to get the result of the operation.</p>
 <div class="refsect3">
-<a name="id-1.2.6.8.3.6"></a><h4>Parameters</h4>
+<a name="geocode-reverse-resolve-async.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -169,12 +168,12 @@ thing synchronously.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>cancellable</p></td>
-<td class="parameter_description"><p>optional <a href="http://library.gnome.org/devel/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> object, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to ignore.</p></td>
+<td class="parameter_description"><p>optional <span class="type">GCancellable</span> object, <code class="literal">NULL</code> to ignore.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>callback</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the request is satisfied</p></td>
+<td class="parameter_description"><p>a <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
@@ -191,11 +190,11 @@ thing synchronously.</p>
 <a name="geocode-reverse-resolve-finish"></a><h3>geocode_reverse_resolve_finish ()</h3>
 <pre class="programlisting"><a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="returnvalue">GeocodePlace</span></a> *
 geocode_reverse_resolve_finish (<em class="parameter"><code><a class="link" href="GeocodeReverse.html" title="GeocodeReverse"><span class="type">GeocodeReverse</span></a> *object</code></em>,
-                                <em class="parameter"><code><a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
-                                <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+                                <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
 <p>Finishes a reverse geocoding operation. See <a class="link" href="GeocodeReverse.html#geocode-reverse-resolve-async" title="geocode_reverse_resolve_async ()"><code class="function">geocode_reverse_resolve_async()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.2.6.8.4.5"></a><h4>Parameters</h4>
+<a name="geocode-reverse-resolve-finish.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -210,21 +209,21 @@ geocode_reverse_resolve_finish (<em class="parameter"><code><a class="link" href
 </tr>
 <tr>
 <td class="parameter_name"><p>res</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a>.</p></td>
+<td class="parameter_description"><p>a <span class="type">GAsyncResult</span>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>.</p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span>.</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.6.8.4.6"></a><h4>Returns</h4>
-<p> A <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> instance, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of
-errors. Free the returned instance with <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"><code class="function"><GTKDOCLINK HREF="g-object-unref"><code class="function">g_object_unref()</code></a></code></GTKDOCLINK> when done. </p>
+<a name="geocode-reverse-resolve-finish.returns"></a><h4>Returns</h4>
+<p> A <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> instance, or <code class="literal">NULL</code> in case of
+errors. Free the returned instance with <code class="function"><GTKDOCLINK HREF="g-object-unref"><code class="function">g_object_unref()</code></code></GTKDOCLINK> when done. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
 </div>
@@ -233,11 +232,11 @@ errors. Free the returned instance with <a href="http://library.gnome.org/devel/
 <a name="geocode-reverse-resolve"></a><h3>geocode_reverse_resolve ()</h3>
 <pre class="programlisting"><a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="returnvalue">GeocodePlace</span></a> *
 geocode_reverse_resolve (<em class="parameter"><code><a class="link" href="GeocodeReverse.html" title="GeocodeReverse"><span class="type">GeocodeReverse</span></a> *object</code></em>,
-                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
 <p>Gets the result of a reverse geocoding
 query using a web service.</p>
 <div class="refsect3">
-<a name="id-1.2.6.8.5.5"></a><h4>Parameters</h4>
+<a name="geocode-reverse-resolve.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -252,16 +251,16 @@ query using a web service.</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>error</p></td>
-<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a></p></td>
+<td class="parameter_description"><p>a <span class="type">GError</span></p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.6.8.5.6"></a><h4>Returns</h4>
-<p> A <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> instance, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> in case of
-errors. Free the returned instance with <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"><code class="function"><GTKDOCLINK HREF="g-object-unref"><code class="function">g_object_unref()</code></a></code></GTKDOCLINK> when done. </p>
+<a name="geocode-reverse-resolve.returns"></a><h4>Returns</h4>
+<p> A <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> instance, or <code class="literal">NULL</code> in case of
+errors. Free the returned instance with <code class="function"><GTKDOCLINK HREF="g-object-unref"><code class="function">g_object_unref()</code></code></GTKDOCLINK> when done. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
 </div>
@@ -284,7 +283,6 @@ errors. Free the returned instance with <a href="http://library.gnome.org/devel/
 </div>
 </div>
 <div class="footer">
-<hr>
-          Generated by GTK-Doc V1.21.1</div>
+<hr>Generated by GTK-Doc V1.24.1</div>
 </body>
 </html>

@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>geocode-glib Reference Manual: GeocodePlace</title>
+<title>GeocodePlace: geocode-glib Reference Manual</title>
 <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
 <link rel="home" href="index.html" title="geocode-glib Reference Manual">
 <link rel="up" href="ch01.html" title="Geocode-glib">
 <link rel="prev" href="GeocodeLocation.html" title="GeocodeLocation">
 <link rel="next" href="GeocodeReverse.html" title="GeocodeReverse">
-<meta name="generator" content="GTK-Doc V1.21.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.24.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -294,7 +294,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<a href="http://library.gnome.org/devel/gio/unstable/GIcon.html"><span class="returnvalue">GIcon</span></a> *
+<span class="returnvalue">GIcon</span> *
 </td>
 <td class="function_name">
 <a class="link" href="GeocodePlace.html#geocode-place-get-icon" title="geocode_place_get_icon ()">geocode_place_get_icon</a> <span class="c_punctuation">()</span>
@@ -305,6 +305,14 @@
 </td>
 <td class="function_name">
 <a class="link" href="GeocodePlace.html#geocode-place-get-osm-id" title="geocode_place_get_osm_id ()">geocode_place_get_osm_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GeocodePlace.html#GeocodePlaceOsmType" title="enum GeocodePlaceOsmType"><span class="returnvalue">GeocodePlaceOsmType</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GeocodePlace.html#geocode-place-get-osm-type" title="geocode_place_get_osm_type ()">geocode_place_get_osm_type</a> <span class="c_punctuation">()</span>
 </td>
 </tr>
 </tbody>
@@ -321,13 +329,13 @@
 <tbody>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--administrative-area" title="The “administrative-area” property">administrative-area</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--area" title="The “area” property">area</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
@@ -339,37 +347,37 @@
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--building" title="The “building” property">building</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--continent" title="The “continent” property">continent</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--country" title="The “country” property">country</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--country-code" title="The “country-code” property">country-code</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--county" title="The “county” property">county</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/gio/unstable/GIcon.html"><span class="type">GIcon</span></a> *</td>
+<span class="type">GIcon</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--icon" title="The “icon” property">icon</a></td>
 <td class="property_flags">Read</td>
 </tr>
@@ -381,14 +389,19 @@
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--name" title="The “name” property">name</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--osm-id" title="The “osm-id” property">osm-id</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><a class="link" href="GeocodePlace.html#GeocodePlaceOsmType" title="enum GeocodePlaceOsmType"><span class="type">GeocodePlaceOsmType</span></a></td>
+<td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--osm-type" title="The “osm-type” property">osm-type</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
@@ -398,31 +411,31 @@
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--postal-code" title="The “postal-code” property">postal-code</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--state" title="The “state” property">state</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--street" title="The “street” property">street</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--street-address" title="The “street-address” property">street-address</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
 <tr>
 <td class="property_type">
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<span class="type">gchar</span> *</td>
 <td class="property_name"><a class="link" href="GeocodePlace.html#GeocodePlace--town" title="The “town” property">town</a></td>
 <td class="property_flags">Read / Write</td>
 </tr>
@@ -449,14 +462,19 @@
 <td class="datatype_keyword">enum</td>
 <td class="function_name"><a class="link" href="GeocodePlace.html#GeocodePlaceType" title="enum GeocodePlaceType">GeocodePlaceType</a></td>
 </tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="GeocodePlace.html#GeocodePlaceOsmType" title="enum GeocodePlaceOsmType">GeocodePlaceOsmType</a></td>
+</tr>
 </tbody>
 </table></div>
 </div>
 <div class="refsect1">
 <a name="GeocodePlace.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    GEnum
+<pre class="screen">    <a href="/home/jonas/jhbuild/install/share/gtk-doc/html/gobject/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
+    <span class="lineart">├──</span> GeocodePlaceOsmType
     <span class="lineart">╰──</span> GeocodePlaceType
-    <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    GObject
     <span class="lineart">╰──</span> GeocodePlace
 </pre>
 </div>
@@ -481,7 +499,7 @@ geocode_place_new (<em class="parameter"><code>const <span class="type">char</sp
                    <em class="parameter"><code><a class="link" href="GeocodePlace.html#GeocodePlaceType" title="enum GeocodePlaceType"><span class="type">GeocodePlaceType</span></a> place_type</code></em>);</pre>
 <p>Creates a new <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> object.</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.2.5"></a><h4>Parameters</h4>
+<a name="geocode-place-new.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -503,9 +521,8 @@ geocode_place_new (<em class="parameter"><code>const <span class="type">char</sp
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.2.6"></a><h4>Returns</h4>
-<p> a new <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> object. Use <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"><code class="function">g_object_unref()</code></a> when done.</p>
-<p></p>
+<a name="geocode-place-new.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> object. Use <code class="function">g_object_unref()</code> when done.</p>
 </div>
 </div>
 <hr>
@@ -517,7 +534,7 @@ geocode_place_new_with_location (<em class="parameter"><code>const <span class="
                                  <em class="parameter"><code><a class="link" href="GeocodeLocation.html" title="GeocodeLocation"><span class="type">GeocodeLocation</span></a> *location</code></em>);</pre>
 <p>Creates a new <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> object.</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.3.5"></a><h4>Parameters</h4>
+<a name="geocode-place-new-with-location.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -544,9 +561,8 @@ geocode_place_new_with_location (<em class="parameter"><code>const <span class="
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.3.6"></a><h4>Returns</h4>
-<p> a new <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> object. Use <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"><code class="function">g_object_unref()</code></a> when done.</p>
-<p></p>
+<a name="geocode-place-new-with-location.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> object. Use <code class="function">g_object_unref()</code> when done.</p>
 </div>
 </div>
 <hr>
@@ -559,7 +575,7 @@ geocode_place_set_name (<em class="parameter"><code><a class="link" href="Geocod
  to <em class="parameter"><code>name</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.4.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-name.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -589,7 +605,7 @@ geocode_place_get_name (<em class="parameter"><code><a class="link" href="Geocod
 <p>Gets the name of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.5.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-name.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -604,10 +620,9 @@ geocode_place_get_name (<em class="parameter"><code><a class="link" href="Geocod
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.5.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-name.returns"></a><h4>Returns</h4>
 <p> The name of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -618,7 +633,7 @@ geocode_place_get_place_type (<em class="parameter"><code><a class="link" href="
 <p>Gets the type of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.6.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-place-type.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -633,10 +648,9 @@ geocode_place_get_place_type (<em class="parameter"><code><a class="link" href="
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.6.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-place-type.returns"></a><h4>Returns</h4>
 <p> The type of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -647,7 +661,7 @@ geocode_place_get_bounding_box (<em class="parameter"><code><a class="link" href
 <p>Gets the bounding box for the place <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.7.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-bounding-box.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -662,7 +676,7 @@ geocode_place_get_bounding_box (<em class="parameter"><code><a class="link" href
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.7.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-bounding-box.returns"></a><h4>Returns</h4>
 <p> A <a class="link" href="GeocodeBoundingBox.html" title="GeocodeBoundingBox"><span class="type">GeocodeBoundingBox</span></a>, or NULL if boundaries are
 unknown. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
@@ -677,7 +691,7 @@ geocode_place_set_bounding_box (<em class="parameter"><code><a class="link" href
 <p>Sets the <a class="link" href="GeocodeBoundingBox.html" title="GeocodeBoundingBox"><span class="type">GeocodeBoundingBox</span></a> for the place <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.8.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-bounding-box.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -709,7 +723,7 @@ geocode_place_set_location (<em class="parameter"><code><a class="link" href="Ge
  to <em class="parameter"><code>location</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.9.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-location.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -738,7 +752,7 @@ geocode_place_set_location (<em class="parameter"><code><a class="link" href="Ge
 geocode_place_get_location (<em class="parameter"><code><a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> *place</code></em>);</pre>
 <p>Gets the associated location object.</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.10.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-location.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -753,7 +767,7 @@ geocode_place_get_location (<em class="parameter"><code><a class="link" href="Ge
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.10.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-location.returns"></a><h4>Returns</h4>
 <p> The associated location object. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -768,7 +782,7 @@ geocode_place_set_street_address (<em class="parameter"><code><a class="link" hr
  to <em class="parameter"><code>street_address</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.11.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-street-address.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -798,7 +812,7 @@ geocode_place_get_street_address (<em class="parameter"><code><a class="link" hr
 <p>Gets the street address of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.12.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-street-address.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -813,10 +827,9 @@ geocode_place_get_street_address (<em class="parameter"><code><a class="link" hr
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.12.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-street-address.returns"></a><h4>Returns</h4>
 <p> The street address of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -829,7 +842,7 @@ geocode_place_set_street (<em class="parameter"><code><a class="link" href="Geoc
  to <em class="parameter"><code>street</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.13.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-street.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -859,7 +872,7 @@ geocode_place_get_street (<em class="parameter"><code><a class="link" href="Geoc
 <p>Gets the street of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.14.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-street.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -874,10 +887,9 @@ geocode_place_get_street (<em class="parameter"><code><a class="link" href="Geoc
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.14.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-street.returns"></a><h4>Returns</h4>
 <p> The street of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -890,7 +902,7 @@ geocode_place_set_building (<em class="parameter"><code><a class="link" href="Ge
  to <em class="parameter"><code>building</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.15.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-building.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -920,7 +932,7 @@ geocode_place_get_building (<em class="parameter"><code><a class="link" href="Ge
 <p>Gets the building of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.16.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-building.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -935,10 +947,9 @@ geocode_place_get_building (<em class="parameter"><code><a class="link" href="Ge
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.16.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-building.returns"></a><h4>Returns</h4>
 <p> The building of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -951,7 +962,7 @@ geocode_place_set_postal_code (<em class="parameter"><code><a class="link" href=
  to <em class="parameter"><code>postal_code</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.17.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-postal-code.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -981,7 +992,7 @@ geocode_place_get_postal_code (<em class="parameter"><code><a class="link" href=
 <p>Gets the postal code of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.18.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-postal-code.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -996,10 +1007,9 @@ geocode_place_get_postal_code (<em class="parameter"><code><a class="link" href=
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.18.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-postal-code.returns"></a><h4>Returns</h4>
 <p> The postal code of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -1012,7 +1022,7 @@ geocode_place_set_area (<em class="parameter"><code><a class="link" href="Geocod
  to <em class="parameter"><code>area</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.19.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-area.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1042,7 +1052,7 @@ geocode_place_get_area (<em class="parameter"><code><a class="link" href="Geocod
 <p>Gets the area of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.20.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-area.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1057,10 +1067,9 @@ geocode_place_get_area (<em class="parameter"><code><a class="link" href="Geocod
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.20.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-area.returns"></a><h4>Returns</h4>
 <p> The area of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -1073,7 +1082,7 @@ geocode_place_set_town (<em class="parameter"><code><a class="link" href="Geocod
  to <em class="parameter"><code>town</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.21.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-town.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1103,7 +1112,7 @@ geocode_place_get_town (<em class="parameter"><code><a class="link" href="Geocod
 <p>Gets the town of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.22.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-town.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1118,10 +1127,9 @@ geocode_place_get_town (<em class="parameter"><code><a class="link" href="Geocod
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.22.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-town.returns"></a><h4>Returns</h4>
 <p> The town of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -1134,7 +1142,7 @@ geocode_place_set_county (<em class="parameter"><code><a class="link" href="Geoc
  to <em class="parameter"><code>county</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.23.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-county.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1164,7 +1172,7 @@ geocode_place_get_county (<em class="parameter"><code><a class="link" href="Geoc
 <p>Gets the county of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.24.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-county.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1179,10 +1187,9 @@ geocode_place_get_county (<em class="parameter"><code><a class="link" href="Geoc
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.24.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-county.returns"></a><h4>Returns</h4>
 <p> The country of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -1195,7 +1202,7 @@ geocode_place_set_state (<em class="parameter"><code><a class="link" href="Geoco
  to <em class="parameter"><code>state</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.25.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-state.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1225,7 +1232,7 @@ geocode_place_get_state (<em class="parameter"><code><a class="link" href="Geoco
 <p>Gets the state of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.26.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-state.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1240,10 +1247,9 @@ geocode_place_get_state (<em class="parameter"><code><a class="link" href="Geoco
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.26.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-state.returns"></a><h4>Returns</h4>
 <p> The state of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -1256,7 +1262,7 @@ geocode_place_set_administrative_area (<em class="parameter"><code><a class="lin
  to <em class="parameter"><code>admin_area</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.27.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-administrative-area.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1286,7 +1292,7 @@ geocode_place_get_administrative_area (<em class="parameter"><code><a class="lin
 <p>Gets the local administrative area of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.28.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-administrative-area.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1301,10 +1307,9 @@ geocode_place_get_administrative_area (<em class="parameter"><code><a class="lin
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.28.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-administrative-area.returns"></a><h4>Returns</h4>
 <p> The local administrative area of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -1317,7 +1322,7 @@ geocode_place_set_country_code (<em class="parameter"><code><a class="link" href
  to <em class="parameter"><code>country_code</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.29.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-country-code.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1347,7 +1352,7 @@ geocode_place_get_country_code (<em class="parameter"><code><a class="link" href
 <p>Gets the ISO-3166 country code of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.30.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-country-code.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1362,10 +1367,9 @@ geocode_place_get_country_code (<em class="parameter"><code><a class="link" href
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.30.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-country-code.returns"></a><h4>Returns</h4>
 <p> The ISO-3166 country code of the <em class="parameter"><code>place</code></em>
 , in upper case.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -1378,7 +1382,7 @@ geocode_place_set_country (<em class="parameter"><code><a class="link" href="Geo
  to <em class="parameter"><code>country</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.31.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-country.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1408,7 +1412,7 @@ geocode_place_get_country (<em class="parameter"><code><a class="link" href="Geo
 <p>Gets the country of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.32.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-country.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1423,10 +1427,9 @@ geocode_place_get_country (<em class="parameter"><code><a class="link" href="Geo
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.32.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-country.returns"></a><h4>Returns</h4>
 <p> The country of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -1439,7 +1442,7 @@ geocode_place_set_continent (<em class="parameter"><code><a class="link" href="G
  to <em class="parameter"><code>continent</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.33.5"></a><h4>Parameters</h4>
+<a name="geocode-place-set-continent.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1469,7 +1472,7 @@ geocode_place_get_continent (<em class="parameter"><code><a class="link" href="G
 <p>Gets the continent of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.34.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-continent.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1484,21 +1487,20 @@ geocode_place_get_continent (<em class="parameter"><code><a class="link" href="G
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.34.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-continent.returns"></a><h4>Returns</h4>
 <p> The continent of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="geocode-place-get-icon"></a><h3>geocode_place_get_icon ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/gio/unstable/GIcon.html"><span class="returnvalue">GIcon</span></a> *
+<pre class="programlisting"><span class="returnvalue">GIcon</span> *
 geocode_place_get_icon (<em class="parameter"><code><a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> *place</code></em>);</pre>
-<p>Gets the <a href="http://library.gnome.org/devel/gio/unstable/GIcon.html"><span class="type">GIcon</span></a> representing the <em class="parameter"><code>place</code></em>
+<p>Gets the <span class="type">GIcon</span> representing the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.35.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-icon.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1513,8 +1515,8 @@ geocode_place_get_icon (<em class="parameter"><code><a class="link" href="Geocod
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.35.6"></a><h4>Returns</h4>
-<p> The <a href="http://library.gnome.org/devel/gio/unstable/GIcon.html"><span class="type">GIcon</span></a> representing the <em class="parameter"><code>place</code></em>
+<a name="geocode-place-get-icon.returns"></a><h4>Returns</h4>
+<p> The <span class="type">GIcon</span> representing the <em class="parameter"><code>place</code></em>
 . </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1527,7 +1529,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <p>Gets the OpenStreetMap ID of the <em class="parameter"><code>place</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.5.9.36.5"></a><h4>Parameters</h4>
+<a name="geocode-place-get-osm-id.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1542,10 +1544,37 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.5.9.36.6"></a><h4>Returns</h4>
+<a name="geocode-place-get-osm-id.returns"></a><h4>Returns</h4>
 <p> The osm ID of the <em class="parameter"><code>place</code></em>
 .</p>
-<p></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="geocode-place-get-osm-type"></a><h3>geocode_place_get_osm_type ()</h3>
+<pre class="programlisting"><a class="link" href="GeocodePlace.html#GeocodePlaceOsmType" title="enum GeocodePlaceOsmType"><span class="returnvalue">GeocodePlaceOsmType</span></a>
+geocode_place_get_osm_type (<em class="parameter"><code><a class="link" href="GeocodePlace.html" title="GeocodePlace"><span class="type">GeocodePlace</span></a> *place</code></em>);</pre>
+<p>Gets the OpenStreetMap type of the <em class="parameter"><code>place</code></em>
+.</p>
+<div class="refsect3">
+<a name="geocode-place-get-osm-type.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>place</p></td>
+<td class="parameter_description"><p>A place</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="geocode-place-get-osm-type.returns"></a><h4>Returns</h4>
+<p> The osm type of the <em class="parameter"><code>place</code></em>
+.</p>
 </div>
 </div>
 </div>
@@ -1569,7 +1598,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <a name="GeocodePlaceType"></a><h3>enum GeocodePlaceType</h3>
 <p>Type of the place.</p>
 <div class="refsect3">
-<a name="id-1.2.5.10.4.4"></a><h4>Members</h4>
+<a name="GeocodePlaceType.members"></a><h4>Members</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -1815,6 +1844,58 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
+<tr>
+<td class="enum_member_name"><p><a name="GEOCODE-PLACE-TYPE-LIGHT-RAIL-STATION:CAPS"></a>GEOCODE_PLACE_TYPE_LIGHT_RAIL_STATION</p></td>
+<td class="enum_member_description">
+<p>A light rail station or tram stop.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GeocodePlaceOsmType"></a><h3>enum GeocodePlaceOsmType</h3>
+<p>Osm type of the place.</p>
+<div class="refsect3">
+<a name="GeocodePlaceOsmType.members"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GEOCODE-PLACE-OSM-TYPE-UNKNOWN:CAPS"></a>GEOCODE_PLACE_OSM_TYPE_UNKNOWN</p></td>
+<td class="enum_member_description">
+<p>Unknown type</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GEOCODE-PLACE-OSM-TYPE-NODE:CAPS"></a>GEOCODE_PLACE_OSM_TYPE_NODE</p></td>
+<td class="enum_member_description">
+<p>Defines a point in space.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GEOCODE-PLACE-OSM-TYPE-RELATION:CAPS"></a>GEOCODE_PLACE_OSM_TYPE_RELATION</p></td>
+<td class="enum_member_description">
+<p>Used to explain how other elements work together.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GEOCODE-PLACE-OSM-TYPE-WAY:CAPS"></a>GEOCODE_PLACE_OSM_TYPE_WAY</p></td>
+<td class="enum_member_description">
+<p>Defines a linear feature and area boundaries.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
 </tbody>
 </table></div>
 </div>
@@ -1824,7 +1905,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <a name="GeocodePlace.property-details"></a><h2>Property Details</h2>
 <div class="refsect2">
 <a name="GeocodePlace--administrative-area"></a><h3>The <code class="literal">“administrative-area”</code> property</h3>
-<pre class="programlisting">  “administrative-area”      <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “administrative-area”      <span class="type">gchar</span> *</pre>
 <p>The local administrative area.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1832,7 +1913,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--area"></a><h3>The <code class="literal">“area”</code> property</h3>
-<pre class="programlisting">  “area”                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “area”                     <span class="type">gchar</span> *</pre>
 <p>A named area such as a campus or neighborhood.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1847,7 +1928,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--building"></a><h3>The <code class="literal">“building”</code> property</h3>
-<pre class="programlisting">  “building”                 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “building”                 <span class="type">gchar</span> *</pre>
 <p>A specific building on a street or in an area.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1855,7 +1936,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--continent"></a><h3>The <code class="literal">“continent”</code> property</h3>
-<pre class="programlisting">  “continent”                <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “continent”                <span class="type">gchar</span> *</pre>
 <p>The continent.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1863,7 +1944,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--country"></a><h3>The <code class="literal">“country”</code> property</h3>
-<pre class="programlisting">  “country”                  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “country”                  <span class="type">gchar</span> *</pre>
 <p>The country.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1871,7 +1952,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--country-code"></a><h3>The <code class="literal">“country-code”</code> property</h3>
-<pre class="programlisting">  “country-code”             <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “country-code”             <span class="type">gchar</span> *</pre>
 <p>The country code.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1879,7 +1960,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--county"></a><h3>The <code class="literal">“county”</code> property</h3>
-<pre class="programlisting">  “county”                   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “county”                   <span class="type">gchar</span> *</pre>
 <p>The county.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1887,8 +1968,8 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--icon"></a><h3>The <code class="literal">“icon”</code> property</h3>
-<pre class="programlisting">  “icon”                     <a href="http://library.gnome.org/devel/gio/unstable/GIcon.html"><span class="type">GIcon</span></a> *</pre>
-<p><a href="http://library.gnome.org/devel/gio/unstable/GIcon.html"><span class="type">GIcon</span></a> representing the <em class="parameter"><code>GeocodePlace</code></em>
+<pre class="programlisting">  “icon”                     <span class="type">GIcon</span> *</pre>
+<p><span class="type">GIcon</span> representing the <em class="parameter"><code>GeocodePlace</code></em>
 .</p>
 <p>Flags: Read</p>
 </div>
@@ -1902,7 +1983,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--name"></a><h3>The <code class="literal">“name”</code> property</h3>
-<pre class="programlisting">  “name”                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “name”                     <span class="type">gchar</span> *</pre>
 <p>The name of the place.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1910,10 +1991,18 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--osm-id"></a><h3>The <code class="literal">“osm-id”</code> property</h3>
-<pre class="programlisting">  “osm-id”                   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “osm-id”                   <span class="type">gchar</span> *</pre>
 <p>The OpenStreetMap id of the place.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GeocodePlace--osm-type"></a><h3>The <code class="literal">“osm-type”</code> property</h3>
+<pre class="programlisting">  “osm-type”                 <a class="link" href="GeocodePlace.html#GeocodePlaceOsmType" title="enum GeocodePlaceOsmType"><span class="type">GeocodePlaceOsmType</span></a></pre>
+<p>The OpenStreetMap type of the place.</p>
+<p>Flags: Read / Write</p>
+<p>Default value: GEOCODE_PLACE_OSM_TYPE_UNKNOWN</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -1926,7 +2015,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--postal-code"></a><h3>The <code class="literal">“postal-code”</code> property</h3>
-<pre class="programlisting">  “postal-code”              <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “postal-code”              <span class="type">gchar</span> *</pre>
 <p>The postal code.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1934,7 +2023,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--state"></a><h3>The <code class="literal">“state”</code> property</h3>
-<pre class="programlisting">  “state”                    <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “state”                    <span class="type">gchar</span> *</pre>
 <p>The state.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1942,7 +2031,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--street"></a><h3>The <code class="literal">“street”</code> property</h3>
-<pre class="programlisting">  “street”                   <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “street”                   <span class="type">gchar</span> *</pre>
 <p>The street name.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1950,7 +2039,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--street-address"></a><h3>The <code class="literal">“street-address”</code> property</h3>
-<pre class="programlisting">  “street-address”           <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “street-address”           <span class="type">gchar</span> *</pre>
 <p>The street address.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1958,7 +2047,7 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 <hr>
 <div class="refsect2">
 <a name="GeocodePlace--town"></a><h3>The <code class="literal">“town”</code> property</h3>
-<pre class="programlisting">  “town”                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<pre class="programlisting">  “town”                     <span class="type">gchar</span> *</pre>
 <p>The town.</p>
 <p>Flags: Read / Write</p>
 <p>Default value: NULL</p>
@@ -1966,7 +2055,6 @@ geocode_place_get_osm_id (<em class="parameter"><code><a class="link" href="Geoc
 </div>
 </div>
 <div class="footer">
-<hr>
-          Generated by GTK-Doc V1.21.1</div>
+<hr>Generated by GTK-Doc V1.24.1</div>
 </body>
 </html>

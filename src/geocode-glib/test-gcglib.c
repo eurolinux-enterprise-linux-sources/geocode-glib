@@ -111,7 +111,7 @@ test_rev (void)
 	GError *error = NULL;
 	GeocodePlace *place;
 
-	loc = geocode_location_new (51.237070, -0.589669, GEOCODE_LOCATION_ACCURACY_UNKNOWN);
+	loc = geocode_location_new (51.2370361, -0.5894834, GEOCODE_LOCATION_ACCURACY_UNKNOWN);
 	rev = geocode_reverse_new_for_location (loc);
 	g_object_unref (loc);
 
@@ -124,19 +124,37 @@ test_rev (void)
 	g_object_unref (rev);
 
         g_assert_cmpstr (geocode_place_get_name (place), ==, "The Astolat");
-        g_assert_cmpstr (geocode_place_get_postal_code (place), ==, "GU2 7UP");
+        g_assert_cmpstr (geocode_place_get_postal_code (place), ==, "GU2 7NU");
         g_assert_cmpstr (geocode_place_get_area (place), ==, "Guildford Park");
         g_assert_cmpstr (geocode_place_get_country_code (place), ==, "GB");
         g_assert_cmpstr (geocode_place_get_street (place), ==, "Old Palace Road");
         g_assert_cmpstr (geocode_place_get_county (place), ==, "Surrey");
-        g_assert_cmpstr (geocode_place_get_town (place), ==, "Guildford");
         g_assert_cmpstr (geocode_place_get_country (place), ==, "United Kingdom");
-        g_assert_cmpstr (geocode_place_get_administrative_area (place), ==, "South East England");
+        g_assert_cmpstr (geocode_place_get_administrative_area (place), ==, "South East");
         g_assert_cmpstr (geocode_place_get_state (place), ==, "England");
 
 	g_print ("Got geocode answer:\n");
 	print_place (place);
 	g_object_unref (place);
+}
+
+static void
+test_rev_fail (void)
+{
+	GeocodeLocation *loc;
+	GeocodeReverse *rev;
+	GError *error = NULL;
+	GeocodePlace *place;
+
+	loc = geocode_location_new (-90, -180, GEOCODE_LOCATION_ACCURACY_UNKNOWN);
+	rev = geocode_reverse_new_for_location (loc);
+	g_object_unref (loc);
+
+	place = geocode_reverse_resolve (rev, &error);
+	g_assert (place == NULL);
+	g_assert_error (error, GEOCODE_ERROR, GEOCODE_ERROR_NOT_SUPPORTED);
+	g_error_free (error);
+	g_object_unref (rev);
 }
 
 static void
@@ -167,7 +185,7 @@ test_xep (void)
 	add_attr (tp, "region", "England");
 	add_attr (tp, "county", "Surrey");
 	add_attr (tp, "locality", "Guildford");
-	add_attr (tp, "postalcode", "GU2 7UP");
+	add_attr (tp, "postalcode", "GU2 7NU");
 	add_attr (tp, "street", "Old Palace Road");
 
 	object = geocode_forward_new_for_params (tp);
@@ -187,7 +205,7 @@ test_xep (void)
 	loc = geocode_place_get_location (place);
 	g_assert (loc != NULL);
 	g_assert_cmpfloat (geocode_location_get_latitude (loc), ==, 51.2371416);
-	g_assert_cmpfloat (geocode_location_get_longitude (loc), ==, -0.5894089);
+	g_assert_cmpfloat (geocode_location_get_longitude (loc), ==, -0.5894088);
 
 	g_object_unref (place);
 	g_list_free (res);
@@ -218,8 +236,8 @@ test_pub (void)
 	loc = geocode_place_get_location (place);
 	g_assert (loc != NULL);
 
-	g_assert_cmpfloat (geocode_location_get_latitude (loc), ==, 51.2371416);
-	g_assert_cmpfloat (geocode_location_get_longitude (loc), ==, -0.5894089);
+	g_assert_cmpfloat (geocode_location_get_latitude (loc), ==, 51.2368747);
+	g_assert_cmpfloat (geocode_location_get_longitude (loc), ==, -0.5912357);
 
 	g_object_unref (place);
 	g_list_free (res);
@@ -300,7 +318,7 @@ test_search_lat_long (void)
 	GeocodeLocation *loc;
 	GeocodeBoundingBox *bbox;
 
-	object = geocode_forward_new_for_string ("Santa María del Río");
+	object = geocode_forward_new_for_string ("Santa María del Río, San Luis Potosi");
 	res = geocode_forward_search (object, &error);
 	if (res == NULL) {
 		g_warning ("Failed at geocoding: %s", error->message);
@@ -317,16 +335,46 @@ test_search_lat_long (void)
 	bbox = geocode_place_get_bounding_box (place);
 	g_assert (bbox != NULL);
 
-	g_assert_cmpfloat (geocode_location_get_latitude (loc) - 21.8021297, <, 0.000001);
-	g_assert_cmpfloat (geocode_location_get_longitude (loc) - -100.7374556, <, 0.000001);
+	g_assert_cmpfloat (geocode_location_get_latitude (loc) - 21.803641, <, 0.000001);
+	g_assert_cmpfloat (geocode_location_get_longitude (loc) - -100.736292, <, 0.000001);
 	g_assert (bbox_includes_location (bbox, geocode_place_get_location (place)));
-	g_assert_cmpstr (geocode_place_get_name (place), ==, "Santa Maria Del Rio, Mexico");
-	g_assert_cmpstr (geocode_place_get_town (place), ==, "Santa Maria Del Rio");
-	g_assert_cmpstr (geocode_place_get_state (place), ==, "San Luis Potosi");
-	g_assert_cmpstr (geocode_place_get_country (place), ==, "Mexico");
-	g_assert_cmpstr (geocode_location_get_description (loc), ==, "Santa Maria Del Rio, Mexico");
+	g_assert_cmpstr (geocode_place_get_name (place), ==, "Santa Maria Del Rio, Santa Mar\303\255a del Rio");
+	g_assert_cmpstr (geocode_location_get_description (loc), ==, "Santa Maria Del Rio, Santa Mar\303\255a del Rio");
 
 	g_list_free_full (res, (GDestroyNotify) g_object_unref);
+}
+
+static void
+test_osm_type (void)
+{
+	GeocodeForward *object;
+	GError *error = NULL;
+	GList *res;
+	GeocodePlace *place;
+	guint i;
+	struct {
+		char *search_string;
+		GeocodePlaceOsmType osm_type;
+	} types[] = {
+		{ "Drottning Christinas väg", GEOCODE_PLACE_OSM_TYPE_WAY },
+		{ "North dakota", GEOCODE_PLACE_OSM_TYPE_RELATION },
+		{ "Grand canyon, USA", GEOCODE_PLACE_OSM_TYPE_NODE }
+	};
+	for (i = 0; i < G_N_ELEMENTS (types); i++) {
+		object = geocode_forward_new_for_string (types[i].search_string);
+		res = geocode_forward_search (object, &error);
+		if (res == NULL) {
+			g_warning ("Failed at geocoding: %s", error->message);
+			g_error_free (error);
+		}
+		g_assert (res != NULL);
+		g_object_unref (object);
+
+		place = res->data;
+		g_test_message ("Location: %s", types[i].search_string);
+		g_assert_cmpint (geocode_place_get_osm_type (place), ==, types[i].osm_type);
+		g_list_free_full (res, (GDestroyNotify) g_object_unref);
+	}
 }
 
 /* Test case from:
@@ -345,7 +393,41 @@ test_distance (void)
 }
 
 static void
-test_locale (void)
+test_locale_format (void)
+{
+#if defined(__GLIBC__) && !defined(__UCLIBC__)
+	GeocodeForward *object;
+	GError *error = NULL;
+	GList *res;
+	GeocodePlace *place;
+	char *old_locale;
+
+	old_locale = g_strdup (setlocale(LC_ADDRESS, NULL));
+
+	/* Set to a locale that has number after street */
+	setlocale (LC_ADDRESS, "sv_SE.utf8");
+
+	object = geocode_forward_new_for_string ("Université libre de Bruxelles");
+	res = geocode_forward_search (object, &error);
+	if (res == NULL) {
+		g_warning ("Failed at geocoding: %s", error->message);
+		g_error_free (error);
+	}
+	g_assert (res != NULL);
+	place = res->data;
+	g_assert_cmpstr (geocode_place_get_street_address (place),
+			 ==,
+			 "Avenue Franklin Roosevelt - Franklin Rooseveltlaan 50");
+	g_object_unref (object);
+	g_list_free_full (res, (GDestroyNotify) g_object_unref);
+
+	setlocale (LC_ADDRESS, old_locale);
+	g_free (old_locale);
+#endif
+}
+
+static void
+test_locale_name (void)
 {
 	GeocodeForward *object;
 	GError *error = NULL;
@@ -564,12 +646,15 @@ int main (int argc, char **argv)
 		g_test_add_func ("/geocode/resolve_json", test_resolve_json);
 		g_test_add_func ("/geocode/search_json", test_search_json);
 		g_test_add_func ("/geocode/reverse", test_rev);
+		g_test_add_func ("/geocode/reverse_fail", test_rev_fail);
 		g_test_add_func ("/geocode/pub", test_pub);
 		g_test_add_func ("/geocode/xep-0080", test_xep);
-		g_test_add_func ("/geocode/locale", test_locale);
+		g_test_add_func ("/geocode/locale_name", test_locale_name);
+		g_test_add_func ("/geocode/locale_format", test_locale_format);
 		g_test_add_func ("/geocode/search", test_search);
 		g_test_add_func ("/geocode/search_lat_long", test_search_lat_long);
 		g_test_add_func ("/geocode/distance", test_distance);
+		g_test_add_func ("/geocode/osm_type", test_osm_type);
 		return g_test_run ();
 	}
 
