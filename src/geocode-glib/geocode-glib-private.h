@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 Bastien Nocera
+   Copyright 2010 Bastien Nocera
 
    The Gnome Library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License as
@@ -40,11 +40,6 @@ typedef enum {
 
 GList      *_geocode_parse_search_json  (const char *contents,
 					 GError    **error);
-void
-_geocode_read_nominatim_attributes (JsonReader *reader,
-                                    GHashTable *ht);
-GeocodePlace *
-_geocode_create_place_from_attributes (GHashTable *ht);
 
 char       *_geocode_object_get_lang (void);
 
@@ -55,7 +50,7 @@ gboolean _geocode_glib_cache_load (SoupMessage *query,
                                    char       **contents);
 GHashTable *_geocode_glib_dup_hash_table (GHashTable *ht);
 gboolean _geocode_object_is_number_after_street (void);
-SoupSession *_geocode_glib_build_soup_session (void);
+SoupSession *_geocode_glib_build_soup_session (const gchar *user_agent_override);
 
 G_END_DECLS
 

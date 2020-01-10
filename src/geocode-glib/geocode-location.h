@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 Bastien Nocera
+   Copyright 2012 Bastien Nocera
 
    The Gnome Library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License as
@@ -61,6 +61,8 @@ struct _GeocodeLocationClass {
         /* <private> */
         GObjectClass parent_class;
 };
+
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (GeocodeLocation, g_object_unref)
 
 /**
  * GeocodeLocationURIScheme:
@@ -141,6 +143,9 @@ GeocodeLocation *geocode_location_new_with_description (gdouble     latitude,
                                                         gdouble     longitude,
                                                         gdouble     accuracy,
                                                         const char *description);
+
+gboolean geocode_location_equal                        (GeocodeLocation *a,
+                                                        GeocodeLocation *b);
 
 gboolean geocode_location_set_from_uri                 (GeocodeLocation *loc,
                                                         const char      *uri,

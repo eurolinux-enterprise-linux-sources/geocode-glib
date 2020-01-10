@@ -1,19 +1,21 @@
 %global json_glib_version 0.99.2
 
 Name:           geocode-glib
-Version:        3.20.1
-Release:        1%{?dist}
+Version:        3.26.0
+Release:        2%{?dist}
 Summary:        Geocoding helper library
 
 License:        LGPLv2+
 URL:            http://www.gnome.org/
-Source0:        http://download.gnome.org/sources/%{name}/3.20/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/%{name}/3.25/%{name}-%{version}.tar.xz
 
+BuildRequires:  gettext
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= %{json_glib_version}
 BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  intltool
 
 Requires:       json-glib%{?_isa} >= %{json_glib_version}
 
@@ -39,14 +41,15 @@ developing applications that use %{name}.
 
 
 %build
-%configure --disable-static
-make %{?_smp_mflags} V=1
+LANG=en_US.utf8 %meson -Denable-installed-tests=false
+LANG=en_US.utf8 %meson_build
 
 
 %install
-%make_install
-find $RPM_BUILD_ROOT -name '*.la' -delete
+LANG=en_US.utf8 %meson_install
 
+# multilib work around for https://gitlab.gnome.org/GNOME/gtk-doc/issues/49
+find $RPM_BUILD_ROOT -name '*.html' -exec sed -i -e s,G_MAXINT,G_MAXLONG,g \{\} \;
 
 %post -p /sbin/ldconfig
 
@@ -69,6 +72,21 @@ find $RPM_BUILD_ROOT -name '*.la' -delete
 
 
 %changelog
+* Fri Sep 21 2018 Bastien Nocera <bnocera@redhat.com> - 3.26.0-2
++ geocode-glib-3.26.0-2
+- Work-around multilib gtk-doc bug
+- Resolves: #1624451
+
+* Tue Jun 05 2018 Bastien Nocera <bnocera@redhat.com> - 3.26.0-1
++ geocode-glib-3.26.0-1
+- Update to 3.26.0
+- Resolves: #1567313
+
+* Mon Jul 31 2017 Kalev Lember <klember@redhat.com> - 3.25.4.1-1
+- Update to 3.25.4.1
+- Switch to the meson build system
+- Resolves: #1567313
+
 * Wed Apr 13 2016 Kalev Lember <klember@redhat.com> - 3.20.1-1
 - Update to 3.20.1
 - Resolves: #1386868

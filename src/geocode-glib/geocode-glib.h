@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 Bastien Nocera
+   Copyright 2011 Bastien Nocera
 
    The Gnome Library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License as
@@ -32,5 +32,8 @@
 #include <geocode-glib/geocode-bounding-box.h>
 #include <geocode-glib/geocode-error.h>
 #include <geocode-glib/geocode-enum-types.h>
+#include <geocode-glib/geocode-backend.h>
+#include <geocode-glib/geocode-nominatim.h>
+#include <geocode-glib/geocode-mock-backend.h>
 
 #endif /* GEOCODE_GLIB_H */

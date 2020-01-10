@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 Jonas Danielsson
+   Copyright 2013 Jonas Danielsson
 
    The Gnome Library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License as
@@ -272,6 +272,32 @@ geocode_bounding_box_new (gdouble top,
                              "left", left,
                              "right", right,
                              NULL);
+}
+
+/**
+ * geocode_bounding_box_equal:
+ * @a: a bounding box
+ * @b: another bounding box
+ *
+ * Compare two #GeocodeBoundingBox instances for equality. This compares all
+ * fields and only returns %TRUE if the instances are exactly equal.
+ *
+ * Both instances must be non-%NULL.
+ *
+ * Returns: %TRUE if the instances are equal, %FALSE otherwise
+ * Since: 3.23.1
+ */
+gboolean
+geocode_bounding_box_equal (GeocodeBoundingBox *a,
+                            GeocodeBoundingBox *b)
+{
+        g_return_val_if_fail (GEOCODE_IS_BOUNDING_BOX (a), FALSE);
+        g_return_val_if_fail (GEOCODE_IS_BOUNDING_BOX (b), FALSE);
+
+        return (a->priv->top == b->priv->top &&
+                a->priv->bottom == b->priv->bottom &&
+                a->priv->left == b->priv->left &&
+                a->priv->right == b->priv->right);
 }
 
 /**

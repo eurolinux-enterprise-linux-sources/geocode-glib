@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 Bastien Nocera
+   Copyright 2011 Bastien Nocera
 
    The Gnome Library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License as
@@ -26,6 +26,7 @@
 #include <glib.h>
 #include <gio/gio.h>
 #include "geocode-place.h"
+#include "geocode-backend.h"
 
 G_BEGIN_DECLS
 
@@ -63,7 +64,12 @@ struct _GeocodeReverseClass {
 	GObjectClass parent_class;
 };
 
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (GeocodeReverse, g_object_unref)
+
 GeocodeReverse *geocode_reverse_new_for_location (GeocodeLocation *location);
+
+void geocode_reverse_set_backend (GeocodeReverse *object,
+                                  GeocodeBackend *backend);
 
 void geocode_reverse_resolve_async (GeocodeReverse      *object,
 				    GCancellable        *cancellable,

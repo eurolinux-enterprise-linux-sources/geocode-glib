@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 Bastien Nocera
+   Copyright 2012 Bastien Nocera
 
    The Gnome Library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License as
@@ -26,6 +26,7 @@
 #include <glib.h>
 #include <gio/gio.h>
 #include <geocode-glib/geocode-glib.h>
+#include <geocode-glib/geocode-backend.h>
 #include <geocode-glib/geocode-bounding-box.h>
 
 G_BEGIN_DECLS
@@ -64,6 +65,8 @@ struct _GeocodeForwardClass {
 	GObjectClass parent_class;
 };
 
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (GeocodeForward, g_object_unref)
+
 GeocodeForward *geocode_forward_new_for_string       (const char *str);
 GeocodeForward *geocode_forward_new_for_params       (GHashTable *params);
 guint geocode_forward_get_answer_count               (GeocodeForward *forward);
@@ -87,6 +90,9 @@ GList *geocode_forward_search_finish (GeocodeForward  *forward,
 
 GList *geocode_forward_search (GeocodeForward  *forward,
 			       GError         **error);
+
+void geocode_forward_set_backend (GeocodeForward *forward,
+                                  GeocodeBackend *backend);
 
 G_END_DECLS
 

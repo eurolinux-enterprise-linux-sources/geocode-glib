@@ -1,3 +1,51 @@
+3.26.0
+------
+
+- Remove full build path from public headers so as to make the
+  build more easily reproduceable.
+
+3.25.4.1
+--------
+
+Brown paperbag release to add news entry for 3.25.4.
+
+3.25.4
+------
+
+- Port to meson build system.
+- Drop autotools.
+- Provide a configure script for backwards compatibility.
+- Fix a warning from gcc 7.1.1.
+
+All contributors to this release:
+
+Emmanuele Bassi <ebassi@gnome.org>
+Zeeshan Ali <zeenix@gmail.com>
+
+3.23.90
+-------
+Many thanks to Bastian Nocera and Zeeshan Ali for picking up review
+work for me when I dropped the ball!
+
+This release brings many nice new functions and abstractions contributed
+by Collabora! The possibility to add backends to use other geocoding
+services than Nominatim is one of them.
+
+Changes since 3.21.1:
+
+- Add g_autoptr cleanup functions
+- Make code base const-correct
+- Add backend abstraction
+- Make unit-test base on offline mock backend
+- Add support for multiple reverse results
+- Add a user-agent property to override default user-agent
+- Add equality functions to bbox/location/place
+
+All contributors to this release:
+Philip Withnall <philip.withnall@collabora.co.uk>
+Ting-Wei Lan <lantw@src.gnome.org>
+
+
 3.20.1
 -------
 

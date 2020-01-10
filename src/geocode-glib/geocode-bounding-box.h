@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 Jonas Danielsson
+   Copyright 2013 Jonas Danielsson
 
    The Gnome Library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License as
@@ -64,10 +64,15 @@ struct _GeocodeBoundingBoxClass {
         GObjectClass parent_class;
 };
 
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (GeocodeBoundingBox, g_object_unref)
+
 GeocodeBoundingBox *geocode_bounding_box_new  (gdouble top,
                                                gdouble bottom,
                                                gdouble left,
                                                gdouble right);
+
+gboolean geocode_bounding_box_equal     (GeocodeBoundingBox *a,
+                                         GeocodeBoundingBox *b);
 
 gdouble geocode_bounding_box_get_top    (GeocodeBoundingBox *bbox);
 gdouble geocode_bounding_box_get_bottom (GeocodeBoundingBox *bbox);

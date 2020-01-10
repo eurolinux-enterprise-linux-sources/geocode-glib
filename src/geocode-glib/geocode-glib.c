@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 Bastien Nocera
+   Copyright 2011 Bastien Nocera
 
    The Gnome Library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License as
@@ -20,6 +20,8 @@
 
  */
 
+#include "config.h"
+
 #include <string.h>
 #include <errno.h>
 #include <locale.h>
@@ -38,26 +40,34 @@
  **/
 
 SoupSession *
-_geocode_glib_build_soup_session (void)
+_geocode_glib_build_soup_session (const gchar *user_agent_override)
 {
-	GApplication *application;
-	SoupSession *session;
-	char *user_agent;
+	const char *user_agent;
+	g_autofree gchar *user_agent_allocated = NULL;
 
-	application = g_application_get_default ();
-	if (application) {
+	if (user_agent_override != NULL) {
+		user_agent = user_agent_override;
+	} else if (g_application_get_default () != NULL) {
+		GApplication *application = g_application_get_default ();
 		const char *id = g_application_get_application_id (application);
-		user_agent = g_strdup_printf ("geocode-glib/%s (%s)",
-					      PACKAGE_VERSION, id);
+		user_agent_allocated = g_strdup_printf ("geocode-glib/%s (%s)",
+				                        PACKAGE_VERSION, id);
+		user_agent = user_agent_allocated;
+	} else if (g_get_application_name () != NULL) {
+		user_agent_allocated = g_strdup_printf ("geocode-glib/%s (%s)",
+		                                        PACKAGE_VERSION,
+		                                        g_get_application_name ());
+		user_agent = user_agent_allocated;
 	} else {
-		user_agent = g_strdup_printf ("geocode-glib/%s",
-					      PACKAGE_VERSION);
+		user_agent_allocated = g_strdup_printf ("geocode-glib/%s",
+				                        PACKAGE_VERSION);
+		user_agent = user_agent_allocated;
 	}
 
-	session = soup_session_new_with_options (SOUP_SESSION_USER_AGENT,
-						 user_agent, NULL);
-	g_free (user_agent);
-	return session;
+	g_debug ("%s: user_agent = %s", G_STRFUNC, user_agent);
+
+	return soup_session_new_with_options (SOUP_SESSION_USER_AGENT,
+	                                      user_agent, NULL);
 }
 
 char *
