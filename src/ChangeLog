@@ -1,0 +1,4059 @@
+commit ae38d319a9c1a85ae3c33bb68ad91d04ee50047c
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Sep 23 17:05:19 2014 +0200
+
+    Release 3.14.0
+
+ NEWS         | 12 ++++++++++++
+ configure.ac |  4 ++--
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+commit f27719627334c2d79039641394e092e2c5ca1a52
+Author: Andre Klapper <a9016009@gmx.de>
+Date:   Fri Aug 1 11:55:28 2014 +0200
+
+    doap: add <programming-language>
+
+ geocode-glib.doap | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 410668f49dc51769c4aaab3f00e100d436e705cf
+Author: Olav Vitters <olav@vitters.nl>
+Date:   Wed Jul 30 19:46:02 2014 +0200
+
+    doap category core
+
+ geocode-glib.doap | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit ed1a162a781baa106e0e72ca6374d89e58b86819
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Jun 25 00:37:17 2014 +0200
+
+    Release 3.13.3
+
+ NEWS         | 16 ++++++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+
+commit 6fa239b5aba73d135432410250449bd351993eb6
+Author: Giovanni Campagna <gcampagna@src.gnome.org>
+Date:   Wed Jun 18 21:59:31 2014 +0200
+
+    Set the cancellable to check on each GSimpleAsyncResult
+    
+    This provides the expected semantics that cancelling an async call
+    trumps on any successful result or previous error.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=731880
+
+ geocode-glib/geocode-forward.c | 1 +
+ geocode-glib/geocode-reverse.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 538e625aac0fae7ea65c0187920cd03a807ecddd
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Apr 8 22:24:44 2014 +0200
+
+    forward: Document geo URI scheme usage
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=727861
+
+ geocode-glib/geocode-location.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+commit a7fb78ec5b506e0bfd600529e672a13b81a22f64
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Thu May 8 12:15:02 2014 +0200
+
+    forward: fix memory leaks
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=727861
+
+ geocode-glib/geocode-location.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+commit 227618ca6ba81646506ddfc879f41bbe91bbaf07
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Thu May 8 12:15:19 2014 +0200
+
+    test-geouri: fix memory leaks
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=727861
+
+ geocode-glib/test-geouri.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 931bd04172e87dacd7dbcd0001a271f328c429cf
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Apr 8 22:09:38 2014 +0200
+
+    forward: Add description extension to geo uri
+    
+    Android and Google Maps support an extention to geo uri that allows
+    specifying a label to a location.
+    
+    The form is
+        geo:0,0?q=lat,lng(label)
+    
+    This patch adds parsing of that format to GeocodeLocation.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=727861
+
+ geocode-glib/geocode-location.c | 55 +++++++++++++++++++++++++++++++++++++++++
+ geocode-glib/test-geouri.c      |  8 +++++-
+ 2 files changed, 62 insertions(+), 1 deletion(-)
+
+commit e55be63af2c689076994ec621578d2d7888b6564
+Author: Frédéric Péters <fpeters@0d.be>
+Date:   Mon Apr 14 18:09:27 2014 +0200
+
+    Fix Nominatim API URL in README file
+
+ README | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 7eb14903833a5897466e4585c2b07d1a47681f14
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Mar 26 22:19:28 2014 +0100
+
+    forward: Include airport place type in results
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725899
+
+ geocode-glib/geocode-forward.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 4d4d5b5aa1f3436b64b221172e5abdf69e7a4eaa
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Mar 26 22:20:49 2014 +0100
+
+    build: Add icon for airtport place type
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725899
+
+ icons/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit abbba5b45428bdf8ea2fdf2cbd435cdca7c8942e
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Mar 26 22:24:13 2014 +0100
+
+    Add icons for new amenity place types
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725899
+
+ geocode-glib/geocode-place.c                       |  16 +++
+ icons/Makefile.am                                  |   6 +-
+ icons/maki/scalable_places_poi-bar.svg             | 141 ++++++++++++++++++++
+ .../maki/scalable_places_poi-place-of-worship.svg  | 138 ++++++++++++++++++++
+ icons/maki/scalable_places_poi-restaurant.svg      | 143 +++++++++++++++++++++
+ icons/maki/scalable_places_poi-school.svg          | 142 ++++++++++++++++++++
+ 6 files changed, 585 insertions(+), 1 deletion(-)
+
+commit 9b0b84c6f0b2360d10f8ca5760aa6a0747dabc0c
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Mar 26 22:23:39 2014 +0100
+
+    Add amenity place types to GeocodePlace
+    
+    The place types selected here are among the top of the amenity
+    category from http://taginfo.openstreetmap.org/keys/amenity#values
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725899
+
+ geocode-glib/geocode-forward.c | 10 ++++++++++
+ geocode-glib/geocode-place.h   | 10 +++++++++-
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+
+commit 6a85e979936fcdbc14a89a077fdd4a1022a4d13e
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Mar 24 21:32:52 2014 +0100
+
+    Bump minor version of unstable branch
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9872e314172928b1c352fd6dd3011d2ad84ee4ac
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Mar 24 21:27:01 2014 +0100
+
+    Release 3.12.0
+
+ NEWS         | 5 +++++
+ configure.ac | 7 +++----
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+commit 507129d123b8acf78478810ce8826b741ce55852
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Mar 19 14:20:03 2014 +0100
+
+    Release 3.11.92.2
+
+ NEWS         | 5 +++++
+ configure.ac | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+commit 19310ecdf8422cd6d6070bc742373466fce7c3d0
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Mar 19 14:06:25 2014 +0100
+
+    Release 3.11.92.1
+    
+    Make sure to add the nano version to AC_INIT.
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 91ca111a384b9101b9fdae6ae76f0a8dce349693
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Mar 19 13:42:18 2014 +0100
+
+    Release 3.11.92.1
+
+ NEWS         | 11 +++++++++++
+ configure.ac |  1 +
+ 2 files changed, 12 insertions(+)
+
+commit f8b797ee70d996a06a0aca2f4a9432cb9a6d24cf
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Thu Jan 2 14:55:43 2014 +0100
+
+    forward: fix typo in nominatim result attribute
+    
+    The check for attribute 'postalcode' in Nominatim search results
+    is wrong. The correct attribute is 'postcode'.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=721340
+
+ geocode-glib/geocode-forward.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8eb71d6eb8c98d2372cb38d4c92b0c37049f1d72
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Mar 17 21:24:43 2014 +0100
+
+    Release 3.11.92
+
+ NEWS         | 14 ++++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+commit a95f1ba67e7b382f14fb743afa5b1badc8a61190
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Mar 17 21:19:27 2014 +0100
+
+    Revert "l10n: Update POTFILES.in"
+    
+    This reverts commit 684555176c33091a336268870c19a436a1be35bb.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725591
+
+ po/POTFILES.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit bb25e20e55d27f438d0eae7e393515004aa764c2
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Fri Mar 14 20:19:40 2014 +0100
+
+    place: Add osm-id property
+    
+    We can end up with places that have the same name when we search
+    using geocode-forward. It would help to be able to keep them apart.
+    Having the OpenStreetMap id as a property will also make it possible
+    to reference the place to OpenStreetMap dbs for editing purpopses.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=726367
+
+ geocode-glib/geocode-forward.c    |  2 +-
+ geocode-glib/geocode-glib.symbols |  1 +
+ geocode-glib/geocode-place.c      | 45 ++++++++++++++++++++++++++++++++++++++-
+ geocode-glib/geocode-place.h      |  2 ++
+ 4 files changed, 48 insertions(+), 2 deletions(-)
+
+commit 55d7e800c1b41872336fb08fc917f27b8a4e34d0
+Author: Ryan Lortie <desrt@desrt.ca>
+Date:   Wed Mar 12 18:17:26 2014 -0400
+
+    Revert "reverse: Derive address format from locale"
+    
+    This reverts commit 029c421d32647e4ab6fbbfa669947c24a27e69fe.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725591
+
+ geocode-glib/geocode-reverse.c | 25 ++-----------------------
+ 1 file changed, 2 insertions(+), 23 deletions(-)
+
+commit 99c77268a5e70cacc41753619873fb5fcd152597
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Mar 11 12:57:46 2014 +0000
+
+    reverse: Remove redundant curlies
+    
+    This was pointed out in the review of commit 029c421 but not acted on.
+
+ geocode-glib/geocode-reverse.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+commit bbb54cf414bf1687f95191bf2e46ca1eab486768
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Mar 11 12:55:21 2014 +0000
+
+    reverse: Remove redundant ifdefs
+    
+    These ifdefs were supposed to be there for conditional use of
+    nl_langinfo but since we didn't go that route, these ifdefs only make
+    the function to derive address format from locale, a noop.
+
+ geocode-glib/geocode-reverse.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+commit 684555176c33091a336268870c19a436a1be35bb
+Author: Marcus Lundblad <ml@update.uu.se>
+Date:   Sun Mar 9 19:22:50 2014 +0100
+
+    l10n: Update POTFILES.in
+    
+    Remove file no longer using translated strings, from POTFILES.in.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725591
+
+ po/POTFILES.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 029c421d32647e4ab6fbbfa669947c24a27e69fe
+Author: Marcus Lundblad <ml@update.uu.se>
+Date:   Sun Mar 9 19:20:54 2014 +0100
+
+    reverse: Derive address format from locale
+    
+    Determine address format using nl_langinfo.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=725591
+
+ geocode-glib/geocode-reverse.c | 30 ++++++++++++++++++++++++++++--
+ 1 file changed, 28 insertions(+), 2 deletions(-)
+
+commit de4c675ae33c0e6a084f96377ad3014a1f145939
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Mar 4 01:15:35 2014 +0000
+
+    Release 3.11.91
+
+ NEWS         | 13 +++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+commit 5da9a2cbae451b404c153c16cf37eeba24abf765
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Feb 24 15:07:11 2014 +0100
+
+    Bump the required version of json-glib to 0.99.2
+    
+    The behaviour of error handling in _end_element() and _end_member()
+    has changed in json-glib. We need the fixed up version.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=724927
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 67231f8eef71b1367f13f57e79c7e745c81d85f3
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Feb 24 15:05:57 2014 +0100
+
+    reader: fix json-glib usage
+    
+    This patch fixes two issues with our json-glib usage.
+    
+    * Do not atempt to read a string value when the node does not
+      hold a string.
+    
+    * Make sure to call _end_member() when _read_member() fails.
+    
+    Without these fixes our code will result in segmentation fault.
+    
+    We were relying on the old buggy behaviour of json-glib that has been
+    fixed up in:
+    501c9fb reader: When a read() fails, don't track back on end()
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=724927
+
+ geocode-glib/geocode-reverse.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+commit 9a63db9a90d047aae1043511415cb6fd28bafec6
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Feb 4 19:09:06 2014 +0000
+
+    Release 3.11.5
+
+ NEWS         | 13 +++++++++++++
+ configure.ac |  5 ++---
+ 2 files changed, 15 insertions(+), 3 deletions(-)
+
+commit 041e9f257df6e4bc75d1f1fb9ddf76f3fb4aa411
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Feb 4 18:06:09 2014 +0000
+
+    test-gcglib: Work around a Nominatim bug
+    
+    We are disabling two testcases involving 'France' for next release. We
+    should re-enable them once the Nominatim bug is fixed:
+    
+    https://trac.openstreetmap.org/ticket/5111
+
+ geocode-glib/test-gcglib.c | 28 +++++++++++++++++++---------
+ 1 file changed, 19 insertions(+), 9 deletions(-)
+
+commit e101fd3ef5a1586355c126a50e8707e1cc6186f0
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Feb 4 19:22:54 2014 +0000
+
+    bounding-box: Document arguments of _new
+
+ geocode-glib/geocode-bounding-box.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 590f746bbb772ddeb81048ac512302583c1a95f8
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Jan 27 23:33:24 2014 +0100
+
+    forward: Parse Nominatim boundingbox attribute
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=723095
+
+ geocode-glib/geocode-forward.c | 24 +++++++++++++++++++++++-
+ geocode-glib/geocode-reverse.c | 33 ++++++++++++++++++++++++++++-----
+ geocode-glib/test-gcglib.c     | 24 ++++++++++++++++++++++++
+ 3 files changed, 75 insertions(+), 6 deletions(-)
+
+commit f0079af1aa8ad1a676d726f59838aa82c7e4c55c
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Jan 27 13:57:15 2014 +0100
+
+    place: Add bounding-box property
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=723095
+
+ geocode-glib/geocode-glib.symbols |   2 +
+ geocode-glib/geocode-place.c      |  63 +++++++++++++++++++++++
+ geocode-glib/geocode-place.h      | 104 ++++++++++++++++++++------------------
+ 3 files changed, 120 insertions(+), 49 deletions(-)
+
+commit 49ba62cf6402c948a1b3651b4753f6c30a363dc5
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sun Feb 2 11:38:56 2014 +0100
+
+    forward: switch to jsonv2 to include place_type
+    
+    The json format does not include the place_rank attribute.
+    The place_rank attribute is needed to establish what kind of
+    boundary we are dealing with.
+    
+    Switching to jsonv2 gives us the place_rank at the cost of having
+    to rename the class attribute as category.
+    
+    This patch also fix a typo where boundary was spelled
+    as boundry. Ensuring that the missing place_rank attribute
+    never was detected. If fixed in a stand alone patch it exposes
+    us to a commit that introduces a segfault.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=723463
+
+ geocode-glib/geocode-forward.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+commit d1cc1bfd60ffe0e01010bfd4056edb5bf3f3f83e
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Thu Jan 23 16:54:16 2014 +0000
+
+    Remove an obsolete function declaration
+
+ geocode-glib/geocode-glib-private.h | 2 --
+ geocode-glib/geocode-glib.symbols   | 1 -
+ 2 files changed, 3 deletions(-)
+
+commit 35c2c18b01e1c6b717839a0288191355ea6352c6
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Thu Jan 23 16:50:42 2014 +0000
+
+    Remove redundant includes
+
+ geocode-glib/geocode-glib.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit cb062fc29f8d04f635b02332e8517aa06ae0a62c
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jan 14 22:55:37 2014 +0000
+
+    Release 3.11.4.1
+
+ NEWS         | 5 +++++
+ configure.ac | 3 ++-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+commit 5d1bb5a2b2281ea60b67b81928386fc60f8f689e
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jan 14 22:51:04 2014 +0000
+
+    icons: Fix paths
+    
+    This time fix `make dist` without breaking icon installation.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=722205
+
+ icons/Makefile.am | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+commit 11193bdb020f7dc9a960cd83bc55ee6d42047f28
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jan 14 22:47:53 2014 +0000
+
+    Revert "icons: Fix paths"
+    
+    This reverts commit f9775b538ba544936de5d78cdeaea4bc937b3293.
+    
+    This patch broke installation of icons.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=722205
+
+ icons/Makefile.am | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+commit 48777423bffd97f825d19ded68f7dca80716d7ce
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Jan 13 23:21:52 2014 +0100
+
+    Release 3.11.4
+
+ NEWS         | 19 +++++++++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+commit f9775b538ba544936de5d78cdeaea4bc937b3293
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jan 14 13:36:18 2014 +0000
+
+    icons: Fix paths
+    
+    Fixes `make dist`.
+
+ icons/Makefile.am | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+commit e26898ce2d0310c2d1fd230f1a688bd845b246b9
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Jan 13 23:19:48 2014 +0100
+
+    Add forgotten part of gettext commit (fbdd8d4)
+    
+    Remove intltool references from DISTCLEANFILES and EXTRA_DIST.
+
+ Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 604ebf12cb37745e3977d41161f93f9b93bf72ea
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sat Jan 11 07:02:28 2014 +0100
+
+    place: make icon property read-only
+    
+    The icon for a place is now derived from its type. Having the icon
+    property READWRITE does not make sense.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=720250
+
+ geocode-glib/geocode-place.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+commit 5943d28d71eb6349e10f19b055de7b3aecd74080
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Sat Jan 11 06:58:31 2014 +0100
+
+    Add Maki icons
+    
+    This patch makes use of the Maki point of interest icon set
+    from MapBox. The icons are BSD licensed.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=720250
+
+ Makefile.am                                        |   2 +-
+ configure.ac                                       |   1 +
+ geocode-glib/geocode-forward.c                     |   9 --
+ geocode-glib/geocode-glib-private.h                |   3 -
+ geocode-glib/geocode-glib.symbols                  |   1 -
+ geocode-glib/geocode-place.c                       |  59 ++++++--
+ icons/Makefile.am                                  |  46 +++++++
+ icons/maki/LICENSE.txt                             |  28 ++++
+ icons/maki/scalable_places_poi-airport.svg         | 140 +++++++++++++++++++
+ icons/maki/scalable_places_poi-building.svg        | 137 +++++++++++++++++++
+ icons/maki/scalable_places_poi-bus-stop.svg        | 133 ++++++++++++++++++
+ icons/maki/scalable_places_poi-car.svg             | 139 +++++++++++++++++++
+ icons/maki/scalable_places_poi-marker.svg          | 141 ++++++++++++++++++++
+ icons/maki/scalable_places_poi-railway-station.svg | 148 +++++++++++++++++++++
+ icons/maki/scalable_places_poi-town.svg            | 133 ++++++++++++++++++
+ 15 files changed, 1092 insertions(+), 28 deletions(-)
+
+commit df0554941673a08faeb5ba076771c7ccb42c9971
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Thu Dec 12 21:55:08 2013 +0100
+
+    location: Add parsing of geo URI
+    
+    This patch adds parsing of geo URI to geocode-location.
+    
+    The RFC for the geo URI scheme can be found at:
+    http://www.rfc-editor.org/rfc/rfc5870.txt
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=706130
+
+ geocode-glib/Makefile.am          |   3 +-
+ geocode-glib/geocode-glib.symbols |   3 +
+ geocode-glib/geocode-location.c   | 270 ++++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-location.h   |  23 +++-
+ geocode-glib/test-geouri.c        | 157 ++++++++++++++++++++++
+ 5 files changed, 452 insertions(+), 4 deletions(-)
+
+commit 525c3560ad1ee3cf8cda0c62c7c29a5dd06071fb
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Dec 9 13:02:52 2013 +0100
+
+    location: Add CRS property
+    
+    Add a property defining the coordinate reference system of a
+    geocode-location.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=706130
+
+ geocode-glib/geocode-glib.symbols |  2 ++
+ geocode-glib/geocode-location.c   | 72 +++++++++++++++++++++++++++++++++++----
+ geocode-glib/geocode-location.h   | 11 ++++++
+ 3 files changed, 78 insertions(+), 7 deletions(-)
+
+commit fdb74adc02f797941e96698c8847e3b19f86e3cc
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Wed Nov 13 22:50:57 2013 +0100
+
+    location: Add altitude property
+    
+    Add altitude in meters to geocode-location.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=706130
+
+ geocode-glib/geocode-glib.symbols |  1 +
+ geocode-glib/geocode-location.c   | 54 ++++++++++++++++++++++++++++++++++++++-
+ geocode-glib/geocode-location.h   |  8 ++++++
+ 3 files changed, 62 insertions(+), 1 deletion(-)
+
+commit eca127540888b3604003bf2b1a32ba1e7fdf6285
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Nov 26 22:57:20 2013 +0100
+
+    forward: add bounded property
+    
+    The bounded boolean property decides if the search-area property
+    sets an hard limit or not. If false the search-area is simply the
+    prefered area for search. If true it restricts results to only items
+    within the search-area.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=719585
+
+ geocode-glib/geocode-forward.c    | 68 +++++++++++++++++++++++++++++++++++++--
+ geocode-glib/geocode-forward.h    |  3 ++
+ geocode-glib/geocode-glib.symbols |  2 ++
+ 3 files changed, 71 insertions(+), 2 deletions(-)
+
+commit f153ec788bf5b6741d8904584f4cfdaa5eefa906
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Dec 3 13:00:03 2013 +0100
+
+    forward: add search area property
+    
+    Nominatim allows searches to be limited to a viewbox. In
+    order to take advantage of this we need a new property.
+    
+    The search area is specified as a GeocodeBoundingBox.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=719585
+
+ geocode-glib/geocode-forward.c    | 89 +++++++++++++++++++++++++++++++++++++--
+ geocode-glib/geocode-forward.h    | 14 +++---
+ geocode-glib/geocode-glib.symbols |  2 +
+ 3 files changed, 97 insertions(+), 8 deletions(-)
+
+commit aed6c80fee165419326331744065ac73bdb3e52a
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Dec 3 12:59:16 2013 +0100
+
+    Add new object GeocodeBoundingBox
+    
+    Add an object representing a geographical area.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=719585
+
+ docs/geocode-glib-docs.xml          |   1 +
+ geocode-glib/Makefile.am            |   6 +-
+ geocode-glib/geocode-bounding-box.c | 335 ++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-bounding-box.h |  79 +++++++++
+ geocode-glib/geocode-glib.h         |   1 +
+ geocode-glib/geocode-glib.symbols   |   6 +
+ 6 files changed, 426 insertions(+), 2 deletions(-)
+
+commit 7d5da035be690b015ee1404e299ce127433c0577
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Tue Nov 26 13:07:17 2013 +0100
+
+    forward: make answer_count a property
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=719585
+
+ geocode-glib/geocode-forward.c    | 83 ++++++++++++++++++++++++++++++++++++++-
+ geocode-glib/geocode-forward.h    |  1 +
+ geocode-glib/geocode-glib.symbols |  1 +
+ 3 files changed, 84 insertions(+), 1 deletion(-)
+
+commit fbdd8d425ad41ec90b301e4bcf14c7baaeb500e7
+Author: Javier Jardón <jjardon@gnome.org>
+Date:   Tue Sep 17 16:32:45 2013 +0100
+
+    Use upstream gettext instead intltool
+    
+    So we have an updated and well maintained po/Makefile.in.in
+
+ configure.ac                   |  4 ++--
+ geocode-glib/Makefile.am       |  6 +++++-
+ geocode-glib/geocode-reverse.c |  2 +-
+ po/Makevars                    | 41 +++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 49 insertions(+), 4 deletions(-)
+
+commit d4f3813ab57d9f78e25f331f6cdc4f4f9a4a8ae3
+Author: Javier Jardón <jjardon@gnome.org>
+Date:   Tue Sep 17 16:30:41 2013 +0100
+
+    build: Use CFLAGS instead CPPFLAGS to pass additional C compiler flags
+    
+    As the automake documentation says:
+    
+    AM_CPPFLAGS: The contents of this variable are passed to every compilation
+      that invokes the C preprocessor; it is a list of arguments to the preprocessor.
+      For instance, -I and -D options should be listed here
+    
+    AM_CFLAGS: This is the variable the Makefile.am author can use to pass in
+      additional C compiler flags.
+    
+    http://www.gnu.org/software/automake/manual/html_node/Program-Variables.html
+
+ geocode-glib/Makefile.am | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 51d9753516509dc22a1c0bc7abb67606c22da616
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Sep 24 20:29:14 2013 +0300
+
+    gir: Forgotton part of last commit (d87f10d)
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=708690
+
+ geocode-glib/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d87f10d377f96d4e5d565c4c5876c39ba9a33f0f
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Sep 24 19:59:53 2013 +0300
+
+    gir: We need libsoup, not libsoup-gnome
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=708690
+
+ geocode-glib/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4d77aa2ee4af86e50f9d3b0236acc834f3b20eb6
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Sep 23 22:09:29 2013 +0300
+
+    Bump minor version on unstable branch
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit fb5269aeabdcdf5ba8530f9eeafff73eef9266ed
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Sep 23 17:48:13 2013 +0300
+
+    Release 3.10.0
+
+ NEWS         | 14 ++++++++++++++
+ configure.ac |  6 +++---
+ 2 files changed, 17 insertions(+), 3 deletions(-)
+
+commit 566b8d54ca2ce08776050aaa1e110783f04e8dc2
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Sep 23 18:24:04 2013 +0300
+
+    Fix docs build
+    
+    For details: https://bugzilla.gnome.org/show_bug.cgi?id=701638#c15
+
+ docs/Makefile.am | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 8488e337a85ef01563ca078a073ffc98724e5f8d
+Author: Kalev Lember <kalevlember@gmail.com>
+Date:   Mon Sep 23 15:18:55 2013 +0200
+
+    build: Depend on json-glib 0.16.2
+    
+    Even though we don't need any new symbols from json-glib > 0.14, bump
+    the required version to 0.16.2 to make sure we are building against the
+    version of json-glib that's built with the -Bsymbolic linker flag.
+    
+    Fixes a possible crash in gnome-settings-daemon.
+    
+    http://blogs.gnome.org/ebassi/2013/09/16/do-not-link-against-pulseaudio-and-json-glib-0-16/
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 326f20829da92c39a1d623f53e06cbc0f049069a
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Sep 17 21:25:45 2013 +0300
+
+    test-gcglib: Remove a now redundant workaround
+    
+    This ticket has been resolved so we don't need to workaround it:
+    
+    https://trac.openstreetmap.org/ticket/4918
+
+ geocode-glib/test-gcglib.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+commit ca379525bc0ea75fc7d78f7810e155063874a989
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Sep 17 17:43:09 2013 +0300
+
+    Release 0.99.4
+
+ NEWS         | 21 +++++++++++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 22 insertions(+), 1 deletion(-)
+
+commit d25fedf7646eed3b34ff449e2d9cae0dad18ba48
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Sep 17 17:47:06 2013 +0300
+
+    test-gcglib: Check for country code in upper case
+
+ geocode-glib/test-gcglib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 670ddd2212dc4a0a48a264c315ef92e8165980c3
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Sep 16 20:00:51 2013 +0200
+
+    lib: Use a non-prefixed include for GeocodeLocation
+    
+    So that we can copy/paste it in geoclue.
+
+ geocode-glib/geocode-location.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit b2d1aa2dd821ec1674a52979bde3821ff1892e1a
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Sep 9 19:53:57 2013 -0300
+
+    lib: Force upper-case country codes
+    
+    Always return upper-case country codes as, even if both are
+    correct, the ISO itself shows country codes in upper-case:
+    http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements.htm
+    and language codes in lower-case:
+    http://www.loc.gov/standards/iso639-2/php/code_list.php
+    
+    Applications that require lower-case codes can upper-case it
+    easily through GLib helpers.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=707792
+
+ geocode-glib/geocode-place.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 48e46c98d029348625dfdc54341d24817eea17ca
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Sep 16 13:25:16 2013 +0200
+
+    location: Don't warn for NULL description
+    
+    set_description with NULL is a valid way for clearing the value.
+    
+    See also: https://bugs.freedesktop.org/show_bug.cgi?id=69105
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=708156
+
+ geocode-glib/geocode-location.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit d3522b4a7cc857deb0367faf4fbcaed0eb62ed75
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Sep 16 13:24:30 2013 +0200
+
+    location: Allow setting properties after construct time
+    
+    See also: https://bugs.freedesktop.org/show_bug.cgi?id=69105
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=708156
+
+ geocode-glib/geocode-location.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit c4cae106066a512ef75cfa10206393a565cad499
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Sep 9 20:03:04 2013 -0300
+
+    docs: Remove IP client from the exported symbols
+    
+    That code was moved to Geoclue.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=707813
+
+ geocode-glib/geocode-glib.symbols | 6 ------
+ 1 file changed, 6 deletions(-)
+
+commit 9256ef6bfa9ff293e0968049436b30ba1dcbf4bf
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Sep 9 19:56:27 2013 -0300
+
+    lib: Remove easy to forget constant
+    
+    The constant was defined, unused in the declaration of the
+    array it was supposed to tell the length of, and used more than
+    200 lines down.
+    
+    Instead, remove all constants, and use G_N_ELEMENTS() for our
+    use inside the function. It will get turned into a constant by
+    the compiler.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=707812
+
+ geocode-glib/geocode-forward.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+commit ffb01ace688dd62c9f7aa40637c136db81873bf1
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Sep 9 19:55:53 2013 -0300
+
+    lib: Fix leak when adding GIcon to geocoding results
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=707811
+
+ geocode-glib/geocode-forward.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit d1a2a7e5fc94a6a50dbe8acdc860f9e633ba1d66
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Apr 15 14:33:50 2013 +0200
+
+    build: Check for libm in configure (again)
+    
+    As we did in 0e0e387356b340d2f539ad20696237fc94259b08 which
+    got broken by 4d78c0ecc8c0a6a92cd29da0d0a55fc546e5463d.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=707804
+
+ configure.ac | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 3901afabf499cb44d19b2dd5401061d51e744f70
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Sun Sep 15 03:16:59 2013 +0300
+
+    doc: Set DOC_MODULE_VERSION
+    
+    This will avoid file collisions with future API versions and makes
+    different API versions completely parallel installable.
+    
+    Based on similar patch to libchamplain from Marvin Schmidt
+    <marv@exherbo.org>.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=707928
+
+ docs/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 4179a5ed6f9d8257d2de13ec418d506fd10d4f27
+Author: Evgeny Bobkin <evgen.ibqn@gmail.com>
+Date:   Mon Sep 9 12:04:29 2013 +0200
+
+    Remove underscore in symbol-prefix "geocode"
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=707751
+
+ geocode-glib/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a323466eb9399784b8af4b0be8041dc230d581de
+Author: Stefan Sauer <ensonic@users.sf.net>
+Date:   Tue Sep 3 21:43:27 2013 +0200
+
+    docs: update Makefile.am
+    
+    Use $(top_srcdir) to reference the sources and update the test environment so
+    that gtkdoc-check needs less guessing.
+
+ docs/Makefile.am | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit 17faf1d1bb8eda7d183d5c305794acae40854de0
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Sep 3 02:30:40 2013 +0300
+
+    Release 0.99.3
+
+ NEWS | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+commit 38309cb51d45d5d25be613fb1adb0f4eab0df2c8
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Sep 3 03:04:33 2013 +0300
+
+    Add missing doc comments
+
+ geocode-glib/Makefile.am        |  2 +-
+ geocode-glib/geocode-location.c | 41 +++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-location.h | 45 ++++++++++++++++++++++++++++++++++++-----
+ geocode-glib/geocode-place.c    | 33 ++++++++++++++++++++++++++++++
+ 4 files changed, 115 insertions(+), 6 deletions(-)
+
+commit eee5cff6886a35a8528151824a77fbe4f8ed2625
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Sep 3 02:38:55 2013 +0300
+
+    docs: Add enum types
+
+ docs/geocode-glib-docs.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 7f314a19233ae650b543f3e994eee42a714d083f
+Author: Kalev Lember <kalevlember@gmail.com>
+Date:   Mon Sep 2 18:57:28 2013 +0200
+
+    Post-release bump to 0.99.3
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit b543755ed1faaee28265acc02b0a85d31675a1e1
+Author: Seán de Búrca <leftmostcat@gmail.com>
+Date:   Mon Aug 26 14:46:07 2013 -0600
+
+    build: Fix build against latest gnome-common
+    
+    The use of IT_PROG_INTLTOOL and AM_GNU_GETTEXT together is not supported.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=706828
+
+ configure.ac | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit 8ac85fcb04ab941379a6859c1379605cba281f85
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Aug 26 12:23:13 2013 +0200
+
+    geocode-reverse: Make constructor locale safe
+    
+    When using g_strdup_printf and float values the radix
+    character (decimal point) is locale dependent and for some
+    locales will print a comma. This will break the nominatim
+    queries for us.
+    
+    Switch to using g_ascii_dtostr() instead which will always
+    use a dot as decimal point.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=706786
+
+ geocode-glib/geocode-reverse.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+commit dfd51c5ec21a07fb94d8d8d307925d56349f60f6
+Author: Jonas Danielsson <jonas@threetimestwo.org>
+Date:   Mon Aug 19 11:24:20 2013 +0200
+
+    Add icon from nominatim as place GIcon property
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=706291
+
+ geocode-glib/geocode-forward.c      |  8 ++++++
+ geocode-glib/geocode-glib-private.h |  2 ++
+ geocode-glib/geocode-glib.symbols   |  2 ++
+ geocode-glib/geocode-place.c        | 51 +++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-place.h        |  3 +++
+ 5 files changed, 66 insertions(+)
+
+commit b2e07f6c2043345122c83a791a1334a69a15a33f
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Sun Aug 25 03:51:11 2013 +0300
+
+    reverse: Return GeocodePlace rather than hashtable
+    
+    We were returning the attributes hashtable rather than GeocodePlace from
+    geocode_reverse_resolve_finish, which makes using applications crash.
+
+ geocode-glib/geocode-reverse.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+commit 002c54b0c96801669567b8e47c6bc026391a5ffd
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Sun Aug 25 03:50:41 2013 +0300
+
+    reverse: Minor indentation fixes
+
+ geocode-glib/geocode-reverse.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+commit 6f8ecd470a2b52195552b325522bd7e25a75d4fb
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Aug 21 02:33:04 2013 +0300
+
+    Release 0.99.2
+
+ NEWS         | 22 ++++++++++++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 23 insertions(+), 1 deletion(-)
+
+commit 90706e406ae7a27d6c731fd6bc39edeae56bb427
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Aug 21 02:57:41 2013 +0300
+
+    Remove geocode-glib module from docs
+    
+    There is no public API in that module and due to gtk-doc not generating
+    an xml from for that, build breaks:
+    
+    ../geocode-glib-docs.xml:20: element include: XInclude error : could not
+    load ../xml/geocode-glib.xml, and no fallback was found
+
+ docs/geocode-glib-docs.xml | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 8501592ef3f74b10843a7ced15ec6ab130da48f1
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Aug 21 02:35:53 2013 +0300
+
+    docs: Remove docs generation for ipclient
+
+ docs/geocode-glib-docs.xml | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 3e0f6288cb726bb11adfb4a354608c77ca2bc7f9
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Aug 21 03:05:49 2013 +0300
+
+    docs: Correct URL of Nominatim's wikipage
+
+ geocode-glib/geocode-forward.c | 2 +-
+ geocode-glib/geocode-glib.c    | 2 +-
+ geocode-glib/geocode-reverse.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 21c7300bcf40fdaa224fd56598c07c697dd3cd03
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Aug 19 23:41:37 2013 +0300
+
+    forward/reverse: Use .gnome.org proxy to Nominatim
+    
+    For more details: https://bugzilla.gnome.org/show_bug.cgi?id=706044
+
+ geocode-glib/geocode-forward.c | 4 ++--
+ geocode-glib/geocode-reverse.c | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 2cb35bcca0a9a92652f69bc9b7e79286b950cd42
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Aug 19 23:40:07 2013 +0300
+
+    test-gcglib: Name of 'France' corrected in OSM
+    
+    Someone seems to have corrected the name of 'France' in french locale
+    from 'France métropolitaine'. Lets update the testcase accordingly.
+
+ geocode-glib/test-gcglib.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit f464aced1981bfa253815f5d67ca56e0125435d0
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Aug 19 23:06:46 2013 +0300
+
+    test-gcglib: Don't be too strict about Moscow's coordinates
+    
+    The testcase was checking if coordinates are within 0.000001 of the
+    known values, which is way too accurate for a city and fails against the
+    current values in OSM database.
+
+ geocode-glib/test-gcglib.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 4d78c0ecc8c0a6a92cd29da0d0a55fc546e5463d
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Thu Aug 15 18:25:47 2013 +0300
+
+    Drop all geoip code
+    
+    All this code has been moved to geoclue, where it belongs.
+
+ configure.ac                                       |  17 -
+ geocode-glib/Makefile.am                           |   9 +-
+ geocode-glib/data/freegeoip-results.json           |   1 -
+ geocode-glib/data/gglib-ip-server-results.json     |   1 -
+ geocode-glib/geocode-glib.h                        |   1 -
+ .../geocode-ip-server/API-Documentation.txt        |  86 ----
+ geocode-glib/geocode-ip-server/Makefile.am         |  29 --
+ geocode-glib/geocode-ip-server/geoip-lookup.c      | 469 -------------------
+ geocode-glib/geocode-ip-server/geoip-server.h      |  14 -
+ geocode-glib/geocode-ip-server/geoip-update.c      | 230 ---------
+ geocode-glib/geocode-ip-server/test-geoipformat.c  | 144 ------
+ .../geocode-ip-server/tests/launch-web-server.sh   | 181 --------
+ geocode-glib/geocode-ipclient.c                    | 515 ---------------------
+ geocode-glib/geocode-ipclient.h                    |  84 ----
+ geocode-glib/test-geoip.c                          | 163 -------
+ 15 files changed, 1 insertion(+), 1943 deletions(-)
+
+commit a376a2764ad40bf4f550599ac83d8d110062a329
+Author: Philip Withnall <philip@tecnocode.co.uk>
+Date:   Wed Aug 7 11:53:28 2013 +0200
+
+    build: Update CLEANFILES and friends for the root directory
+    
+    Also remove INSTALL, as it’s auto-generated by autofoo.
+
+ INSTALL     | 365 ------------------------------------------------------------
+ Makefile.am |  31 ++++--
+ 2 files changed, 24 insertions(+), 372 deletions(-)
+
+commit 925e052ff5fcf89804c88b34c9f8e0b9dab28199
+Author: Philip Withnall <philip@tecnocode.co.uk>
+Date:   Wed Aug 7 11:46:41 2013 +0200
+
+    lib: Fix compiler warnings
+    
+    Declaration in the middle of a block and passing const pointers
+    to a GHashTable.
+
+ geocode-glib/geocode-forward.c                | 8 ++++----
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 3 +--
+ geocode-glib/geocode-ipclient.c               | 2 +-
+ geocode-glib/geocode-reverse.c                | 8 ++++----
+ 4 files changed, 10 insertions(+), 11 deletions(-)
+
+commit fea5d2031d51fc26e9e9af2c33009e5797443117
+Author: Philip Withnall <philip@tecnocode.co.uk>
+Date:   Wed Aug 7 11:41:47 2013 +0200
+
+    build: Add git.mk to auto-generate .gitignore files
+
+ Makefile.am                                |   2 +
+ docs/Makefile.am                           |   2 +
+ geocode-glib/Makefile.am                   |   2 +
+ geocode-glib/geocode-ip-server/Makefile.am |   2 +
+ git.mk                                     | 301 +++++++++++++++++++++++++++++
+ 5 files changed, 309 insertions(+)
+
+commit 0a4b0356901c2475c6370bac127a4da398faea72
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Aug 5 16:21:34 2013 +0200
+
+    lib: Better name/description for street numbers
+    
+    Currently we'd just show the house number in results for street number
+    searches, e.g Search for "Otavantie 2" would result in places named "2".
+    This patch fixes this issue by combining house number and street name.
+    
+    Since format is not the same in all locales, we allow the translators to
+    format the string.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=705518
+
+ configure.ac                   |  1 +
+ geocode-glib/geocode-reverse.c | 21 +++++++++++++++++----
+ po/POTFILES.in                 |  1 +
+ 3 files changed, 19 insertions(+), 4 deletions(-)
+
+commit 761df0c6e957fb96d08d82f9ca1ce5f8ca7d4681
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Aug 6 01:48:50 2013 +0200
+
+    ipclient: Use libsoup directly
+    
+    While rest of the code was ported to use libsoup directly, ipclient was
+    still using gio/gvfs for HTTP, which is not going to work for an app
+    that runs out of the session: Geoclue.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=705536
+
+ geocode-glib/geocode-ipclient.c | 70 +++++++++++++++++++----------------------
+ 1 file changed, 33 insertions(+), 37 deletions(-)
+
+commit c6694c8a87b6c36032f3217524a623110da01840
+Author: Colin Walters <walters@verbum.org>
+Date:   Sat Aug 3 12:49:22 2013 -0400
+
+    build: Fix srcdir != builddir
+
+ geocode-glib/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 459259529a54fc638b21b5ade540177c7c91c551
+Author: Satabdi Das <satabdidas@src.gnome.org>
+Date:   Tue May 14 23:51:50 2013 +0530
+
+    server: API documention for server's web interface
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696543
+
+ .../geocode-ip-server/API-Documentation.txt        | 86 ++++++++++++++++++++++
+ 1 file changed, 86 insertions(+)
+
+commit 8d59ac5101844c53d7466b942bf168d2b7ac805e
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jul 30 20:07:54 2013 +0300
+
+    Update README
+    
+    Reflect the fact that we now use Nominatim instead of Yahoo's services.
+    Should have done this before rolling out 0.99.1. :(
+
+ README | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+commit ba8bf210fb4198ddbbdc7289054bf90067e50c2d
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jul 30 19:59:51 2013 +0300
+
+    Revert "Disable client-side geoip test for now"
+    
+    This reverts commit 90a7705b7d895bc78edcca7efe7c43b1bef51dc5.
+
+ geocode-glib/Makefile.am | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 71ffe910ff2166d3c56c384b02f26e143e7bfcca
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jul 30 18:35:44 2013 +0300
+
+    Release 0.99.1
+
+ NEWS | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+commit 90a7705b7d895bc78edcca7efe7c43b1bef51dc5
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jul 30 18:09:54 2013 +0300
+
+    Disable client-side geoip test for now
+    
+    This test requires server to be running locally. It should launch and
+    stop the server as needed but for now we can disable it for rolling a
+    release out. We don't want `make check` failing for people in a release
+    tarball.
+
+ geocode-glib/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 82e84bb893be2771e9a1f5ca2b29345a341d3f27
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jul 30 19:03:07 2013 +0300
+
+    lib: Update list of test data files
+
+ geocode-glib/Makefile.am | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+commit 23b1d680b4c48a8a5acba4553d437cd00d003f33
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jul 30 18:41:36 2013 +0300
+
+    lib: Remove now redundant macros
+
+ geocode-glib/geocode-glib.h | 208 --------------------------------------------
+ 1 file changed, 208 deletions(-)
+
+commit d64d4f16fe83dd074b7675c8927eaa9e8f2f7f86
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jul 30 02:32:48 2013 +0300
+
+    lib: Remove now redundant code
+    
+    Remove now redundant code to translate Nominatim to XEP attributes.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=705112
+
+ geocode-glib/geocode-forward.c      |  2 +-
+ geocode-glib/geocode-glib-private.h |  3 +-
+ geocode-glib/geocode-reverse.c      | 58 +++----------------------------------
+ 3 files changed, 6 insertions(+), 57 deletions(-)
+
+commit fad7155b8bc8e5f74ac22d529df82529c1a47580
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jun 18 18:22:32 2013 +0200
+
+    lib: geocode_reverse_resolve*() now returns GeocodePlace
+    
+    Instead of returning a hashtable, reverse geocoding functions now return
+    a GeocodePlace instance.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=705112
+
+ geocode-glib/geocode-reverse.c | 45 ++++++++++++++++++++-----------------
+ geocode-glib/geocode-reverse.h | 11 ++++-----
+ geocode-glib/test-gcglib.c     | 51 +++++++++++++++++-------------------------
+ 3 files changed, 52 insertions(+), 55 deletions(-)
+
+commit 40d2d51b720962b541c2b4927b8efb9fd1c43fc5
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jul 30 00:12:14 2013 +0300
+
+    lib: Add new place getter/setters to symbols file
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=705112
+
+ geocode-glib/geocode-glib.symbols | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit 26093f241c9543117a0a2ef24647b5de456b1896
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Jul 29 23:36:23 2013 +0300
+
+    lib: Export create_place_from_attributes library-wide
+    
+    Make create_place_from_attributes available to other files by exporting
+    it library-wide as _geocode_create_place_from_attributes().
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=705112
+
+ geocode-glib/geocode-forward.c      | 6 +++---
+ geocode-glib/geocode-glib-private.h | 3 +++
+ geocode-glib/geocode-glib.symbols   | 1 +
+ 3 files changed, 7 insertions(+), 3 deletions(-)
+
+commit 8ba11adbd8b1e2259f7754b36a4afa57c82c4dc6
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Jul 29 23:26:30 2013 +0300
+
+    lib: One dedicated function to create GeocodePlace object
+    
+    We already have a function to create the GeocodePlace instance from
+    Nominatim attributes, create_place_from_attributes(). We should
+    initialize all props of these instances from within that function,
+    rather than doing it soon after calling it.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=705112
+
+ geocode-glib/geocode-forward.c | 37 ++++++++++++++++++-------------------
+ 1 file changed, 18 insertions(+), 19 deletions(-)
+
+commit d72aee7c4fe469f09e845dd1aa68a9d4a7378559
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Jul 29 23:20:17 2013 +0300
+
+    lib: Separate function to determine place type
+    
+    Separate out code to determine place type from attributes in to a
+    separate function: get_place_type_from_attributes().
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=705112
+
+ geocode-glib/geocode-forward.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+commit 8b36dc97611627bf2f2e4ee2a304cb4cbfeb1b06
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Sun Jul 28 22:49:10 2013 +0300
+
+    lib: Remove remaining references to Yahoo Places API
+
+ geocode-glib/geocode-forward.c | 7 ++-----
+ geocode-glib/geocode-glib.c    | 5 +----
+ geocode-glib/geocode-reverse.c | 2 +-
+ 3 files changed, 4 insertions(+), 10 deletions(-)
+
+commit ac935f98898c975748c7a333a868e2c865a36bcc
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Jul 24 04:32:27 2013 +0300
+
+    lib: Port forward geocoding API to Nominatim
+    
+    This patch completes porting from Yahoo Places API to Nominatim.
+    
+    Apart from keeping the working testcases still working, this patch also
+    makes some of the failing testcases working again.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697218
+
+ geocode-glib/data/geoplanet-rio.json          |   1 -
+ geocode-glib/data/nominatim-area.json         |   1 +
+ geocode-glib/data/nominatim-no-results.json   |   1 +
+ geocode-glib/data/nominatim-rio.json          |   1 +
+ geocode-glib/data/placefinder-area.json       |   1 -
+ geocode-glib/data/placefinder-got-error.json  |   1 -
+ geocode-glib/data/placefinder-no-results.json |   1 -
+ geocode-glib/geocode-forward.c                | 686 +++++++++-----------------
+ geocode-glib/geocode-glib-private.h           |   7 +-
+ geocode-glib/geocode-glib.symbols             |   1 +
+ geocode-glib/geocode-place.c                  |   5 +-
+ geocode-glib/geocode-reverse.c                |  39 +-
+ geocode-glib/test-gcglib.c                    | 143 +++---
+ 13 files changed, 350 insertions(+), 538 deletions(-)
+
+commit 93f9e6b64850603c967939cc8715eb4aefed2715
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Sat Jul 27 16:48:57 2013 +0300
+
+    lib: Adapt GeocodePlace for Nominatim
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697218
+
+ geocode-glib/geocode-place.h | 63 ++++++++++++++++++++++++--------------------
+ 1 file changed, 34 insertions(+), 29 deletions(-)
+
+commit 9c63a637ffd84d7cffe8be77d75e40871425d52f
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Jul 24 22:35:09 2013 +0300
+
+    lib: Compare against the correct values
+    
+    We were comparing latitude to longitude and viceversa in a few
+    testcases.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697218
+
+ geocode-glib/test-gcglib.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit f0606a5da484dedbdcbf46c3ef1aea320d7ff51d
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Jul 24 22:24:33 2013 +0300
+
+    lib: Fix a typo in a doc comment
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697218
+
+ geocode-glib/geocode-place.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 705056d177db14be4fae150e2cdc3588713f2a6d
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Jul 24 22:13:50 2013 +0300
+
+    lib: Make GeocodePlace:name writable
+    
+    There is no good reason to keep this property construct-only and we'll
+    need to overwrite it inside geocode-glib as well in a following patch.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697218
+
+ geocode-glib/geocode-glib.symbols |  1 +
+ geocode-glib/geocode-place.c      | 18 +++++++++++++++++-
+ geocode-glib/geocode-place.h      |  2 ++
+ 3 files changed, 20 insertions(+), 1 deletion(-)
+
+commit 58e06393748e57f43af4b5f40d40433b000c7cd4
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Jun 18 16:42:52 2013 +0200
+
+    place: Add more properties
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697218
+
+ geocode-glib/geocode-place.c | 171 +++++++++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-place.h |  12 +++
+ 2 files changed, 183 insertions(+)
+
+commit 370faa15fbbb264bf6e2e2c219591ee9a178fd45
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Jun 19 17:11:26 2013 +0200
+
+    lib: Port reverse geocoding API to Nominatim
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697218
+
+ geocode-glib/geocode-forward.c      | 228 ++++++++++++++++++++++++++++++++-
+ geocode-glib/geocode-glib-private.h |   3 +-
+ geocode-glib/geocode-reverse.c      | 244 +++++++++++++-----------------------
+ geocode-glib/test-gcglib.c          |  11 +-
+ 4 files changed, 325 insertions(+), 161 deletions(-)
+
+commit d00059f114e19de706f5226ec9bd2c3319ded739
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Thu Jun 20 16:57:09 2013 +0200
+
+    lib: Use libsoup directly for HTTP GET requests
+    
+    We should be doing this anyways, libsoup being our direct dependency but
+    this patch also avoids the issue of reverse geocoding testcase hanging
+    becuase of some gvfs bug.
+    
+    At the same time, this change reveals that our reverse geocoding API is
+    not working anymore since the Yahoo web API we rely on does not seem to
+    be available anymore.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=702775
+
+ geocode-glib/geocode-forward.c      | 68 ++++++++++++++++----------------
+ geocode-glib/geocode-glib-private.h | 15 ++++----
+ geocode-glib/geocode-glib.c         | 12 +++---
+ geocode-glib/geocode-reverse.c      | 77 ++++++++++++++++---------------------
+ 4 files changed, 81 insertions(+), 91 deletions(-)
+
+commit 0b82a5e40f94791c7f1ce8142adbdf0786c4aa5b
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Jul 12 22:16:59 2013 +0200
+
+    Revert "Symlink geocode-glib.h into subdir to avoid breakage"
+    
+    This reverts commit 76baed43692552cc362525a6f5b72bd0d5926d3e.
+
+ geocode-glib/Makefile.am | 7 -------
+ 1 file changed, 7 deletions(-)
+
+commit 76baed43692552cc362525a6f5b72bd0d5926d3e
+Author: Andreas Henriksson <andreas@fatal.se>
+Date:   Sun Jul 7 20:54:26 2013 +0200
+
+    Symlink geocode-glib.h into subdir to avoid breakage
+    
+    Atleast geoclue2 does #include <geocode-glib.h>
+    which will break with the new api-versioned
+    include path with additional subdirectory.
+    This is a workaround to avoid causing breakage
+    until everyone has updated their include paths.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=703571
+
+ geocode-glib/Makefile.am | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit e135c060bdf7e127f555cb5a0fe64516d81b38f6
+Author: Andreas Henriksson <andreas@fatal.se>
+Date:   Sun Jul 7 20:35:37 2013 +0200
+
+    Unify include paths to be the same everywhere
+    
+    Change from "geocode-*.h" and <geocode-*.h> to
+    <geocode-glib/geocode-*.h> where it wasn't using
+    that style already.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=703571
+
+ geocode-glib/Makefile.am            |  2 +-
+ geocode-glib/geocode-error.c        |  2 +-
+ geocode-glib/geocode-glib-private.h |  2 +-
+ geocode-glib/geocode-glib.c         |  6 +++---
+ geocode-glib/geocode-ipclient.c     | 10 +++++-----
+ geocode-glib/geocode-ipclient.h     |  2 +-
+ geocode-glib/geocode-location.c     |  2 +-
+ geocode-glib/geocode-place.c        |  4 ++--
+ geocode-glib/geocode-place.h        |  2 +-
+ geocode-glib/geocode-reverse.c      |  8 ++++----
+ geocode-glib/test-gcglib.c          |  4 ++--
+ geocode-glib/test-geoip.c           |  4 ++--
+ 12 files changed, 24 insertions(+), 24 deletions(-)
+
+commit f6d9112bd553b030ef8cd71dc28ebf6f2b7c04ce
+Author: Andreas Henriksson <andreas@fatal.se>
+Date:   Thu Jul 4 14:53:56 2013 +0200
+
+    Make include directory API versioned
+    
+    Note that this will break users of geocode-glib which did not
+    use the geocode-glib/ subdirectory prefix in the include path
+    (like geoclue2), according to how the pkg-config file was layed
+    out before.
+    
+    Remaining cleanup is to unify the internal include paths inside
+    geocode-glib to be either "..." or <geocode-glib/...>.
+    
+    While forcing geocode-glib uses to update their include paths
+    and internally cleaning up the include paths, this might also
+    be a good time to drop the filename prefix on header files
+    since both subdirectory and filename prefix in include paths
+    seems redundant.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=703571
+
+ configure.ac             | 3 +++
+ geocode-glib-1.0.pc.in   | 4 +++-
+ geocode-glib/Makefile.am | 2 +-
+ 3 files changed, 7 insertions(+), 2 deletions(-)
+
+commit d415ab07a79dbe675628768a4bdd3d7314713203
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Jul 4 16:40:15 2013 +0200
+
+    lib: Simplify geocode_forward_search_finish()
+
+ geocode-glib/geocode-forward.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+commit 15312041ad1a73c1965e033c2821c4be94653ea7
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Jul 4 16:35:42 2013 +0200
+
+    lib: Simplify a few exit paths
+    
+    A lot of duplicated code on error cases when we could reuse most of it.
+
+ geocode-glib/geocode-forward.c  |  9 +++------
+ geocode-glib/geocode-ipclient.c | 14 +++-----------
+ geocode-glib/geocode-reverse.c  |  9 +++------
+ 3 files changed, 9 insertions(+), 23 deletions(-)
+
+commit 40e4f4d96e19b5c965e4f7355d75265bf9a33071
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Jul 4 16:30:28 2013 +0200
+
+    lib: Use g_simple_async_result_take_error()
+
+ geocode-glib/geocode-forward.c  | 9 +++------
+ geocode-glib/geocode-ipclient.c | 6 ++----
+ geocode-glib/geocode-reverse.c  | 9 +++------
+ 3 files changed, 8 insertions(+), 16 deletions(-)
+
+commit 201c251ab834b353bf186ef45a4a31e1054d6632
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Thu Jun 20 17:00:16 2013 +0200
+
+    lib: Make use of g_clear_pointer()
+    
+    We are doing that already in geocode-forward to free the hashtable.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=702775
+
+ geocode-glib/geocode-reverse.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit a065e5e277a506db1f4a9004d75611918805f899
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Jun 19 17:25:28 2013 +0200
+
+    ip-server: Better error message for Invalid IP addresses
+    
+    Print the invalid IP address in the error message.
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 7b257c6b9d6b5206bcfc11a36b5b41cb9384b908
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Jun 19 17:15:54 2013 +0200
+
+    ip-server: Use switch statement to print error messages
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
+
+commit 4722eeb59676fb204825f815ff179561ec62f727
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Jun 19 17:10:21 2013 +0200
+
+    ip-server: Use enum instead of int in parameters
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit c27101dc16f427144f58715e724c437d335af772
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Jun 19 16:58:41 2013 +0200
+
+    lib: Fix compile-time warning
+
+ geocode-glib/geocode-ipclient.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 23054114410a79cd1071817d2d96e70d38cd95a4
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Jun 19 16:56:58 2013 +0200
+
+    geoip-update: Remove linefeed in attribution text
+    
+    The presentation software can do its own layouting.
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4ae6281497f9212090f24dff39ffa7589b18e1cc
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Jun 12 18:09:32 2013 +0200
+
+    lib: Fix introspection warnings
+    
+    geocode-glib/geocode-glib-private.h:43: syntax error, unexpected identifier in 'GFile *_get_resolve_query_for_params (GHashTable *orig_ht,' at 'GFile'
+    geocode-glib/geocode-glib-private.h:44: syntax error, unexpected typedef-name, expecting identifier or '(' or '*' in ' gboolean reverse);' at 'gboolean'
+    geocode-glib/geocode-glib-private.h:50: syntax error, unexpected '*', expecting ')' or ',' in 'char *_geocode_glib_cache_path_for_query (GFile *query);' at '*'
+    geocode-glib/geocode-glib-private.h:51: syntax error, unexpected '*', expecting ')' or ',' in 'gboolean _geocode_glib_cache_save (GFile *query,' at '*'
+    geocode-glib/geocode-glib-private.h:52: syntax error, unexpected ')', expecting ',' or ';' in '      const char *contents);' at ')'
+    geocode-glib/geocode-glib-private.h:53: syntax error, unexpected '*', expecting ')' or ',' in 'gboolean _geocode_glib_cache_load (GFile *query,' at '*'
+    geocode-glib/geocode-glib-private.h:54: syntax error, unexpected ')', expecting ',' or ';' in '      char **contents);' at ')'
+    geocode-glib-private.h:31: Warning: GeocodeGlib: symbol='YAHOO_APPID': Unknown namespace for symbol 'YAHOO_APPID'
+    geocode-glib-private.h:32: Warning: GeocodeGlib: symbol='DEFAULT_ANSWER_COUNT': Unknown namespace for symbol 'DEFAULT_ANSWER_COUNT'
+
+ geocode-glib/Makefile.am | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+commit 44a846b490a7f020373f3928f79f544c9cebc405
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Sat May 4 18:01:26 2013 +0530
+
+    geoip-update: Handle blank option
+    
+    if --dbpath option is not given, the updater should set the path
+    to the databased to GEOIP_DATABASE_PATH
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=699668
+
+ geocode-glib/geocode-ip-server/geoip-update.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a53d3b61553e4d7d58c94b3f1bcac4b007492f57
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Thu Apr 25 04:45:10 2013 +0300
+
+    lib: geocode_forward_search*() returns places
+    
+    geocode_forward_search*() now return list of GeocodePlace objects rather
+    than simple GeocodeLocation objects.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697405
+
+ geocode-glib/geocode-forward.c | 131 ++++++++++++++++++++++++++++++++---------
+ geocode-glib/test-gcglib.c     |  94 +++++++++++++++++++++++------
+ 2 files changed, 179 insertions(+), 46 deletions(-)
+
+commit f87a2fe1fa157cc4eacbc10e7a4479f0833d3922
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Apr 24 19:34:02 2013 +0300
+
+    lib: Introducing GeocodePlace class
+    
+    Add a new class to represent particular places with a proper name and
+    type. Also optionally includes all sorts of properties, like location,
+    town, state, country etc.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697405
+
+ docs/geocode-glib-docs.xml        |   1 +
+ geocode-glib/Makefile.am          |   6 +-
+ geocode-glib/geocode-glib.h       |   1 +
+ geocode-glib/geocode-glib.symbols |  26 ++
+ geocode-glib/geocode-place.c      | 808 ++++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-place.h      | 183 +++++++++
+ 6 files changed, 1023 insertions(+), 2 deletions(-)
+
+commit e05c6e25894568aa32cc63d5bd9562b51ba3c217
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Fri Apr 26 03:18:52 2013 +0300
+
+    lib: Add missing EOL
+    
+    POSIX seems to require EOL at end of every line in a text file and
+    thefore git doesn't like lack of EOL either:
+    
+    http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_205
+    
+    This change gets implicitly added each time you add new lines at the end
+    of .symbols file (at least when using vim), which is annoying
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697405
+
+ geocode-glib/geocode-glib.symbols | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 426ae91bcdd8703e128af70afeb9e8fe2ddcb0e6
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Apr 23 00:04:53 2013 +0300
+
+    lib: Add myself to authors list
+
+ geocode-glib/geocode-location.c | 1 +
+ geocode-glib/geocode-location.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 2b7b60e41b1e260f68710db11c1b0417ef78dba1
+Author: Javier Jardón <javier.jardon@codethink.co.uk>
+Date:   Thu Apr 18 01:18:54 2013 +0200
+
+    Do not call g_type_init() if GLib >= 2.36
+    
+    g_type_init has been deprecated since version 2.36.
+    The type system is now initialised automatically
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c     | 2 ++
+ geocode-glib/geocode-ip-server/geoip-update.c     | 2 ++
+ geocode-glib/geocode-ip-server/test-geoipformat.c | 2 ++
+ geocode-glib/test-gcglib.c                        | 2 ++
+ geocode-glib/test-geoip.c                         | 2 ++
+ 5 files changed, 10 insertions(+)
+
+commit c4c300e276699f58ee78c7a61dc2650861977622
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Apr 15 15:14:41 2013 +0200
+
+    ip-server: Factor out query string for our server
+
+ geocode-glib/geocode-ip-server/test-geoipformat.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 8a3fb3e6ebcf9818b1ac1af3b3856702d11975c3
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Fri Apr 5 22:17:57 2013 +0530
+
+    ip-server: Add support for Wi-Fi based search
+    
+    Add geolocalisation using the client's Wi-Fi APs.
+    
+    If the strength and names of Wi-Fi APs are passed through the
+    query string, we'll make a request to Google's web service.
+    Should the request fail, we will fall back to using the IP
+    address to locate the user.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696543
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 215 ++++++++++++++++++++------
+ 1 file changed, 171 insertions(+), 44 deletions(-)
+
+commit 4dc187b56e5a73169e3c9e4e72c230fb697cbde7
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Sat Apr 13 21:00:23 2013 +0300
+
+    lib: Slightly improved accuracy estimates
+    
+    When I added these:
+    
+    1. For city, I was thinking of diameter rather than radius.
+    2. For country, I did some miscalculations as 150 km is too small.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697962
+
+ geocode-glib/geocode-location.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 0e0e387356b340d2f539ad20696237fc94259b08
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Apr 15 14:33:50 2013 +0200
+
+    build: Check for libm in configure
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697638
+
+ configure.ac             | 2 ++
+ geocode-glib/Makefile.am | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+commit 05b0009af01e11cee44c9a834aee946506027194
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Apr 3 23:52:08 2013 +0300
+
+    lib: Add GeocodeIpclient:compatibility-mode property
+    
+    App must enable this mode if they want to use freegeoip's (or a
+    compatible) service.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=697223
+
+ geocode-glib/geocode-ipclient.c | 49 +++++++++++++++++++++++++++++++++++------
+ 1 file changed, 42 insertions(+), 7 deletions(-)
+
+commit 5372f2f7ff97707dcc839bd3ed79ea9f289f7409
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Sun Mar 24 23:48:14 2013 +0200
+
+    lib: Turn GeocodeLocation into a proper GObject
+    
+    While I made this change under the wrong impression that gjs is not very
+    happy about GeocodeLocation not being a gobject, this IMO is still a
+    good change and I put some time into it so I'm sending this patch.
+    
+    I also took the liberty of changing all tabs to spaces in
+    geocode-location.[ch]. Looking at geocode-ipclient.c, this seem to be
+    the desired coding-style.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696528
+
+ geocode-glib/geocode-forward.c    |   2 +-
+ geocode-glib/geocode-glib.symbols |   6 +-
+ geocode-glib/geocode-location.c   | 382 ++++++++++++++++++++++++++++++--------
+ geocode-glib/geocode-location.h   |  58 +++---
+ geocode-glib/geocode-reverse.c    |   7 +-
+ geocode-glib/test-gcglib.c        |  51 ++---
+ geocode-glib/test-geoip.c         |  23 ++-
+ 7 files changed, 394 insertions(+), 135 deletions(-)
+
+commit 8b14c3f84fc79aab88f499a5bea79dda323bb142
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Apr 3 19:42:01 2013 +0200
+
+    ip-server: Fix make check
+    
+    The geoip-lookup binary isn't a test program.
+
+ geocode-glib/geocode-ip-server/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit a1deb1b9b163354ea346eb2268a2062b222f02a3
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Sun Mar 24 03:01:11 2013 +0200
+
+    lib: Report accuracy of location result(s)
+    
+    Currently only accuracy of IP-based location search is reported but we
+    should also make use of this new API to report accuracy of other
+    location(s) yielding searches too (bug#697174).
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696527
+
+ geocode-glib/geocode-forward.c  | 11 ++++++---
+ geocode-glib/geocode-ipclient.c | 51 ++++++++++++++++++++++++++++++++++++++---
+ geocode-glib/geocode-location.c | 18 +++++++++++----
+ geocode-glib/geocode-location.h | 17 +++++++++++---
+ geocode-glib/test-gcglib.c      |  8 +++----
+ geocode-glib/test-geoip.c       |  2 ++
+ 6 files changed, 90 insertions(+), 17 deletions(-)
+
+commit 920edcc7412eb2c5698e5e40968ac46a3e80f37c
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Apr 3 17:26:02 2013 +0300
+
+    lib: Minor coding-style fixes
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696527
+
+ geocode-glib/geocode-ipclient.c | 18 +++++++++---------
+ geocode-glib/geocode-ipclient.h | 18 +++++++++---------
+ 2 files changed, 18 insertions(+), 18 deletions(-)
+
+commit 9fd3b645aad42362a5f156a40c65d5290efe8d4d
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Apr 3 20:27:08 2013 +0300
+
+    Revert "Add testcases for _geocode_ip_json_to_location()"
+    
+    This reverts commit 67aa20324a1b0b2f35ded742cb81b6e01a71522a.
+    
+    The corrected version of reverted commit has already been pushed but I
+    made a mistake during a rebase.
+
+ geocode-glib/Makefile.am        |  3 +--
+ geocode-glib/test-geoip-parse.c | 53 -----------------------------------------
+ 2 files changed, 1 insertion(+), 55 deletions(-)
+
+commit d2216cdc0bcd4f06111138958a44eb2b54e5c7fd
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Mar 27 03:23:10 2013 +0200
+
+    Add testcase for our & freegeoip JSON formats
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696525
+
+ geocode-glib/geocode-ip-server/Makefile.am        |  13 +-
+ geocode-glib/geocode-ip-server/test-geoipformat.c | 142 ++++++++++++++++++++++
+ 2 files changed, 153 insertions(+), 2 deletions(-)
+
+commit dbf20e661919ce1591d75e79c9ebc4ccf49afa22
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Mar 26 20:15:11 2013 +0200
+
+    geoip-lookup: Update error JSON format
+    
+    The JSON format for errors should be the same as normal JSON replies.
+    Since we changed that, we should change this as well.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696525
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+commit 7822e532828a9413426f446ca7b052194af50e54
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Thu Mar 21 20:14:26 2013 +0200
+
+    geoip-lookup: Use same JSON format as other free services
+    
+    While there is no standard on format of JSON strings returned by geoip
+    services, we better use the same format used by existing free services.
+    Since freegeoip.net is the most famous one I know, I followed their
+    format. hostip.info is another that seems to be using the same format[1]
+    as well.
+    
+    This would also mean that apps can easily switch between our service and
+    other. Since our service is not yet running anywhere online, this will
+    also make it easy for any app to use our Ipclient API already w/o having
+    to figure the external IP of the machine they are running on.
+    
+    One thing we do differently than these other services is handling of
+    errors. Both freegeoip.net and hostip.info silently ignore invalid IP
+    and give bugos values while we provide proper errors in the JSON response.
+    
+    This patch also adds some NULL checks.
+    
+    [1] http://www.hostip.info/use.html
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696525
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 131 +++++++++-----------------
+ 1 file changed, 47 insertions(+), 84 deletions(-)
+
+commit 67aa20324a1b0b2f35ded742cb81b6e01a71522a
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Apr 3 01:04:24 2013 +0300
+
+    Add testcases for _geocode_ip_json_to_location()
+    
+    Test this function against responses from both our server and freegeoip.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696526
+
+ geocode-glib/Makefile.am        |  3 ++-
+ geocode-glib/test-geoip-parse.c | 53 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 55 insertions(+), 1 deletion(-)
+
+commit 4f1f6aa2340d7b201ec0279614bb6a9e5dde3e23
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Apr 3 01:04:24 2013 +0300
+
+    Add testcases for _geocode_ip_json_to_location()
+    
+    Test this function against responses from both our server and freegeoip.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696526
+
+ geocode-glib/Makefile.am                       | 10 ++++---
+ geocode-glib/data/freegeoip-results.json       |  1 +
+ geocode-glib/data/gglib-ip-server-results.json |  1 +
+ geocode-glib/test-geoip.c                      | 38 ++++++++++++++++++++++++++
+ 4 files changed, 46 insertions(+), 4 deletions(-)
+
+commit d2324fe0ac9f3fc1d8b8e16ad6b3e174b9c1f425
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Apr 3 04:38:32 2013 +0300
+
+    Add a missing '\'
+    
+    `make check` breaks without this.
+
+ geocode-glib/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit b291a720daa742c7f926d3ba0cbc7f5463f31417
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Sun Mar 24 02:48:42 2013 +0200
+
+    lib: Use glib-mkenums to register enums with glib
+    
+    Based on a similar patch in libvirt-glib from Christophe Fergeau
+    <cfergeau@redhat.com>.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696527
+
+ configure.ac                      |  3 +++
+ geocode-glib/Makefile.am          | 41 ++++++++++++++++++++++++++++++---------
+ geocode-glib/geocode-glib.h       |  1 +
+ geocode-glib/geocode-glib.symbols |  1 +
+ 4 files changed, 37 insertions(+), 9 deletions(-)
+
+commit 3acc558c003c3543d70b2805a1c1d631fb307aea
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Apr 2 19:43:31 2013 +0200
+
+    build: Add test data to the dist
+
+ geocode-glib/Makefile.am | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit d589297a653588beb5112a614d3e6aaad05cbfd3
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Fri Mar 22 02:28:18 2013 +0200
+
+    lib: Return a location from geocode_ipclient_search()
+    
+    This API is a lot more useful if we provide a parsed GeocodeLocation
+    object to the caller rather than just the raw JSON string we get as
+    response from server.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696526
+
+ geocode-glib/geocode-glib-private.h |   3 +
+ geocode-glib/geocode-glib.symbols   |   1 +
+ geocode-glib/geocode-ipclient.c     | 116 ++++++++++++++++++++++++++++++++----
+ geocode-glib/geocode-ipclient.h     |  11 ++--
+ geocode-glib/test-geoip.c           |  64 ++++++++++++--------
+ 5 files changed, 155 insertions(+), 40 deletions(-)
+
+commit 4f1b35aaf5be39c6cbc9910faae3f56779560846
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Mon Mar 25 21:05:30 2013 +0200
+
+    server: Put server errors into a separate header
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696526
+
+ geocode-glib/geocode-ip-server/Makefile.am    |  2 ++
+ geocode-glib/geocode-ip-server/geoip-lookup.c |  7 ++-----
+ geocode-glib/geocode-ip-server/geoip-server.h | 14 ++++++++++++++
+ 3 files changed, 18 insertions(+), 5 deletions(-)
+
+commit e25df53d2d727f6f4f17990955683fefdf73ba87
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Fri Mar 22 19:00:33 2013 +0200
+
+    lib: Add error code for internal server errors
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696526
+
+ geocode-glib/geocode-error.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+commit 1773728dc5bfdd305e36a515b28566e3ef54f1d3
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Thu Mar 21 12:52:53 2013 +0530
+
+    ipclient: Fix memory leak
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696543
+
+ geocode-glib/geocode-ipclient.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 31a7df77c25fbe512c76e479d79131174c7f3583
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Thu Mar 21 12:45:58 2013 +0530
+
+    ipclient: Coding style fix
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696543
+
+ geocode-glib/geocode-ipclient.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 2764b9fb3e212a515cd1fe7953239d9d85cb82ed
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Thu Mar 21 12:36:25 2013 +0530
+
+    test-geoip: Fix test function for IP based search
+    
+    The IP address is passed from the main () to the test function and
+    it is that IP address which should be used.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=696543
+
+ geocode-glib/test-geoip.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 56770c015aca9c14271848070066946f9bf04f5a
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Mar 21 08:58:05 2013 +0100
+
+    ip-server: geocode-update isn't a test program
+    
+    So don't tag it as one, otherwise "make check" would try to
+    run it.
+
+ geocode-glib/geocode-ip-server/Makefile.am | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 9661189453c4b0eb118599fcfc67df36cdd51102
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Mar 6 12:54:37 2013 +0100
+
+    lib: Simplify geocode_reverse_resolve_finish()
+
+ geocode-glib/geocode-reverse.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
+
+commit b32ce93822b1c442c72d9e6d71e714e15ef53866
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Mar 6 11:48:47 2013 +0100
+
+    ip-server: Rename if_db_updated() function
+
+ geocode-glib/geocode-ip-server/geoip-update.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 71226e721b973f5c93cf5d80a0916f59feb34f55
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Mar 6 11:40:26 2013 +0100
+
+    ip-server: Rename argument to needs_update
+
+ geocode-glib/geocode-ip-server/geoip-update.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+commit f67134e6c9e0e4c1df74cfbaeb52f71cd9b12f4e
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Wed Mar 20 20:18:38 2013 +0200
+
+    geoip-update: Honor DB path variables
+    
+    While rest of the code looks for db files in the location specified by
+    env or Makefile variables, geoip-update was always copying the database
+    files to /usr/share/GeoIP/.
+
+ geocode-glib/geocode-ip-server/geoip-update.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+commit e081c86f9c994350fa9c4f876af4b57261095657
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Mar 19 21:34:27 2013 +0200
+
+    lib: Add missing header to main header
+
+ geocode-glib/geocode-glib.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 1cadaa879b7d72d973880680b5f947fd5c275974
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Mar 19 03:44:45 2013 +0200
+
+    pkg-config: Version the pkg-config file
+    
+    Judging from '--pkg-export=geocode-glib-1.0' flag passed to
+    g-ir-scanner in Makefile, seems this was intended. It makes sense to
+    version API anyways.
+
+ Makefile.am            |  4 ++--
+ configure.ac           |  2 +-
+ geocode-glib-1.0.pc.in | 11 +++++++++++
+ geocode-glib.pc.in     | 11 -----------
+ 4 files changed, 14 insertions(+), 14 deletions(-)
+
+commit 848b9df9149d9408c53fb8c7d1808ae545c944fd
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Mar 19 03:18:05 2013 +0200
+
+    build: Specify main header in gir file
+    
+    This might not be important for gir itself but vala requires this
+    information.
+
+ geocode-glib/Makefile.am | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit 8e34a7f9221f686c02962bd2c5beec67186bf6cd
+Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Date:   Tue Mar 19 02:52:18 2013 +0200
+
+    lib: Correct docs/annotation for geocode_forward_search*
+
+ geocode-glib/geocode-forward.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+commit 115b4382d849b7d26f55016e3308a73f2234451d
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Fri Mar 1 15:03:21 2013 +0530
+
+    ip-server: Add country and city DB updater
+
+ configure.ac                                  |   4 +
+ geocode-glib/geocode-ip-server/Makefile.am    |   3 +-
+ geocode-glib/geocode-ip-server/geoip-update.c | 220 ++++++++++++++++++++++++++
+ 3 files changed, 226 insertions(+), 1 deletion(-)
+
+commit 2c6e5e590647bff570fff101f87048fce740ad54
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Feb 20 13:02:01 2013 +0100
+
+    ipclient: Add guards for invalid server property
+    
+    To avoid us constructing query URLs with invalid values.
+
+ geocode-glib/geocode-ipclient.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 702c3e7cc42f52c333776b70837adbc6ee5785b9
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Feb 20 13:00:16 2013 +0100
+
+    ipclient: Validate the server property
+    
+    To avoid invalid values being passed.
+
+ geocode-glib/geocode-ipclient.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+commit 691486abfc05b3a73e6b8b247034105e39d26d3d
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Mon Feb 11 16:34:31 2013 +0530
+
+    ipclient: Add server URI as a property
+    
+    To the GeocodeIpclient object
+
+ geocode-glib/geocode-ipclient.c | 63 ++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 59 insertions(+), 4 deletions(-)
+
+commit 5d5b010d1a6d8041d89073beb2d0a89b677ecf0e
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Feb 6 14:36:18 2013 +0530
+
+    server: change GEOIP_DATABASE_PATH env variable
+    
+    to be a path to a directory and change the error message accordingly
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 22 ++++++++++------------
+ 1 file changed, 10 insertions(+), 12 deletions(-)
+
+commit 3353dbc649a5154edc5e990219268ab1de3de205
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Tue Feb 12 17:28:58 2013 +0530
+
+    ipclient: Add gtk-doc annotations
+
+ docs/geocode-glib-docs.xml      |  1 +
+ geocode-glib/geocode-ipclient.c | 64 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 65 insertions(+)
+
+commit 4bb34b41fbd6c57a5ac84032f648f02a74ed900d
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Feb 12 09:56:58 2013 +0100
+
+    tests: Add the Full Monty of annoying auth modules
+    
+    So that httpd stops complaining about auth not being done.
+
+ geocode-glib/geocode-ip-server/tests/launch-web-server.sh | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+commit 1478e02881bb0dc36d1d45c3dcc5adda5b764a08
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Feb 12 09:56:47 2013 +0100
+
+    tests: Correct run-time directory
+
+ geocode-glib/geocode-ip-server/tests/launch-web-server.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit a84c2853d4f37cd7939190ac81cc92cd90fa7019
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Feb 12 09:26:45 2013 +0100
+
+    tests: Add some necessary modules
+    
+    For httpd to start up.
+
+ geocode-glib/geocode-ip-server/tests/launch-web-server.sh | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit d8e8c0faeff2c60742923c892ca976cb9104f87a
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Feb 12 09:26:18 2013 +0100
+
+    tests: Use relative module paths by default
+
+ .../geocode-ip-server/tests/launch-web-server.sh   | 35 +++++++++++-----------
+ 1 file changed, 18 insertions(+), 17 deletions(-)
+
+commit 0e4d0aa0920a0ddeaea411554c0184df5dd94ea1
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Feb 12 09:25:35 2013 +0100
+
+    tests: Check for httpd on Fedora
+
+ geocode-glib/geocode-ip-server/tests/launch-web-server.sh | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 0ad5610706f0892991ade230be0206a5cf4ddfb0
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 30 16:22:35 2013 +0530
+
+    server script: Set a server side proxy variable
+    
+    To test the scenario when the IP address is not provided by the client
+
+ geocode-glib/geocode-ip-server/tests/launch-web-server.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 0b2a970f4081dbef8d10e4a4e0df00fcbe934c6f
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 30 16:18:34 2013 +0530
+
+    script: Make a soft link of the server in cgi-bin/
+
+ geocode-glib/geocode-ip-server/tests/launch-web-server.sh | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+commit 5358223feff13e519590b7e22dd0046f3d366cbd
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Tue Jan 29 16:39:30 2013 +0530
+
+    server: Error out if IP address in query is invalid
+    
+    If the server finds some IP address in the query string and it's an
+    invalid IP address, it returns an error message.
+    
+    Earlier it was trying to guess the IP address of the client if the
+    query string contained an invalid IP address.
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+commit d102c7c1316c194c02bb17113972eef8f72782b8
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Tue Jan 29 16:12:40 2013 +0530
+
+    tests: Check the status of the request in the JSON output
+    
+    By adding an assert on error.
+
+ geocode-glib/test-geoip.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 9c547ef4726883067fb926f6cb739a8d94991e49
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 30 14:53:00 2013 +0530
+
+    server: Add status key to the JSON output
+    
+    The status member contains the status of the request.
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+commit 8a1839ef67890f7e26cd009fed9816f5aadd5384
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 30 14:51:45 2013 +0530
+
+    server: Coding style fixes
+    
+    Indentation and the likes.
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+commit d889f52ac40b71a278da9b0049062929a8fd760b
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 30 19:44:33 2013 +0530
+
+    ipclient: Add IP Geocoding client
+    
+    Add synchronous and asynchronous functions to talk to the server
+
+ geocode-glib/Makefile.am          |   9 +-
+ geocode-glib/geocode-glib.symbols |   6 ++
+ geocode-glib/geocode-ipclient.c   | 217 ++++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-ipclient.h   |  83 +++++++++++++++
+ geocode-glib/test-geoip.c         | 103 ++++++++++++++++++
+ 5 files changed, 415 insertions(+), 3 deletions(-)
+
+commit dc6ba526586f31c5f55460be11fcab5bce5f2ea0
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 23 16:59:38 2013 +0530
+
+    server: Add a stop/start script
+    
+    To launch/stop the local server to test the server code
+
+ .../geocode-ip-server/tests/launch-web-server.sh   | 159 +++++++++++++++++++++
+ 1 file changed, 159 insertions(+)
+
+commit 5f638c4e3f93a26c2621510a948d58db010f3d4b
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 30 12:48:55 2013 +0530
+
+    server: Add support for the country-only database
+    
+    The JSON output will contain a member called accuracy to point out
+    whether the result is fetched from the city or country database.
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 103 ++++++++++++++++++++++----
+ 1 file changed, 89 insertions(+), 14 deletions(-)
+
+commit fdd47b883b9911e7fd50e723b360c1264aceb3c4
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 30 12:44:27 2013 +0530
+
+    server: Move print_error_in_json()
+    
+    The function will be needed by the other functions.
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
+
+commit 901b9dfae586d28ce20687c26ca59884719ce2e1
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 30 12:27:04 2013 +0530
+
+    server: Remove unnecessary error messages
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+commit 30baf8107b28ca9539ef89fee76d89c28f9c853a
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Wed Jan 30 17:35:24 2013 +0530
+
+    server: Handle requests coming from proxies better
+    
+    Inspect proxy related variables to find the IP address of the client
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 79 ++++++++++++++++++++++-----
+ 1 file changed, 66 insertions(+), 13 deletions(-)
+
+commit 68d088a64f505856b10f2178eb6cd99ceaaea7fc
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Jan 13 21:43:05 2013 +0100
+
+    server: Coding style fixes
+    
+    We don't use "gchar", only "char".
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
+
+commit 8c49ab29c74a62346b3da26c553d476d327bf457
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Jan 13 21:34:24 2013 +0100
+
+    server: Use path from geoip.pc to locate the database
+    
+    Unless it's overridden by the GEOIP_DATABASE_PATH envvar.
+
+ configure.ac                                  | 3 +++
+ geocode-glib/geocode-ip-server/Makefile.am    | 2 +-
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 6 ++----
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+commit 38bfa5be89c91efc4196f5f63c7bb453801a7739
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Jan 13 21:34:06 2013 +0100
+
+    server: Better error message for missing database
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit f663b538ba2fc2ec9dd5612b0dd29f40cdaa52ca
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Jan 13 21:16:29 2013 +0100
+
+    server: Fix error when QUERY_STRING is not passed
+    
+    We would bail out as soon as we saw that the query string was empty,
+    but we would lookup REMOTE_ADDR if the query string was invalid.
+
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 38 ++++++++++++++++-----------
+ 1 file changed, 22 insertions(+), 16 deletions(-)
+
+commit 5979a82c2bc5bfa41273b243872272f7ee6df404
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Jan 13 21:15:02 2013 +0100
+
+    server: Fix pkg-config usage
+    
+    We cannot aggregate CFLAGS or LIBS like that, we need to pass
+    all the needed modules to pkg-config which will take care of removing
+    duplicates and ordering correctly.
+
+ configure.ac                               | 5 ++++-
+ geocode-glib/geocode-ip-server/Makefile.am | 4 ++--
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+commit 06b7deb28d255d3814aa66cf8dc8f98c86ce8d62
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Fri Jan 11 19:11:00 2013 +0530
+
+    server: Add GeoIP server
+    
+    For use as a cgi-bin script for a web server.
+
+ configure.ac                                  |   5 +
+ geocode-glib/Makefile.am                      |   2 +
+ geocode-glib/geocode-ip-server/Makefile.am    |  13 ++
+ geocode-glib/geocode-ip-server/geoip-lookup.c | 236 ++++++++++++++++++++++++++
+ 4 files changed, 256 insertions(+)
+
+commit 4b8ea0d0dd9ad99b4d48cebb570a8543c1062b98
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Jan 13 20:33:50 2013 +0100
+
+    lib: Remove dead code
+    
+    This code didn't do anything.
+
+ geocode-glib/geocode-forward.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit 04523dcc38714b48ee3b0a0d5a0f0c4c5094b4de
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Dec 2 22:37:50 2012 +0100
+
+    lib: Simplify while loop into a for loop
+
+ geocode-glib/geocode-forward.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+commit 08644453de100a23817aa5133e92b1d6f22662b0
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Dec 3 10:22:53 2012 +0100
+
+    TODO: Update for libgweather requirements
+
+ TODO | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 66a7872aac16120c66c17510cbd15e6b8ba9228d
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Dec 3 10:22:25 2012 +0100
+
+    lib: Add woeid to the PlaceFinder results
+
+ geocode-glib/geocode-reverse.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 79353ab4973995f353f4d31e31dc101f6931a3cf
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Dec 3 10:14:38 2012 +0100
+
+    lib: Fix memory leak looking for a single item
+
+ geocode-glib/geocode-forward.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 4bfba11ce18cf33ef5ee6940d8b318cbc411dd57
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Dec 3 10:13:06 2012 +0100
+
+    lib: Simplify returning the value
+
+ geocode-glib/geocode-forward.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+commit 1570dde2a41b415ee78e0ac240ae2b2574188030
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Dec 3 08:00:30 2012 +0100
+
+    lib: Use new _set_description() helper
+
+ geocode-glib/geocode-forward.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+commit 2c5bd3fee3b2a4c4ab533ff6fa1c27b31ed404ce
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Dec 3 07:59:19 2012 +0100
+
+    lib: Add geocode_location_set_description() helper
+
+ geocode-glib/geocode-glib.symbols |  1 +
+ geocode-glib/geocode-location.c   | 17 +++++++++++++++++
+ geocode-glib/geocode-location.h   |  3 +++
+ 3 files changed, 21 insertions(+)
+
+commit 35da4766cb7f39d0d873a7d0d3f982ee1ea1ac49
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Dec 3 07:50:02 2012 +0100
+
+    lib: Simplify while loop for a for loop
+
+ geocode-glib/geocode-forward.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+commit bee16294df1f70ce044701680919a92db68a2e88
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Dec 3 07:48:48 2012 +0100
+
+    lib: Use a dynamic array instead of a static one
+
+ geocode-glib/geocode-forward.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+commit ae959b755b2fcedefbd585222fb8ff0ac542e810
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Dec 2 22:17:40 2012 +0100
+
+    TODO: Update for recent developments
+
+ TODO | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 8ebaf338133af766e3ca6104a0a0a0ff96a623a5
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Dec 2 21:55:16 2012 +0100
+
+    test: Fix search (aka Paris) and locale tests
+    
+    As well as adjusting other results, following the description
+    differentiation changes.
+
+ geocode-glib/test-gcglib.c | 51 +++++++++++++++++++++++-----------------------
+ 1 file changed, 25 insertions(+), 26 deletions(-)
+
+commit ae430247918b779ab80e7a9da524fe2efed8ba2e
+Author: Satabdi Das <satabdidas@gmail.com>
+Date:   Sun Dec 2 15:22:00 2012 +0530
+
+    lib: Create a better description for search results
+    
+    Populate all the results in a tree, from the smallest
+    administration area up to the biggest one. We then use this
+    to create a description with the necessary differentiation
+    to make the results apart from each other.
+
+ geocode-glib/geocode-forward.c | 162 +++++++++++++++++++++++++++++++++++------
+ geocode-glib/geocode-glib.c    |   8 +-
+ 2 files changed, 146 insertions(+), 24 deletions(-)
+
+commit bcf427f4d47c77fd6c4432d230f31a7ffbff75a7
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Nov 28 19:21:16 2012 +0100
+
+    build: Bump requirements again for g_clear_pointer()
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 19d0b5cdb592adeef0662c0b35f263ef9c57e7e5
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Nov 28 17:01:16 2012 +0100
+
+    build: Require a new enough glib
+    
+    For g_clear_object() to be used.
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4166caeeb0b8a10f4276d063dd707315d9415ee8
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Nov 26 14:43:59 2012 +0100
+
+    test: Add test for unlimited results in paris test case
+
+ geocode-glib/test-gcglib.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 38b4169299f622d87cdda45622d4a9f7f0c5da6a
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Nov 26 14:43:44 2012 +0100
+
+    lib: Use DEFAULT_ANSWER_COUNT in test
+
+ geocode-glib/geocode-forward.c      | 2 --
+ geocode-glib/geocode-glib-private.h | 1 +
+ geocode-glib/test-gcglib.c          | 5 +++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+commit a939c708e256f4689b3f6da56224865321837218
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Nov 26 14:30:55 2012 +0100
+
+    lib: Handle 0 answer count as unlimited results
+
+ geocode-glib/geocode-forward.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 67d2a4884526b7adfbfdafdf0bfaee4eae9b8c14
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Nov 26 10:29:12 2012 +0100
+
+    tests: Add GeoPlanet parsing test case
+
+ TODO                                 |  1 -
+ geocode-glib/data/geoplanet-rio.json |  1 +
+ geocode-glib/test-gcglib.c           | 20 +++++++++++++++++++-
+ 3 files changed, 20 insertions(+), 2 deletions(-)
+
+commit 894e9434a6b595a9d40e9d6867fa95855c0b6959
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Nov 26 10:28:30 2012 +0100
+
+    lib: Add debug for where cache files are saved/loaded
+    
+    Makes saving a particular query's results much easier.
+
+ geocode-glib/geocode-glib.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 41218e21d244bcb5e599740e0dce72f75b726a98
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Nov 26 10:17:23 2012 +0100
+
+    tests: Load tests from external files
+    
+    Having to escape the JSON in a C file to test it just wasn't
+    very practical (and would slow down vim too).
+
+ geocode-glib/Makefile.am                      |  2 +-
+ geocode-glib/data/placefinder-area.json       |  1 +
+ geocode-glib/data/placefinder-got-error.json  |  1 +
+ geocode-glib/data/placefinder-no-results.json |  1 +
+ geocode-glib/test-gcglib.c                    | 21 ++++++++++++++++-----
+ 5 files changed, 20 insertions(+), 6 deletions(-)
+
+commit a17bc46448f8d31ea0dec7228cfc3479defae985
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Nov 26 10:06:55 2012 +0100
+
+    README: Add mention of other web service used
+
+ README | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit c9bba351d332ad1f16b5166eb4adeb745426ce0b
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon Nov 26 10:05:45 2012 +0100
+
+    lib: Fix GeocodeForward XEP test
+    
+    One of the fields we were supposed to ignore was getting added
+    to the query with a NULL key name.
+
+ geocode-glib/geocode-forward.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 295a039f157657252819969524f40f72ca19dbe9
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 23:14:05 2012 +0100
+
+    lib: Print warning for unknown XEP attributes
+
+ TODO                           |  1 -
+ geocode-glib/geocode-forward.c | 45 ++++++++++++++++++++++++++++++------------
+ 2 files changed, 32 insertions(+), 14 deletions(-)
+
+commit 33af5cdce76919f4763c066a48639d7c06644e92
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 22:34:51 2012 +0100
+
+    lib: Simplify _new_for_params() internally
+
+ geocode-glib/geocode-forward.c | 21 +++++++--------------
+ 1 file changed, 7 insertions(+), 14 deletions(-)
+
+commit 6d20e9f79333d79c34b6f1b948162140d3fb8969
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 21:48:40 2012 +0100
+
+    lib: Add function to calculate distance between 2 locations
+
+ geocode-glib/geocode-glib.symbols |  1 +
+ geocode-glib/geocode-location.c   | 37 +++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-location.h   |  3 +++
+ geocode-glib/test-gcglib.c        | 16 ++++++++++++++++
+ 4 files changed, 57 insertions(+)
+
+commit 8ca3fcde2eb7d3c9da95da44889287a883f67962
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 20:48:17 2012 +0100
+
+    lib: Make the rev geocoding results use XEP attributes
+    
+    Translate all the attributes we can to XEP attributes, and leave
+    the others untouched (for debugging purposes, or because there is
+    knowledge of the web service, eg. Place Finder returns timezone and
+    airport information in some cases).
+
+ TODO                           |  1 -
+ geocode-glib/geocode-reverse.c | 52 ++++++++++++++++++++++++++++++++++++++++--
+ geocode-glib/test-gcglib.c     |  4 ++--
+ 3 files changed, 52 insertions(+), 5 deletions(-)
+
+commit 1fd9a653551a26839969074c84dd19d7f4267a01
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 20:42:12 2012 +0100
+
+    docs: Link to the Unix time Wikipedia article
+
+ geocode-glib/geocode-location.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 545c36f54493255d476faee2e27f063edc2caa67
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 18:30:26 2012 +0100
+
+    lib: Do validation of lat/long when creating the location
+
+ geocode-glib/geocode-location.c | 9 +++++++++
+ geocode-glib/geocode-reverse.c  | 9 ---------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+commit c8a481018c2523ec450b405ba1f578d19b6cdf4d
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 18:24:22 2012 +0100
+
+    lib: Update API docs
+
+ TODO                            |  1 -
+ geocode-glib/geocode-forward.c  | 28 ++++++++++++----------------
+ geocode-glib/geocode-forward.h  |  7 +++++++
+ geocode-glib/geocode-glib.c     |  4 ++--
+ geocode-glib/geocode-location.c | 32 ++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-location.h | 16 ++++++++++++++--
+ geocode-glib/geocode-reverse.c  | 32 ++++++++++++++------------------
+ geocode-glib/geocode-reverse.h  |  7 +++++++
+ 8 files changed, 88 insertions(+), 39 deletions(-)
+
+commit 9eaba2e9839d10bab23102579472c4db93b64454
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 18:13:50 2012 +0100
+
+    docs: Add missing docs to the index
+
+ docs/Makefile.am           | 4 ++--
+ docs/geocode-glib-docs.xml | 5 +++++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+commit 0f0b238bc93db11832f6d3e6079194c5963a4073
+Author: Ryan Lortie <desrt@desrt.ca>
+Date:   Sun Nov 25 10:32:32 2012 -0500
+
+    geocode-glib: fix installation of headers
+    
+    geocode-glib.h includes various headers (like glib-reverse.h and
+    glib-error.h) so we should make sure that those are installed as well.
+
+ geocode-glib/Makefile.am | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+commit 07e720095f996cf3b13c250f3d2c14f2809760f1
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 18:08:34 2012 +0100
+
+    TODO: Update
+
+ TODO | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+commit 3ea5e3ab27b69ae2b03d98b22437cab2476d8d39
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 02:56:22 2012 +0100
+
+    lib: Fix the coords parsing from searches
+    
+    The lat/long were swapped. Add a test case for it (-100 is an
+    invalid latitude).
+
+ geocode-glib/geocode-forward.c | 12 ++++++------
+ geocode-glib/test-gcglib.c     | 30 ++++++++++++++++++++++++++++--
+ 2 files changed, 34 insertions(+), 8 deletions(-)
+
+commit 4955df84543442b884c21f501296cb895f2766a5
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 02:28:25 2012 +0100
+
+    lib: Remove GeocodeObject
+    
+    Now that we have working GeocodeForward and GeocodeReverse objects
+    for searches, and GeocodeLocation for the results.
+
+ geocode-glib/geocode-glib.c       | 790 --------------------------------------
+ geocode-glib/geocode-glib.h       |  65 ----
+ geocode-glib/geocode-glib.symbols |  14 -
+ 3 files changed, 869 deletions(-)
+
+commit f3eccb3107b6fa5dfdea82bd38ed8189004aded9
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 02:24:35 2012 +0100
+
+    lib: Remove duplicated _get_lang() functions
+
+ geocode-glib/geocode-forward.c      | 79 +------------------------------------
+ geocode-glib/geocode-glib-private.h |  2 +
+ geocode-glib/geocode-glib.c         | 10 ++---
+ geocode-glib/geocode-reverse.c      | 79 +------------------------------------
+ 4 files changed, 9 insertions(+), 161 deletions(-)
+
+commit 4ab3ac60f4dfdfcd5b5c1f99147396862416bba3
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 02:18:14 2012 +0100
+
+    test: Add test for the radix difference
+    
+    Note that we cannot directly compare the long/lat with the
+    expected results because
+    37.614970999999002 != 37.614971
+    Sigh.
+
+ geocode-glib/test-gcglib.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 7b5d91bad588c1157f92498110508cf1d482d5aa
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 02:04:02 2012 +0100
+
+    test: Port locale test to GeocodeForward
+    
+    At least, partially
+
+ geocode-glib/test-gcglib.c | 31 ++++++++++++++++++-------------
+ 1 file changed, 18 insertions(+), 13 deletions(-)
+
+commit 00467d8d40620798e2fd71d95b300df3b38b6bc1
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 02:03:46 2012 +0100
+
+    test: Clean test search
+
+ geocode-glib/test-gcglib.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 85cc45f3ae7d22de383853129faa64c75ddec3ea
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 01:49:40 2012 +0100
+
+    lib: Fix some results not being in the right language
+    
+    The webserver expects "cs-CZ", not "cz_CZ".
+
+ geocode-glib/geocode-forward.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 6aef461bdc92f8ae8bdbe8741152fe625be22a14
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 01:44:06 2012 +0100
+
+    test: Россия means Russia, not Moscow :)
+
+ geocode-glib/test-gcglib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 956b90fdd9a50080c519c3f1c5926edd332a1134
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 01:37:02 2012 +0100
+
+    lib: Fix search long/lat in some locales
+    
+    When the radix isn't ".", we created long/lat in strings that
+    we couldn't parse later on.
+
+ geocode-glib/geocode-forward.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+commit 685a263990e867ef3c28be75fd188db308d098ef
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 01:08:03 2012 +0100
+
+    test: Add --count argument for forward geocoding
+
+ geocode-glib/test-gcglib.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 0a287710c16fdeefd85c5e3535bc2827be8bcc16
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 01:07:31 2012 +0100
+
+    test: Fix long/lat parsing in some locales
+
+ geocode-glib/test-gcglib.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit a4a5f8c145f1030c4fa559447cac03552c8ea12f
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 01:04:20 2012 +0100
+
+    lib: Add description to the result
+
+ geocode-glib/geocode-forward.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 5eeedb32550d6b289242c35be9ceaca963ba07bf
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 01:03:05 2012 +0100
+
+    lib: Fix long/lat parsing in some locales
+    
+    Fix parsing of the results when "." isn't the radix character
+
+ geocode-glib/geocode-forward.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 620610ba7dcfa0a38d4a67145779576dfcf5cf2d
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 00:13:56 2012 +0100
+
+    test: Port interactive tests to new objects
+
+ geocode-glib/test-gcglib.c | 76 +++++++++++++++++++++++++++-------------------
+ 1 file changed, 44 insertions(+), 32 deletions(-)
+
+commit af5381e5a2104c464d2c79ad7c1509e13f8f763c
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 23:38:17 2012 +0100
+
+    test: Port pub test to GeocodeForward
+
+ geocode-glib/test-gcglib.c | 31 ++++++++++++++++---------------
+ 1 file changed, 16 insertions(+), 15 deletions(-)
+
+commit b1d1f92a87658da3f72d91c992ca564f1fc036bc
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 23:33:20 2012 +0100
+
+    test: Use GeocodeForward in XEP test
+
+ geocode-glib/test-gcglib.c | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+
+commit 41046d68f0f9ee95e8caf61d3cdf98652bf49c18
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 21:12:21 2012 +0100
+
+    test: Use GeocodeReverse object
+
+ geocode-glib/test-gcglib.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+commit dbee861b7831c87abd4254de186c48eea25c21df
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 19:10:17 2012 +0100
+
+    test: First pass at using GeocodeForward
+
+ geocode-glib/test-gcglib.c | 32 +++++++++++++-------------------
+ 1 file changed, 13 insertions(+), 19 deletions(-)
+
+commit db7cc95d248551d3211db15280db13ef593c0d6d
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sun Nov 25 00:11:39 2012 +0100
+
+    lib: Add helper to free GeocodeLocation objects
+
+ geocode-glib/geocode-glib.symbols | 1 +
+ geocode-glib/geocode-location.c   | 7 ++-----
+ geocode-glib/geocode-location.h   | 2 ++
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+commit 8d68b9675ed58fe7be24ca42f2acd49fc4371795
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 23:27:44 2012 +0100
+
+    lib: Special-case the single answer query
+    
+    And provide better results by using the Place Finder APIs.
+
+ geocode-glib/geocode-forward.c | 70 +++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 65 insertions(+), 5 deletions(-)
+
+commit 36c5da513bff1fd1901659af75dff571189aa100
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 23:25:37 2012 +0100
+
+    lib: Export function to create query
+    
+    The GeoPlanet API used by the forward geocoding is too
+    imprecise when we expect to use a single result. So we
+    export some more function to allow using the Place Finder
+    API (that the reverse geocoding usually uses).
+
+ geocode-glib/geocode-glib-private.h |  2 ++
+ geocode-glib/geocode-reverse.c      | 15 ++++++++-------
+ 2 files changed, 10 insertions(+), 7 deletions(-)
+
+commit a63db4fb411e0606c0f0575b7002bad4942c870f
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 21:30:26 2012 +0100
+
+    lib: Move json parsers to the objects
+
+ geocode-glib/geocode-forward.c |  12 +-
+ geocode-glib/geocode-glib.c    | 260 -----------------------------------------
+ geocode-glib/geocode-reverse.c |   8 +-
+ 3 files changed, 9 insertions(+), 271 deletions(-)
+
+commit d33cf37823e5b5f527e55fa3d7969494bee60a3a
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 21:17:15 2012 +0100
+
+    lib: Small indent fix in private header
+
+ geocode-glib/geocode-glib-private.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8e8df4daa50ef2e7734e3635f0483bae5e11a89a
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 21:12:00 2012 +0100
+
+    lib: Add GeocodeReverse object
+    
+    To do reverse geocoding from.
+
+ geocode-glib/Makefile.am          |   2 +
+ geocode-glib/geocode-glib.h       |   1 +
+ geocode-glib/geocode-glib.symbols |   5 +
+ geocode-glib/geocode-reverse.c    | 627 ++++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-reverse.h    |  74 +++++
+ 5 files changed, 709 insertions(+)
+
+commit 9ac3bfb98fa0e4627123a233666a3ec23e6d3fb9
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 24 19:09:25 2012 +0100
+
+    lib: Add GeocodeForward
+    
+    The description generation isn't implemented yet though.
+
+ geocode-glib/Makefile.am          |   4 +-
+ geocode-glib/geocode-forward.c    | 738 ++++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-forward.h    |  78 ++++
+ geocode-glib/geocode-glib.h       |   1 +
+ geocode-glib/geocode-glib.symbols |   7 +
+ 5 files changed, 827 insertions(+), 1 deletion(-)
+
+commit e6e58e3d5fcc08bb6faec12e4a8f667c77355764
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 3 00:42:29 2012 +0100
+
+    lib: Export the caching functions internally
+
+ geocode-glib/geocode-glib-private.h |  7 +++++++
+ geocode-glib/geocode-glib.c         | 34 +++++++++++++++++-----------------
+ 2 files changed, 24 insertions(+), 17 deletions(-)
+
+commit 2b93c8703ed59d04d811c91ce4024095c0195193
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Sat Nov 3 00:33:29 2012 +0100
+
+    lib: Remove _set_lookup_type() from private API
+    
+    It very soon won't be needed.
+
+ geocode-glib/geocode-glib-private.h | 2 --
+ geocode-glib/geocode-glib.c         | 9 ---------
+ geocode-glib/geocode-glib.symbols   | 1 -
+ geocode-glib/test-gcglib.c          | 6 ++++--
+ 4 files changed, 4 insertions(+), 14 deletions(-)
+
+commit 464eb1e52bee30d9df38861cc446ae0d26d5c9c6
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 31 23:59:35 2012 +0100
+
+    lib: Add simple GeocodeLocation object
+
+ geocode-glib/Makefile.am          |  4 +-
+ geocode-glib/geocode-glib.h       |  1 +
+ geocode-glib/geocode-glib.symbols |  3 ++
+ geocode-glib/geocode-location.c   | 79 +++++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-location.h   | 50 +++++++++++++++++++++++++
+ 5 files changed, 136 insertions(+), 1 deletion(-)
+
+commit 445d6446ebce9a7fb2fcb0cd2cd03b400ad8891b
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 31 23:58:58 2012 +0100
+
+    lib: Include geocode-error.h in the main header
+
+ geocode-glib/Makefile.am    | 8 ++++----
+ geocode-glib/geocode-glib.h | 1 +
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+commit 1b063b60cae794519103ddd36ad41c68576bf4f1
+Author: Matthew Barnes <mbarnes@redhat.com>
+Date:   Mon Nov 5 11:58:13 2012 -0500
+
+    Bump version to 0.99.1.
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 11db40a8901d1e78e31d79ad958b184ba5327a45
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 31 23:29:51 2012 +0100
+
+    lib: Fix possible use of uninitialised variable
+
+ geocode-glib/geocode-glib.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 17748f832c244546d87b4f5871d2a550d3bc3d27
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 19:06:47 2012 +0200
+
+    test: Add a --reverse option for reverse geocoding
+
+ geocode-glib/test-gcglib.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 7b0fef16cc627a9f7061de3f2bc389e19b623068
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 19:06:34 2012 +0200
+
+    lib: Add a way to change the lookup type
+
+ geocode-glib/geocode-glib-private.h | 2 ++
+ geocode-glib/geocode-glib.c         | 9 +++++++++
+ geocode-glib/geocode-glib.symbols   | 1 +
+ 3 files changed, 12 insertions(+)
+
+commit d3b30a19222b311993067ce4c04273b63cae0b5f
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 18:40:04 2012 +0200
+
+    lib: Report invalid arguments when searching/resolving
+
+ geocode-glib/geocode-glib.c | 50 +++++++++++++++++++++++++++++++--------------
+ 1 file changed, 35 insertions(+), 15 deletions(-)
+
+commit c2fe0964f4d23a1c3323dda0435e07e2f5965002
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 18:38:47 2012 +0200
+
+    lib: Add "invalid arguments" error
+
+ geocode-glib/geocode-error.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 41e069e1beb95adbd282f7cf4a923c03070a6370
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 18:28:14 2012 +0200
+
+    lib: Don't ever have a failing _new() call
+
+ geocode-glib/geocode-glib.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+commit c1d5003b04fa4f1f0b3275df8e6b26264e3a8484
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 16:08:15 2012 +0200
+
+    lib: Handle the "language" key from Telepathy
+
+ geocode-glib/geocode-glib.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+commit 81dd3b883a95673c85de34b55a0cfa8da89e8bb1
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 16:02:19 2012 +0200
+
+    lib: Add geocode_object_new_for_params_str() function
+
+ geocode-glib/geocode-glib.c       | 71 +++++++++++++++++++++++++++++++++------
+ geocode-glib/geocode-glib.h       |  9 ++---
+ geocode-glib/geocode-glib.symbols |  1 +
+ 3 files changed, 66 insertions(+), 15 deletions(-)
+
+commit c753b368b211c1d1f7f3c11ce2aa86a2324d1afe
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 15:58:48 2012 +0200
+
+    lib: Add introspection annotation for GHashTable
+
+ geocode-glib/geocode-glib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a73aa7b30a9e73a47b0effa13189554be8aec218
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 12:13:42 2012 +0200
+
+    TODO: Remove done item
+
+ TODO | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 9eabc5c9e56ff3e08765d880cc8bf7bbf5d325bf
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 12:10:51 2012 +0200
+
+    lib: Implement _search_async()
+
+ geocode-glib/geocode-glib.c | 33 +++++++++++++++++++++------------
+ 1 file changed, 21 insertions(+), 12 deletions(-)
+
+commit 642c82a35422c67d4d9ea514123908a9470a32e4
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 12:10:22 2012 +0200
+
+    lib: Fix retval of _search_finish()
+
+ geocode-glib/geocode-glib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 972b89550fec69fbb3043908858862f5aed4e1b5
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 12:10:00 2012 +0200
+
+    lib: Tag search objects as such
+
+ geocode-glib/geocode-glib.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit f9bd73907701c622108f998e231df1f9f90d9432
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Oct 24 12:08:31 2012 +0200
+
+    lib: Add a way to differentiate search from resolve
+
+ geocode-glib/geocode-glib.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+commit 36d3351c042802b55c9b668c3727d9d316919896
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Oct 16 15:19:55 2012 +0200
+
+    TODO: Update TODO
+
+ TODO | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+commit 4de6fab3722ebb23d62e9e4a78cff789133ff5be
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Oct 19 19:07:54 2012 +0200
+
+    README: Update
+    
+    Add new API and applications section
+
+ README | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+commit 7c2c5c02155f62a008cfa893e1aac4742c30f848
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Oct 19 19:07:27 2012 +0200
+
+    test: Add empty json search parser test
+
+ geocode-glib/test-gcglib.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+commit f05e2f314f8b74859f810f7388f8465afd0afd19
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Oct 19 19:06:58 2012 +0200
+
+    test: Add ability to do a search from the command-line
+
+ geocode-glib/test-gcglib.c | 61 +++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 49 insertions(+), 12 deletions(-)
+
+commit 0d732a71d38cb62de4595b8270d505563e534a5c
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Oct 19 19:06:21 2012 +0200
+
+    test: Add search test
+
+ geocode-glib/test-gcglib.c | 55 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 55 insertions(+)
+
+commit c6f30d1c1b772a923aba9eb59858fdd0bbdd7173
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Oct 19 18:57:30 2012 +0200
+
+    lib: Only cache if we don't have a parsing error
+
+ geocode-glib/geocode-glib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit bc6316dc769d924d71c15898d5a8d8aef0dda3b2
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Oct 19 18:55:09 2012 +0200
+
+    lib: Fix memory leak in PlaceFinder JSON parser
+
+ geocode-glib/geocode-glib.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit c9b72cad8658e0ab23c941eebfc5d193c81a4836
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Oct 19 18:54:20 2012 +0200
+
+    lib: Add forward geocoding search
+    
+    Through the Yahoo! GeoPlanet API.
+
+ geocode-glib/geocode-glib-private.h |   6 +-
+ geocode-glib/geocode-glib.c         | 374 ++++++++++++++++++++++++++++++++----
+ geocode-glib/geocode-glib.h         |  12 ++
+ geocode-glib/geocode-glib.symbols   |   6 +-
+ geocode-glib/test-gcglib.c          |   2 +-
+ 5 files changed, 362 insertions(+), 38 deletions(-)
+
+commit 68136fb8accca6768ca0140dcf530e6cfe7367e5
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Fri Oct 19 18:52:49 2012 +0200
+
+    build: Require the stable version of json-glib
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 072ad0ff0af6fcc5aeaa7875370796297dccbe11
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Oct 18 16:59:38 2012 +0200
+
+    lib: Rename the enumeration
+
+ geocode-glib/geocode-glib-private.h |  4 ++--
+ geocode-glib/geocode-glib.c         | 10 +++++-----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+commit 647af2348eb6c24c8670060740d980e957dd539f
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Oct 18 15:57:22 2012 +0200
+
+    test: Add locale based test
+
+ geocode-glib/test-gcglib.c | 46 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+
+commit 1080d3f2378c42077e8a128c21af2ef7e0831961
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Oct 18 15:54:22 2012 +0200
+
+    lib: Add locale aware search results
+    
+    So that accents and other appropriate alphabets are used.
+
+ geocode-glib/geocode-glib.c | 84 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 84 insertions(+)
+
+commit f965a239c5e4b505caced0b1c65c76156c9c2421
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Oct 18 15:19:27 2012 +0200
+
+    lib: Don't modify the user given parameters
+
+ geocode-glib/geocode-glib.c | 56 +++++++++++++++++++++++++++++++++------------
+ 1 file changed, 41 insertions(+), 15 deletions(-)
+
+commit 4464c14540ad46e272d8f0dc673bb30020d4ab9c
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Oct 18 14:59:39 2012 +0200
+
+    lib: Make lookup type an enum
+
+ geocode-glib/geocode-glib-private.h | 5 +++++
+ geocode-glib/geocode-glib.c         | 7 ++++---
+ 2 files changed, 9 insertions(+), 3 deletions(-)
+
+commit 01636d1b2f61dd77e54dc528aaa341bab32e8698
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Oct 18 14:58:54 2012 +0200
+
+    lib: geocode_object_add() is for bindings
+
+ geocode-glib/geocode-glib.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit 84c9c92db4b02f596dd1f92a18f0d6ab9306819a
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Oct 18 14:39:52 2012 +0200
+
+    lib: Move application ID to be a constant
+
+ geocode-glib/geocode-glib-private.h | 2 ++
+ geocode-glib/geocode-glib.c         | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+commit b903a8aaf7e38f4034d6bdf80863078449f4e171
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Oct 16 15:19:31 2012 +0200
+
+    lib: Mention the one result or nothing behaviour of the API
+
+ geocode-glib/geocode-glib.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 088f31d6c2eab04a2db871d7da2a665b322a9884
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Oct 16 12:38:55 2012 +0200
+
+    lib: Remove geocode_object_new() from the public API
+
+ geocode-glib/geocode-glib.c | 21 +++------------------
+ geocode-glib/geocode-glib.h |  1 -
+ geocode-glib/test-gcglib.c  |  2 +-
+ 3 files changed, 4 insertions(+), 20 deletions(-)
+
+commit 8f464535a8ca6b16cd6d5c9565f7a56b6f978a7f
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Oct 16 12:30:09 2012 +0200
+
+    test: Use geocode_object_new_for_location()
+
+ geocode-glib/test-gcglib.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 47bf732240186a5b9b2ddba2aafe693698931ea0
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Oct 16 12:29:54 2012 +0200
+
+    lib: Add geocode_object_new_for_location() helper
+
+ geocode-glib/geocode-glib.c       | 22 ++++++++++++++++++++++
+ geocode-glib/geocode-glib.h       |  7 ++++---
+ geocode-glib/geocode-glib.symbols |  1 +
+ 3 files changed, 27 insertions(+), 3 deletions(-)
+
+commit d7f728f96bb42d13760084d295efb33c9aceef47
+Author: Javier Jardón <jjardon@gnome.org>
+Date:   Fri Aug 10 03:53:59 2012 +0900
+
+    Remove unneded dependency on gnome-doc-utils
+
+ Makefile.am  | 2 +-
+ configure.ac | 2 --
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+commit cb279b39df5397f967f70af986f52d3c061901fd
+Author: Javier Jardón <jjardon@gnome.org>
+Date:   Wed May 25 08:30:21 2011 +0100
+
+    configure.ac: Fix typo
+    
+    Require 0.20 instead 2.20 version of gnome-doc-utils
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8f3d52d38bcada35952eb85ef9cbde28231deb23
+Author: Javier Jardón <jjardon@gnome.org>
+Date:   Fri May 20 18:18:23 2011 +0100
+
+    Use upstream gettext instead the glib one
+
+ configure.ac | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+commit 564af9cc8050801bf75ec6abd9536db80cd123ef
+Author: Javier Jardón <jjardon@gnome.org>
+Date:   Fri May 20 18:15:51 2011 +0100
+
+    Update autotools configuration
+
+ Makefile.am  |  2 ++
+ configure.ac | 30 +++++++++++++++++-------------
+ 2 files changed, 19 insertions(+), 13 deletions(-)
+
+commit f05205d77906d3237e70c2198a6898346d1d006b
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon May 9 16:02:22 2011 +0100
+
+    0.99.0
+    
+    Fix some API documentation issues.
+
+ NEWS                         |  4 ++++
+ configure.ac                 |  4 ++--
+ geocode-glib/geocode-error.h |  2 +-
+ geocode-glib/geocode-glib.c  |  2 +-
+ geocode-glib/geocode-glib.h  | 15 ++++++++++-----
+ 5 files changed, 18 insertions(+), 9 deletions(-)
+
+commit b50df819d7ac24b28b95463c4cd8dab85ef3cb0d
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon May 9 16:00:49 2011 +0100
+
+    build: Correctly prefix version numbers
+
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit cf91434516e970bac4c4ea4c3b66db1d4ea2b142
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon May 9 15:58:52 2011 +0100
+
+    lib: Add defines for possible responses
+
+ geocode-glib/geocode-glib.h | 204 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 204 insertions(+)
+
+commit ba279704edba0db13ebd3baa8e4a248c2ab9ed53
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon May 9 15:58:24 2011 +0100
+
+    build: Add more warnings
+
+ configure.ac | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+commit a8d6e3cc5400148f9c8c861d6961b7e7fda19277
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon May 9 13:38:39 2011 +0100
+
+    lib: Add introspection annotations
+
+ TODO                        | 1 -
+ geocode-glib/geocode-glib.c | 6 ++++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+commit 25e552f800329e982c65de08ce1f4a9013555d35
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon May 9 12:54:43 2011 +0100
+
+    lib: Add simple caching to public APIs
+    
+    So that we don't poke the web server as often.
+
+ TODO                        |   1 -
+ geocode-glib/geocode-glib.c | 166 ++++++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 153 insertions(+), 14 deletions(-)
+
+commit 7b316a1e74e5fe80edc5e9ac499922b2a63cc28e
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Mon May 9 03:17:13 2011 +0100
+
+    TODO: Add caching as a required item
+
+ TODO | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 88adb02f77715e1060a6f63114826cf02eb58c7b
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu May 5 13:21:51 2011 +0100
+
+    test: Add test for geocode_object_get_coords()
+
+ geocode-glib/test-gcglib.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 4c8ab95e5adb969eef3eb6bb503e36c32229bb2c
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu May 5 13:21:05 2011 +0100
+
+    lib: Add geocode_object_get_coords() function
+    
+    To make it easier to parse longitude and latitude from the
+    results hashtable.
+
+ geocode-glib/geocode-glib.c       | 39 +++++++++++++++++++++++++++++++++++++++
+ geocode-glib/geocode-glib.h       |  4 ++++
+ geocode-glib/geocode-glib.symbols |  1 +
+ 3 files changed, 44 insertions(+)
+
+commit b526c71b456181190716ec59687c6def0bbfcbb0
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu May 5 12:49:23 2011 +0100
+
+    test: Add test for empty results set
+
+ geocode-glib/test-gcglib.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 87a3c4968d3ce64589c6b0440692cc3af5ea7dd8
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu May 5 12:48:00 2011 +0100
+
+    lib: Check the number of results before returning
+    
+    When a request fails, we might not have an error, but an empty results
+    set. Check for this, and error out properly instead of erroring
+    because of a parsing error.
+
+ geocode-glib/geocode-error.h |  4 +++-
+ geocode-glib/geocode-glib.c  | 16 +++++++++++++++-
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+commit a186db7c090bf669131cfdc68110578b46cac346
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu May 5 12:40:56 2011 +0100
+
+    lib: Fix reverse geocoding in French locale
+    
+    Use g_ascii_formatd() to avoid problems when the locale uses ","
+    to separate decimals.
+    
+    Reported by Guillaume Desmottes.
+
+ geocode-glib/geocode-glib.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit b59dfa1d5e6552a9400d0a28b7786e286fee887e
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed May 4 17:23:15 2011 +0100
+
+    lib: Update API docs
+
+ geocode-glib/geocode-error.c | 15 +++++++++++++++
+ geocode-glib/geocode-error.h | 17 ++++++++++++++++-
+ geocode-glib/geocode-glib.c  | 11 +++++++++++
+ 3 files changed, 42 insertions(+), 1 deletion(-)
+
+commit a9a059540d7972beea183c16e54194af81b4b5cb
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed May 4 17:23:04 2011 +0100
+
+    TODO: Update
+
+ TODO | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+commit ab6d9589f4b34791bcf110c92c041c5662802750
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Apr 27 16:43:11 2011 +0100
+
+    lib: Fix link to telepathy spec
+    
+    Thanks Matthias!
+
+ geocode-glib/geocode-glib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d7b19de080420a420f592cf3e5412ba19feb07f2
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Apr 27 16:35:07 2011 +0100
+
+    test: Add test for gc_new_for_params()
+
+ geocode-glib/test-gcglib.c | 51 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+
+commit 77e56f958c9bf4f2c9b10b8fd288bf9bb483318a
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Apr 27 16:34:37 2011 +0100
+
+    lib: Add support for XEP-0080 parameters
+    
+    Add support for Telepathy's Location attributes.
+
+ geocode-glib/geocode-glib.c | 51 +++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 49 insertions(+), 2 deletions(-)
+
+commit 1c28acf3d3019c4bf206ea44d7a3e03f38c3a5e6
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Apr 27 15:54:10 2011 +0100
+
+    lib: Add API docs
+    
+    Though I still don't know how to create a link.
+
+ geocode-glib/geocode-glib.c | 43 +++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 41 insertions(+), 2 deletions(-)
+
+commit 8d9efa7612daf4e782467f99517f474db3aebae2
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Apr 27 15:01:08 2011 +0100
+
+    test: Add geocoding test case
+
+ geocode-glib/test-gcglib.c | 30 +++++++++++++++++++++++++++---
+ 1 file changed, 27 insertions(+), 3 deletions(-)
+
+commit 83e0ca4c49830f789c6ffcda5ce106340c210fa5
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Apr 27 14:53:23 2011 +0100
+
+    lib: Fix crasher finalizing the object
+    
+    Stupid cut'n'paste typoes.
+
+ geocode-glib/geocode-glib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a5f8bdd0ec63f8770a3248c55dc32cc6fcf5578f
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 17:33:27 2011 +0100
+
+    lib: Add support for more error codes
+
+ geocode-glib/geocode-glib.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+commit 5f2dd542a79635b35db42917b9487458e74d75da
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 17:28:14 2011 +0100
+
+    lib: Add safeguards for latitude/longitude calls
+
+ geocode-glib/geocode-glib.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit bf5ef49344f4fb48864a9ca66ea2d24c8bcdbac1
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 14:03:21 2011 +0100
+
+    test: Include <locale.h> for UTF-8 support
+
+ geocode-glib/test-gcglib.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 3eb93332e8280869e650cce55342b3469b804eba
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 14:02:52 2011 +0100
+
+    lib: Fix g_set_error() usage
+
+ geocode-glib/geocode-glib.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit c9d648453f7d68ead18b53e52149a5bb4077eb95
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 13:51:21 2011 +0100
+
+    build: Require the correct version of json-glib
+    
+    So that build fails earlier if it's not new enough.
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 0399e113f2ad34f081ee9fa2ab3d72fbb51c60d4
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 13:50:24 2011 +0100
+
+    lib: Fix redefinition warning
+
+ geocode-glib/geocode-glib.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit 6e10e23d63888a222c7a1e59fff17a225683f570
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 11:13:00 2011 +0100
+
+    todo: Add mention of TP spec
+
+ TODO | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 62ab94315a9b4affb9ef5062b191e6a5c80f997d
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 03:04:50 2011 +0100
+
+    lib: Clamp the symbols exported in the library
+
+ geocode-glib/Makefile.am          |  5 ++---
+ geocode-glib/geocode-glib.symbols | 11 ++++++++++-
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+commit f47cd8433614dfd8b5570b2dd1fc8bd30cc8eedc
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 03:04:26 2011 +0100
+
+    lib: Fix warning in test compilation
+
+ geocode-glib/test-gcglib.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit c5cc13ddcd8884fa1c1bf6d2a2a559365bb8049a
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Apr 21 03:02:17 2011 +0100
+
+    lib: Add missing header file
+
+ geocode-glib/geocode-glib-private.h | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+
+commit efcddc5889c75e85e1b07e497c28cfc736b5d115
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Apr 19 17:04:48 2011 +0100
+
+    geocode-glib
+
+ AUTHORS                           |   1 +
+ COPYING.LIB                       | 481 ++++++++++++++++++++++++++++++++++++++
+ INSTALL                           | 365 +++++++++++++++++++++++++++++
+ Makefile.am                       |  27 +++
+ Makefile.decl                     |  53 +++++
+ NEWS                              |   1 +
+ README                            |  24 ++
+ TODO                              |  11 +
+ autogen.sh                        |  21 ++
+ configure.ac                      |  80 +++++++
+ docs/Makefile.am                  |  87 +++++++
+ docs/geocode-glib-docs.xml        |  29 +++
+ docs/version.xml.in               |   1 +
+ geocode-glib.doap                 |  16 ++
+ geocode-glib.pc.in                |  11 +
+ geocode-glib/Makefile.am          |  66 ++++++
+ geocode-glib/geocode-error.c      |  34 +++
+ geocode-glib/geocode-error.h      |  41 ++++
+ geocode-glib/geocode-glib.c       | 394 +++++++++++++++++++++++++++++++
+ geocode-glib/geocode-glib.h       |  76 ++++++
+ geocode-glib/geocode-glib.symbols |   1 +
+ geocode-glib/test-gcglib.c        | 161 +++++++++++++
+ po/POTFILES.in                    |   0
+ 23 files changed, 1981 insertions(+)

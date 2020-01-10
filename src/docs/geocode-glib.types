@@ -1,0 +1,9 @@
+geocode_bounding_box_get_type
+geocode_error_get_type
+geocode_forward_get_type
+geocode_location_crs_get_type
+geocode_location_get_type
+geocode_location_uri_scheme_get_type
+geocode_place_get_type
+geocode_place_type_get_type
+geocode_reverse_get_type
